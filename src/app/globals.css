@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --sidebar-bg: #ffffff;
+  --sidebar-border: #e4e4e7;
+  --sidebar-active: #f4f4f5;
+  --sidebar-hover: #fafafa;
+  --sidebar-text: #71717a;
+  --sidebar-text-active: #18181b;
+  --primary: #18181b;
+  --primary-hover: #27272a;
+  --primary-foreground: #ffffff;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #d4d4d8;
+  --scrollbar-thumb-hover: #a1a1aa;
+}
+
+/* Sidebar token utilities (use classes so var() resolves in this stylesheet) */
+.bg-sidebar {
+  background-color: var(--sidebar-bg);
+}
+
+.border-sidebar {
+  border-color: var(--sidebar-border);
+}
+
+button {
+  cursor: pointer;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --sidebar-bg: #0a0a0a;
+  --sidebar-border: #27272a;
+  --sidebar-active: #27272a;
+  --sidebar-hover: #18181b;
+  --sidebar-text: #a1a1aa;
+  --sidebar-text-active: #ffffff;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #3f3f46;
+  --scrollbar-thumb-hover: #52525b;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* AI Generation Loader Animations */
+@keyframes ai-loader-glow-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes ai-loader-glow-inner-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0.5;
+  }
+}
+
+@keyframes ai-loader-cursor-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ai-loader-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ai-loader-particle {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.ai-loader-glow {
+  animation: ai-loader-glow-pulse 3s ease-in-out infinite;
+}
+
+.ai-loader-glow-inner {
+  animation: ai-loader-glow-inner-pulse 2.5s ease-in-out infinite 0.5s;
+}
+
+.ai-loader-cursor {
+  animation: ai-loader-cursor-blink 1s step-end infinite;
+  margin-left: 2px;
+  color: #000000;
+}
+
+.dark .ai-loader-cursor {
+  color: #ffffff;
+}
+
+/* AI Loader inner image animation - black lines in light mode, colorful sparkle preserved */
+.ai-loader-image-icon {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.dark .ai-loader-image-icon {
+  filter: none;
+}
+
+@keyframes ai-loader-shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+@keyframes ai-loader-sparkle-pulse {
+  0%, 100% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5));
+  }
+}
+
+@keyframes ai-loader-sparkle-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes ai-loader-sparkle-rotate-reverse {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(-180deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(-360deg) scale(1);
+  }
+}
+
+.ai-loader-sparkle-pulse {
+  animation: ai-loader-sparkle-pulse 2s ease-in-out infinite;
+}
+
+.ai-loader-sparkle-rotate {
+  animation: ai-loader-sparkle-rotate 2s ease-in-out infinite;
+}
+
+.ai-loader-sparkle-rotate-reverse {
+  animation: ai-loader-sparkle-rotate-reverse 2.5s ease-in-out infinite;
+}
+
+/* Light mode text shine */
+.ai-loader-shine {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 35%,
+    rgba(82, 82, 91, 1) 42%,
+    rgba(113, 113, 122, 1) 48%,
+    rgba(161, 161, 170, 1) 52%,
+    rgba(113, 113, 122, 1) 58%,
+    rgba(82, 82, 91, 1) 62%,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ai-loader-shine 4s linear infinite;
+}
+
+/* Dark mode text shine */
+.dark .ai-loader-shine {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.9) 35%,
+    rgba(161, 161, 170, 1) 42%,
+    rgba(212, 212, 216, 1) 48%,
+    rgba(244, 244, 245, 1) 52%,
+    rgba(212, 212, 216, 1) 58%,
+    rgba(161, 161, 170, 1) 62%,
+    rgba(255, 255, 255, 0.9) 70%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ai-loader-shine 4s linear infinite;
+}
+
+
+.ai-loader-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.ai-loader-particles::before,
+.ai-loader-particles::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(113, 113, 122, 0.6);
+  animation: ai-loader-particle 8s linear infinite;
+}
+
+.ai-loader-particles::before {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.ai-loader-particles::after {
+  left: 80%;
+  animation-delay: 4s;
+}
