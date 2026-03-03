@@ -31,7 +31,7 @@ const ARTICLES = [
     date: "Nov 2025",
     tag: "Sustainability",
     image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=800&q=80",
     alt: "Sustainable woodworking workshop",
   },
 ];

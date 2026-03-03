@@ -1,18 +1,22 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import Sidebar from "@/components/ui/Sidebar";
 import { useAuth } from "@/lib/utils/AuthContext";
 
 /**
- * What: App shell component that conditionally renders sidebar based on auth state.
- * Why: Landing page should show without sidebar; dashboard needs sidebar.
+ * What: App shell component that conditionally renders sidebar based on auth and route.
+ * Why: Landing page (/) must show without sidebar after login; dashboard and app routes need sidebar.
  * What for: Used in layout.tsx to wrap all page content.
  */
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const { user, isLoading } = useAuth();
+
+  const isLandingPage = pathname === "/";
 
   if (isLoading) {
     return (
@@ -22,7 +26,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     );
   }
 
-  if (!user) {
+  if (!user || isLandingPage) {
     return <>{children}</>;
   }
 
@@ -37,7 +41,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </button>
 
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="flex-1 overflow-auto bg-zinc-50 dark:bg-[#0C111D] pt-16 md:pt-0">
+      <main className="flex-1 overflow-auto bg-zinc-50 dark:bg-[#0f0f0f] pt-16 md:pt-0">
         {children}
       </main>
     </div>

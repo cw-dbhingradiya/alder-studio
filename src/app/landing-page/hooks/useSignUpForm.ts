@@ -66,11 +66,16 @@ export function useSignUpForm(
           return;
         }
 
-        registerUser({ name: name.trim(), email: email.trim(), password });
-
-        const authUser: AuthUser = {
+        const newUser = registerUser({
           name: name.trim(),
           email: email.trim(),
+          password,
+        });
+
+        const authUser: AuthUser = {
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
         };
         setSessionUser(authUser);
         onLoginSuccess(authUser);

@@ -81,6 +81,7 @@ export function useLoginForm(
         }
 
         const authUser: AuthUser = {
+          id: storedUser.id,
           name: storedUser.name,
           email: storedUser.email,
         };

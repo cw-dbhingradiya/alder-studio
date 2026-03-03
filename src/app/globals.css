@@ -42,7 +42,7 @@ button {
 .dark {
   --background: #0a0a0a;
   --foreground: #ffffff;
-  --sidebar-bg: #0a0a0a;
+  --sidebar-bg: #0b0809;
   --sidebar-border: #27272a;
   --sidebar-active: #27272a;
   --sidebar-hover: #18181b;
@@ -80,7 +80,8 @@ body {
 
 /* AI Generation Loader Animations */
 @keyframes ai-loader-glow-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.2;
   }
@@ -91,7 +92,8 @@ body {
 }
 
 @keyframes ai-loader-glow-inner-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 0.3;
   }
@@ -102,16 +104,19 @@ body {
 }
 
 @keyframes ai-loader-cursor-blink {
-  0%, 50% {
+  0%,
+  50% {
     opacity: 1;
   }
-  51%, 100% {
+  51%,
+  100% {
     opacity: 0;
   }
 }
 
 @keyframes ai-loader-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -173,7 +178,8 @@ body {
 }
 
 @keyframes ai-loader-sparkle-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.9;
     filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
   }
@@ -261,7 +267,6 @@ body {
   animation: ai-loader-shine 4s linear infinite;
 }
 
-
 .ai-loader-particles {
   position: absolute;
   inset: 0;
@@ -270,7 +275,7 @@ body {
 
 .ai-loader-particles::before,
 .ai-loader-particles::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 4px;
   height: 4px;

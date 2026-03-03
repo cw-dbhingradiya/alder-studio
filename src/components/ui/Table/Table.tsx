@@ -11,9 +11,9 @@ import type {
 
 export function Table({ children, className = "", ...props }: TableProps) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-[#333741]">
+    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-[#2a2627]">
       <table
-        className={`min-w-full divide-y divide-zinc-200 dark:divide-[#333741] ${className}`}
+        className={`min-w-full divide-y divide-zinc-200 dark:divide-[#2a2627] ${className}`}
         {...props}
       >
         {children}
@@ -22,18 +22,26 @@ export function Table({ children, className = "", ...props }: TableProps) {
   );
 }
 
-export function TableHead({ children, className = "", ...props }: TableHeadProps) {
+export function TableHead({
+  children,
+  className = "",
+  ...props
+}: TableHeadProps) {
   return (
-    <thead className={`bg-zinc-50 dark:bg-[#161B26] ${className}`} {...props}>
+    <thead className={`bg-sidebar ${className}`} {...props}>
       {children}
     </thead>
   );
 }
 
-export function TableBody({ children, className = "", ...props }: TableBodyProps) {
+export function TableBody({
+  children,
+  className = "",
+  ...props
+}: TableBodyProps) {
   return (
     <tbody
-      className={`divide-y divide-zinc-200 bg-white dark:divide-[#333741] dark:bg-[#161B26] ${className}`}
+      className={`divide-y divide-zinc-200 bg-sidebar dark:divide-[#2a2627] ${className}`}
       {...props}
     >
       {children}
@@ -41,8 +49,15 @@ export function TableBody({ children, className = "", ...props }: TableBodyProps
   );
 }
 
-export function TableRow({ children, hoverable = true, className = "", ...props }: TableRowProps) {
-  const hoverClasses = hoverable ? "hover:bg-zinc-50 dark:hover:bg-[#1F242F]" : "";
+export function TableRow({
+  children,
+  hoverable = true,
+  className = "",
+  ...props
+}: TableRowProps) {
+  const hoverClasses = hoverable
+    ? "hover:bg-zinc-50 dark:hover:bg-[#1F242F]"
+    : "";
   return (
     <tr className={`${hoverClasses} ${className}`} {...props}>
       {children}
@@ -57,7 +72,11 @@ export function TableHeader({
   ...props
 }: TableHeaderProps) {
   const alignmentClass =
-    align === "center" ? "text-center" : align === "right" ? "text-right" : "text-left";
+    align === "center"
+      ? "text-center"
+      : align === "right"
+        ? "text-right"
+        : "text-left";
 
   return (
     <th
@@ -76,7 +95,11 @@ export function TableCell({
   ...props
 }: TableCellProps) {
   const alignmentClass =
-    align === "center" ? "text-center" : align === "right" ? "text-right" : "text-left";
+    align === "center"
+      ? "text-center"
+      : align === "right"
+        ? "text-right"
+        : "text-left";
 
   return (
     <td

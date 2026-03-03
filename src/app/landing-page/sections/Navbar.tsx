@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { LogOut, LayoutDashboard, X } from "lucide-react";
 import LoginModal from "./LoginModal";
@@ -67,12 +68,15 @@ function ProfileDropdown({
             transition={{ duration: 0.2, ease: EASE }}
             className="absolute right-0 mt-2 w-60 overflow-hidden rounded-xl border border-neutral-800 bg-[#111111] shadow-2xl"
           >
-            {/* User info */}
+            {/* User info: name, email, id available after login */}
             <div className="border-b border-neutral-800 px-4 py-3">
               <p className="truncate text-sm font-medium text-white">
                 {user.name}
               </p>
               <p className="truncate text-xs text-neutral-400">{user.email}</p>
+              <p className="mt-1 truncate text-xs text-neutral-500">
+                ID: {user.id}
+              </p>
             </div>
 
             {/* Dashboard */}
@@ -108,6 +112,7 @@ function ProfileDropdown({
 }
 
 export default function Navbar() {
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const { user, login, logout } = useAuth();
@@ -120,6 +125,7 @@ export default function Navbar() {
   const handleLoginSuccess = useCallback(
     (loggedInUser: AuthUser) => {
       login(loggedInUser);
+      setLoginOpen(false);
     },
     [login]
   );
@@ -129,9 +135,8 @@ export default function Navbar() {
   }, [logout]);
 
   const handleDashboard = useCallback(() => {
-    // User is already on the main page, just trigger re-render via auth state
-    // The page.tsx will show dashboard when user is authenticated
-  }, []);
+    router.push("/dashboard");
+  }, [router]);
 
   return (
     <>
