@@ -6,6 +6,7 @@
  */
 
 export interface AuthUser {
+  id: string;
   name: string;
   email: string;
 }
@@ -28,6 +29,17 @@ const SESSION_KEY = "auth_session";
 const USERS_KEY = "registered_users";
 
 /**
+ * What: Generates a unique id for new users.
+ * Why: Each user needs a stable id for session and references.
+ */
+function generateUserId(): string {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  return `user_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+}
+
+/**
  * What: Retrieves the current authenticated user from session storage.
  * Why: Allows components to check if a user is logged in.
  */
@@ -36,7 +48,13 @@ export function getSessionUser(): AuthUser | null {
   try {
     const raw = localStorage.getItem(SESSION_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as AuthUser;
+    const parsed = JSON.parse(raw) as AuthUser & { id?: string };
+    if (!parsed.id) {
+      const migrated: AuthUser = { ...parsed, id: generateUserId() };
+      setSessionUser(migrated);
+      return migrated;
+    }
+    return parsed as AuthUser;
   } catch {
     return null;
   }
@@ -56,29 +74,43 @@ export function setSessionUser(user: AuthUser | null): void {
 }
 
 /**
- * What: Retrieves all registered users from localStorage.
- * Why: Used for login validation and duplicate email checks.
+ * What: Retrieves all registered users from localStorage; migrates legacy users without id.
+ * Why: Used for login validation and duplicate email checks; ensures every user has an id.
  */
 export function getRegisteredUsers(): StoredUser[] {
   if (typeof window === "undefined") return [];
   try {
     const raw = localStorage.getItem(USERS_KEY);
     if (!raw) return [];
-    return JSON.parse(raw) as StoredUser[];
+    const parsed = JSON.parse(raw) as (StoredUser & { id?: string })[];
+    let needsSave = false;
+    const users: StoredUser[] = parsed.map((u) => {
+      if (!u.id) {
+        needsSave = true;
+        return { ...u, id: generateUserId() } as StoredUser;
+      }
+      return u as StoredUser;
+    });
+    if (needsSave) localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    return users;
   } catch {
     return [];
   }
 }
 
 /**
- * What: Saves a new user to the registered users list.
- * Why: Called during signup to persist the new account.
+ * What: Saves a new user to the registered users list with a unique id.
+ * Why: Called during signup to persist the new account; id is used after login.
  */
-export function registerUser(user: StoredUser): void {
-  if (typeof window === "undefined") return;
+export function registerUser(data: Omit<StoredUser, "id">): StoredUser {
+  if (typeof window === "undefined")
+    return { id: "", ...data } as StoredUser;
+  const id = generateUserId();
+  const user: StoredUser = { id, name: data.name, email: data.email, password: data.password };
   const users = getRegisteredUsers();
   users.push(user);
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
+  return user;
 }
 
 /**

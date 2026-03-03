@@ -11,8 +11,7 @@ const variantClasses: Record<string, string> = {
     "bg-zinc-200 text-zinc-900 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600",
   ghost:
     "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800",
-  text:
-    "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white",
+  text: "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white",
   "link-gray":
     "text-neutral-400 hover:text-white bg-transparent hover:bg-transparent",
   "primary-dark":
@@ -23,7 +22,7 @@ const sizeClasses: Record<string, string> = {
   sm: "px-3 py-1.5 text-sm",
   md: "px-4 py-2 text-sm",
   lg: "px-6 py-3 text-base",
-  xl: "px-6 py-3.5 text-base",
+  xl: "px-6 py-2 text-base",
 };
 
 export function Button({

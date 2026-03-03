@@ -4,10 +4,10 @@ import { forwardRef } from "react";
 import type { InputProps, TextareaProps, FormGroupProps } from "./types";
 
 const baseInputClasses =
-  "block w-full rounded-md border border-zinc-300 px-3 py-2 shadow-sm focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:focus:border-zinc-400 dark:focus:ring-zinc-400";
+  "block w-full rounded-md border border-zinc-300 px-3 py-2 shadow-sm text-sm focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:focus:border-zinc-400 dark:focus:ring-zinc-400";
 
 const darkThemeInputClasses =
-  "block w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-3 text-white placeholder-neutral-500 focus:border-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-500";
+  "block w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm text-white placeholder-neutral-500 focus:border-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-500";
 
 const errorInputClasses =
   "border-rose-500 focus:border-rose-500 focus:ring-rose-500";
@@ -15,8 +15,7 @@ const errorInputClasses =
 const labelClasses =
   "block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]";
 
-const darkThemeLabelClasses =
-  "block text-sm font-medium text-neutral-300 mb-2";
+const darkThemeLabelClasses = "block text-sm font-medium text-neutral-300 mb-2";
 
 const errorTextClasses = "mt-1 text-sm text-rose-600 dark:text-rose-400";
 
@@ -38,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       autoComplete,
       ...props
     },
-    ref
+    ref,
   ) => {
     /**
      * What: Derive a stable id and validation state for the input.
@@ -79,7 +78,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
           {trailingAction && (
-            <div className="absolute right-3.5 top-1/2 -translate-y-1/2">
+            <div className="absolute right-3.5 top-[56%] -translate-y-1/2">
               {trailingAction}
             </div>
           )}
@@ -94,7 +93,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";
@@ -124,10 +123,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             {error}
           </p>
         )}
-        {helperText && !error && <p className={helperTextClasses}>{helperText}</p>}
+        {helperText && !error && (
+          <p className={helperTextClasses}>{helperText}</p>
+        )}
       </div>
     );
-  }
+  },
 );
 
 Textarea.displayName = "Textarea";
@@ -150,7 +151,9 @@ export function FormGroup({
       )}
       <div className={label ? "mt-1" : ""}>{children}</div>
       {error && <p className={errorTextClasses}>{error}</p>}
-      {helperText && !error && <p className={helperTextClasses}>{helperText}</p>}
+      {helperText && !error && (
+        <p className={helperTextClasses}>{helperText}</p>
+      )}
     </div>
   );
 }

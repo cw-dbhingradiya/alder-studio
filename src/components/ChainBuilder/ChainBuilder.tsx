@@ -50,7 +50,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
                     type="button"
                     onClick={() => moveStep(index, "up")}
                     disabled={index === 0}
-                    className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 disabled:opacity-30 dark:hover:bg-[#1F242F] dark:hover:text-zinc-400"
+                    className="rounded p-1 text-zinc-400 hover:text-zinc-600 disabled:opacity-30 dark:hover:text-zinc-400 bg-sidebar"
                   >
                     <ChevronUp className="size-5" />
                   </button>
@@ -58,7 +58,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
                     type="button"
                     onClick={() => moveStep(index, "down")}
                     disabled={index === steps.length - 1}
-                    className="rounded p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 disabled:opacity-30 dark:hover:bg-[#1F242F] dark:hover:text-zinc-400"
+                    className="rounded p-1 text-zinc-400 hover:text-zinc-600 disabled:opacity-30 dark:hover:text-zinc-400 bg-sidebar"
                   >
                     <ChevronDown className="size-5" />
                   </button>

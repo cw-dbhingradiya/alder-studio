@@ -24,19 +24,21 @@ export default function LandingPage() {
       root
       options={{ lerp: 0.075, duration: 1.4, smoothWheel: true }}
     >
-      <div className="min-h-screen bg-[#0A0A0A] text-white">
+      <div className="flex min-h-screen flex-col bg-[#0A0A0A] text-white">
         <Navbar />
-        <HeroSection />
-        <About />
-        <Projects />
-        <Services />
-        <Profile />
-        <Experience />
-        <TestimonialsSection />
-        <Awards />
-        <Pricing />
-        <Blog />
-        <Faq />
+        <div className="flex-1">
+          <HeroSection />
+          <About />
+          <Projects />
+          <Services />
+          <Profile />
+          <Experience />
+          <TestimonialsSection />
+          <Awards />
+          <Pricing />
+          <Blog />
+          <Faq />
+        </div>
         <Footer />
       </div>
     </ReactLenis>

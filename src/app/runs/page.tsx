@@ -9,11 +9,7 @@ import { Dropdown } from "@/components/ui/Dropdown";
 import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { AIGenerationLoader } from "@/components/ui/AIGenerationLoader";
-import {
-  PaginatedTable,
-  TableRow,
-  TableCell,
-} from "@/components/ui/Table";
+import { PaginatedTable, TableRow, TableCell } from "@/components/ui/Table";
 import { useRunsPage } from "./useRunsPage";
 import { Clock3, Play, Trash2 } from "lucide-react";
 
@@ -198,7 +194,12 @@ function RunsContent() {
           </>
         }
       >
-        <form id="new-run-form" onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
+        <form
+          id="new-run-form"
+          onSubmit={handleSubmit}
+          className="space-y-4"
+          autoComplete="off"
+        >
           <div>
             <label className="block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
               Input Set
