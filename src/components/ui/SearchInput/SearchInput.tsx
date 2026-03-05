@@ -24,7 +24,7 @@ export interface SearchInputProps {
  */
 const inputSizeClasses: Record<string, string> = {
   default:
-    "block h-[38px] w-full rounded-md border border-input bg-input-field py-2 pl-10 pr-10 shadow-sm text-foreground placeholder:text-placeholder focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring",
+    "block h-[38px] w-full rounded-md border border-input bg-input-field py-2 pl-10 pr-10 text-foreground placeholder:text-placeholder focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring",
   compact:
     "min-w-0 flex-1 bg-transparent text-[13px] text-foreground placeholder:text-search-foreground focus:outline-none",
 };

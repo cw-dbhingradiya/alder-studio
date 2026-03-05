@@ -80,7 +80,7 @@ export default function ServicesSection() {
           </motion.div>
         </div>
 
-        <div className="grid gap-0 divide-y divide-neutral-800">
+        <div className="grid gap-0 divide-y divide-neutral-800 w-[64%] ml-auto relative">
           {SERVICES.map((service, i) => (
             <motion.div
               key={service.number}
@@ -88,7 +88,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={VIEWPORT}
               transition={{ duration: 0.7, ease: EASE, delay: i * 0.08 }}
-              className="group grid gap-6 py-10 transition-colors md:grid-cols-12"
+              className="group grid gap-6 py-8 transition-colors md:grid-cols-12"
             >
               <div className="md:col-span-1">
                 <span className="text-sm font-medium text-neutral-600 transition-colors duration-300 group-hover:text-neutral-400">
