@@ -37,7 +37,7 @@ function DashboardContent() {
   if (authLoading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
       </div>
     );
   }
@@ -49,7 +49,7 @@ function DashboardContent() {
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
       </div>
     );
   }
@@ -61,10 +61,10 @@ function DashboardContent() {
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Page header */}
         <div>
-          <h1 className="text-lg font-semibold text-zinc-900 dark:text-white">
+          <h1 className="text-lg font-semibold text-foreground">
             Welcome back, {firstName}
           </h1>
-          <p className="mt-0.5 text-[13px] text-zinc-500 dark:text-zinc-400">
+          <p className="mt-0.5 text-[13px] text-muted-foreground">
             Here&apos;s an overview of your AI image generation workbench.
           </p>
         </div>
@@ -100,7 +100,7 @@ function DashboardContent() {
 
         {/* Quick Actions */}
         <div>
-          <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+          <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wider text-placeholder">
             Quick Actions
           </h2>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -128,13 +128,13 @@ function DashboardContent() {
         {/* Recent Runs */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-[13px] font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+            <h2 className="text-[13px] font-semibold uppercase tracking-wider text-placeholder">
               Recent Runs
             </h2>
             {recentRuns.length > 0 && (
               <Link
                 href="/runs"
-                className="flex items-center gap-1 text-[13px] font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                className="flex items-center gap-1 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 View all
                 <ArrowRight className="h-3 w-3" />
@@ -154,13 +154,13 @@ function DashboardContent() {
               pageSize={5}
               emptyMessage={
                 <div className="px-6 py-10 text-center">
-                  <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-                    <Play className="h-4 w-4 text-zinc-400 dark:text-zinc-500" />
+                  <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-accent">
+                    <Play className="h-4 w-4 text-placeholder" />
                   </div>
-                  <p className="text-sm font-medium text-zinc-600 dark:text-zinc-300">
+                  <p className="text-sm font-medium text-label">
                     No runs yet
                   </p>
-                  <p className="mt-1 text-[13px] text-zinc-400 dark:text-zinc-500">
+                  <p className="mt-1 text-[13px] text-placeholder">
                     Start by creating an input set and prompt template.
                   </p>
                 </div>
@@ -170,7 +170,7 @@ function DashboardContent() {
                   <TableCell>
                     <Link
                       href={`/runs/${run.id}`}
-                      className="inline-block max-w-48 truncate text-[13px] font-medium text-zinc-700 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                      className="inline-block max-w-48 truncate text-[13px] font-medium text-label transition-colors hover:text-foreground"
                     >
                       {run.id}
                     </Link>
@@ -196,7 +196,7 @@ export default function DashboardPage() {
     <Suspense
       fallback={
         <div className="flex h-full items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
         </div>
       }
     >
@@ -225,20 +225,20 @@ function StatCard({
   return (
     <Link
       href={href}
-      className="group flex flex-col justify-between rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-[#2a2627] bg-sidebar"
+      className="group flex flex-col justify-between rounded-lg border border-border p-4 transition-colors hover:border-border bg-sidebar"
     >
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-[13px] font-medium text-zinc-500 dark:text-zinc-400">
+        <span className="text-[13px] font-medium text-muted-foreground">
           {title}
         </span>
-        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-zinc-100 text-zinc-500 transition-colors group-hover:bg-zinc-200 group-hover:text-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:bg-zinc-700 dark:group-hover:text-zinc-200">
+        <div className="flex h-7 w-7 items-center justify-center rounded-md bg-icon-bg text-icon transition-colors group-hover:bg-icon-bg-accent group-hover:text-icon-hover">
           {icon}
         </div>
       </div>
-      <p className="text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+      <p className="text-2xl font-semibold tracking-tight text-foreground">
         {value}
         {suffix && (
-          <span className="ml-0.5 text-sm font-normal text-zinc-400 dark:text-zinc-500">
+          <span className="ml-0.5 text-sm font-normal text-placeholder">
             {suffix}
           </span>
         )}
@@ -265,20 +265,20 @@ function QuickActionCard({
   return (
     <Link
       href={href}
-      className="group flex items-center gap-3.5 rounded-lg border border-zinc-200 bg-white px-4 py-3.5 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-[#2a2627] bg-sidebar"
+      className="group flex items-center gap-3.5 rounded-lg border border-border px-4 py-3.5 transition-colors hover:border-border bg-sidebar"
     >
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-600 transition-colors group-hover:bg-zinc-900 group-hover:text-white dark:bg-zinc-800 dark:text-zinc-300 dark:group-hover:bg-zinc-200 dark:group-hover:text-zinc-900">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-action-icon text-action-icon-foreground transition-colors group-hover:bg-action-icon-active group-hover:text-action-icon-active-foreground">
         {icon}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-[13px] font-semibold text-zinc-900 dark:text-white">
+        <p className="text-[13px] font-semibold text-foreground">
           {title}
         </p>
-        <p className="text-[12px] text-zinc-500 dark:text-zinc-400">
+        <p className="text-[12px] text-muted-foreground">
           {description}
         </p>
       </div>
-      <ArrowRight className="h-3.5 w-3.5 shrink-0 text-zinc-300 transition-colors group-hover:text-zinc-500 dark:text-zinc-600 dark:group-hover:text-zinc-300" />
+      <ArrowRight className="h-3.5 w-3.5 shrink-0 text-action-arrow transition-colors group-hover:text-action-arrow-hover" />
     </Link>
   );
 }

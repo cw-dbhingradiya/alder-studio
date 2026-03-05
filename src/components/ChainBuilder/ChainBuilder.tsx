@@ -22,12 +22,12 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
   return (
     <div className="space-y-4">
       {steps.length === 0 ? (
-        <div className="rounded-lg border-2 border-dashed border-zinc-300 p-8 text-center dark:border-[#333741]">
-          <Image className="size-12 text-zinc-400 mx-auto" />
-          <h3 className="mt-2 text-lg font-medium text-zinc-900 dark:text-white">
+        <div className="rounded-lg border-2 border-dashed border-border p-8 text-center">
+          <Image className="size-12 text-placeholder mx-auto" />
+          <h3 className="mt-2 text-lg font-medium text-foreground">
             No steps
           </h3>
-          <p className="mt-1 text-zinc-500 dark:text-[#94969C]">
+          <p className="mt-1 text-muted-foreground">
             Add a step to start building your prompt chain.
           </p>
           <Button
@@ -50,7 +50,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
                     type="button"
                     onClick={() => moveStep(index, "up")}
                     disabled={index === 0}
-                    className="rounded p-1 text-zinc-400 hover:text-zinc-600 disabled:opacity-30 dark:hover:text-zinc-400 bg-sidebar"
+                    className="rounded p-1 text-placeholder hover:text-subtle disabled:opacity-30 bg-sidebar"
                   >
                     <ChevronUp className="size-5" />
                   </button>
@@ -58,7 +58,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
                     type="button"
                     onClick={() => moveStep(index, "down")}
                     disabled={index === steps.length - 1}
-                    className="rounded p-1 text-zinc-400 hover:text-zinc-600 disabled:opacity-30 dark:hover:text-zinc-400 bg-sidebar"
+                    className="rounded p-1 text-placeholder hover:text-subtle disabled:opacity-30 bg-sidebar"
                   >
                     <ChevronDown className="size-5" />
                   </button>
@@ -76,7 +76,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
               {/* Connector Arrow */}
               {index < steps.length - 1 && (
                 <div className="flex justify-center py-2">
-                  <ArrowDown className="size-6 text-zinc-400" />
+                  <ArrowDown className="size-6 text-placeholder" />
                 </div>
               )}
             </div>
@@ -86,7 +86,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
           <button
             type="button"
             onClick={addStep}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-zinc-300 py-4 text-zinc-500 transition-colors hover:border-zinc-500 hover:text-zinc-700 dark:border-zinc-600 dark:hover:border-zinc-400 dark:hover:text-zinc-300"
+            className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-input py-4 text-muted-foreground transition-colors hover:border-focus hover:text-label"
           >
             <Plus className="size-5" /> Add Step
           </button>
@@ -95,24 +95,24 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
 
       {/* Chain Preview */}
       {steps.length > 1 && (
-        <div className="rounded-lg bg-zinc-50 p-4 dark:bg-[#1F242F]">
-          <h4 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-[#CECFD2]">
+        <div className="rounded-lg bg-muted p-4">
+          <h4 className="mb-2 text-sm font-semibold text-label">
             Chain Flow
           </h4>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded bg-zinc-200 px-2 py-1 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+            <span className="rounded bg-chip px-2 py-1 text-xs text-chip-foreground">
               Input Images
             </span>
             {steps.map((step, index) => (
               <div key={index} className="flex items-center gap-2">
-                <ArrowRight className="size-4 text-zinc-400" />
-                <span className="rounded bg-zinc-200 px-2 py-1 text-xs text-zinc-700 dark:bg-[#333741] dark:text-[#CECFD2]">
+                <ArrowRight className="size-4 text-placeholder" />
+                <span className="rounded bg-chip px-2 py-1 text-xs text-chip-foreground">
                   Step {index + 1}
                 </span>
               </div>
             ))}
-            <ArrowRight className="size-4 text-zinc-400" />
-            <span className="rounded bg-emerald-100 px-2 py-1 text-xs text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+            <ArrowRight className="size-4 text-placeholder" />
+            <span className="rounded bg-success px-2 py-1 text-xs text-success-foreground">
               Final Output
             </span>
           </div>

@@ -11,9 +11,9 @@ import type {
 
 export function Table({ children, className = "", ...props }: TableProps) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-200 dark:border-[#2a2627]">
+    <div className="overflow-x-auto rounded-lg border border-divider">
       <table
-        className={`min-w-full divide-y divide-zinc-200 dark:divide-[#2a2627] ${className}`}
+        className={`min-w-full divide-y divide-divider ${className}`}
         {...props}
       >
         {children}
@@ -41,7 +41,7 @@ export function TableBody({
 }: TableBodyProps) {
   return (
     <tbody
-      className={`divide-y divide-zinc-200 bg-sidebar dark:divide-[#2a2627] ${className}`}
+      className={`divide-y divide-divider bg-sidebar ${className}`}
       {...props}
     >
       {children}
@@ -56,7 +56,7 @@ export function TableRow({
   ...props
 }: TableRowProps) {
   const hoverClasses = hoverable
-    ? "hover:bg-zinc-50 dark:hover:bg-[#1F242F]"
+    ? "hover:bg-table-hover"
     : "";
   return (
     <tr className={`${hoverClasses} ${className}`} {...props}>
@@ -80,7 +80,7 @@ export function TableHeader({
 
   return (
     <th
-      className={`px-6 py-3 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-[#94969C] ${alignmentClass} ${className}`}
+      className={`px-6 py-3 text-xs font-semibold uppercase tracking-wider text-table-header ${alignmentClass} ${className}`}
       {...props}
     >
       {children}
@@ -103,7 +103,7 @@ export function TableCell({
 
   return (
     <td
-      className={`whitespace-nowrap px-6 py-4 text-sm text-zinc-700 dark:text-[#CECFD2] ${alignmentClass} ${className}`}
+      className={`whitespace-nowrap px-6 py-4 text-sm text-table-cell ${alignmentClass} ${className}`}
       {...props}
     >
       {children}

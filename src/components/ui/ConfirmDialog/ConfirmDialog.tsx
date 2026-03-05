@@ -4,9 +4,9 @@ import { Modal } from '../Modal';
 import type { ConfirmDialogProps } from './types';
 
 const variantStyles = {
-  danger: 'bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100',
-  warning: 'bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100',
-  info: 'bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100',
+  danger: 'bg-primary hover:bg-primary-hover',
+  warning: 'bg-primary hover:bg-primary-hover',
+  info: 'bg-primary hover:bg-primary-hover',
 };
 
 export function ConfirmDialog({
@@ -31,21 +31,21 @@ export function ConfirmDialog({
           <button
             onClick={onClose}
             disabled={loading}
-            className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+            className="rounded-lg border border-input bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary-hover disabled:opacity-50"
           >
             {cancelLabel}
           </button>
           <button
             onClick={onConfirm}
             disabled={loading}
-            className={`rounded-lg px-4 py-2 text-sm font-medium text-white disabled:opacity-50 ${variantStyles[variant]}`}
+            className={`rounded-lg px-4 py-2 text-sm font-medium text-primary-foreground disabled:opacity-50 ${variantStyles[variant]}`}
           >
             {loading ? 'Loading...' : confirmLabel}
           </button>
         </>
       }
     >
-      <p className="text-sm text-zinc-600 dark:text-[#94969C]">{message}</p>
+      <p className="text-sm text-subtle">{message}</p>
     </Modal>
   );
 }

@@ -48,16 +48,16 @@ export function Modal({
 
       {/* Modal */}
       <div
-        className={`relative z-10 w-full ${sizeClasses[size]} mx-4 rounded-lg bg-white shadow-xl dark:bg-[#161B26] ${scrollable ? "max-h-[90vh] flex flex-col" : ""} ${className}`}
+        className={`relative z-10 w-full ${sizeClasses[size]} mx-4 rounded-lg bg-popover shadow-xl ${scrollable ? "max-h-[90vh] flex flex-col" : ""} ${className}`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-zinc-200 px-6 py-4 dark:border-[#333741]">
-          <h2 className="text-lg font-semibold text-zinc-900 dark:text-white">
+        <div className="flex items-center justify-between border-b border-border px-6 py-4">
+          <h2 className="text-lg font-semibold text-foreground">
             {title}
           </h2>
           <button
             onClick={onClose}
-            className="rounded-lg p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-900/20 dark:hover:text-zinc-400"
+            className="rounded-lg p-1 text-placeholder hover:bg-accent hover:text-subtle"
           >
             <X className="size-5" />
           </button>
@@ -68,7 +68,7 @@ export function Modal({
 
         {/* Footer */}
         {footer && (
-          <div className="flex justify-end gap-3 border-t border-zinc-200 px-6 py-4 dark:border-[#333741]">
+          <div className="flex justify-end gap-3 border-t border-border px-6 py-4">
             {footer}
           </div>
         )}

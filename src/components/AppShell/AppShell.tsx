@@ -20,8 +20,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   if (isLoading) {
     return (
-      <div className="flex h-full items-center justify-center bg-zinc-50 dark:bg-[#0C111D]">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+      <div className="flex h-full items-center justify-center bg-background">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
       </div>
     );
   }
@@ -34,14 +34,14 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <div className="flex h-full">
       <button
         onClick={() => setSidebarOpen(true)}
-        className="fixed left-4 top-4 z-40 rounded-lg p-2 md:hidden bg-zinc-900 text-white shadow-md dark:bg-white dark:text-zinc-900"
+        className="fixed left-4 top-4 z-40 rounded-lg p-2 md:hidden bg-primary text-primary-foreground shadow-md"
         aria-label="Open menu"
       >
         <Menu className="size-6" />
       </button>
 
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="flex-1 overflow-auto bg-zinc-50 dark:bg-[#0f0f0f] pt-16 md:pt-0">
+      <main className="flex-1 overflow-auto bg-background pt-16 md:pt-0">
         {children}
       </main>
     </div>

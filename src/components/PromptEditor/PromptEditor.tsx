@@ -40,10 +40,10 @@ export function PromptEditor({
   }));
 
   return (
-    <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
+    <div className="rounded-lg border border-border bg-card p-4">
       <div className="mb-4 flex items-center justify-between">
-        <h4 className="flex items-center gap-2 font-semibold text-zinc-900 dark:text-white">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-200 text-sm text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+        <h4 className="flex items-center gap-2 font-semibold text-foreground">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-chip text-sm text-chip-foreground">
             {stepNumber}
           </span>
           Step {stepNumber}
@@ -75,7 +75,7 @@ export function PromptEditor({
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         {/* Model */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+          <label className="mb-1 block text-sm font-medium text-label">
             Model
           </label>
           <Dropdown
@@ -83,14 +83,14 @@ export function PromptEditor({
             value={selectedModelId}
             onChange={(value) => updateField("model", value)}
             ariaLabel="Select model"
-            buttonClassName="rounded-md focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:focus:border-zinc-400 dark:focus:ring-zinc-400"
+            buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
             menuClassName="rounded-md"
           />
         </div>
 
         {/* Aspect Ratio */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+          <label className="mb-1 block text-sm font-medium text-label">
             Aspect Ratio
           </label>
           <Dropdown
@@ -98,14 +98,14 @@ export function PromptEditor({
             value={step.aspectRatio}
             onChange={(value) => updateField("aspectRatio", value)}
             ariaLabel="Select aspect ratio"
-            buttonClassName="rounded-md focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:focus:border-zinc-400 dark:focus:ring-zinc-400"
+            buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
             menuClassName="rounded-md"
           />
         </div>
 
         {/* Image Size */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+          <label className="mb-1 block text-sm font-medium text-label">
             Image Size
           </label>
           <Dropdown
@@ -113,14 +113,14 @@ export function PromptEditor({
             value={step.imageSize}
             onChange={(value) => updateField("imageSize", value)}
             ariaLabel="Select image size"
-            buttonClassName="rounded-md focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:focus:border-zinc-400 dark:focus:ring-zinc-400"
+            buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
             menuClassName="rounded-md"
           />
         </div>
 
         {/* Temperature */}
         <div>
-          <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+          <label className="mb-1 block text-sm font-medium text-label">
             Temperature: {step.temperature.toFixed(1)}
           </label>
           <input
@@ -132,7 +132,7 @@ export function PromptEditor({
             onChange={(e) =>
               updateField("temperature", parseFloat(e.target.value))
             }
-            className="w-full accent-zinc-600 dark:accent-zinc-400"
+            className="w-full accent-primary"
           />
         </div>
       </div>

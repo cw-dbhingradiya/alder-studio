@@ -61,7 +61,7 @@ function RunsContent() {
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
       </div>
     );
   }
@@ -70,10 +70,10 @@ function RunsContent() {
     <div className="md:p-8 p-4 h-full overflow-auto">
       <div className="mb-4 flex lg:items-center items-start justify-between flex-col lg:flex-row gap-4">
         <div>
-          <h1 className="lg:text-3xl text-2xl font-bold text-zinc-900 dark:text-white">
+          <h1 className="lg:text-3xl text-2xl font-bold text-foreground">
             Run History
           </h1>
-          <p className="mt-1 lg:text-base text-sm text-zinc-600 dark:text-[#94969C]">
+          <p className="mt-1 lg:text-base text-sm text-subtle">
             View and manage your image generation runs
           </p>
         </div>
@@ -116,12 +116,12 @@ function RunsContent() {
         ]}
         pageSize={10}
         emptyMessage={
-          <div className="rounded-lg border-2 border-dashed border-zinc-300 p-12 text-center dark:border-[#333741]">
-            <Clock3 className="size-12 text-zinc-400 mx-auto" />
-            <h3 className="mt-2 text-lg font-medium text-zinc-900 dark:text-white">
+          <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
+            <Clock3 className="size-12 text-placeholder mx-auto" />
+            <h3 className="mt-2 text-lg font-medium text-foreground">
               No runs yet
             </h3>
-            <p className="mt-1 text-zinc-500 dark:text-[#94969C]">
+            <p className="mt-1 text-muted-foreground">
               {inputSets.length === 0 || templates.length === 0
                 ? "Create an input set and template first."
                 : "Start a new run to generate images."}
@@ -138,7 +138,7 @@ function RunsContent() {
             <TableCell>
               <Link
                 href={`/runs/${run.id}`}
-                className="font-medium text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                className="font-medium text-label hover:text-foreground"
               >
                 {run.id}
               </Link>
@@ -156,13 +156,13 @@ function RunsContent() {
               {run.results.length} image
               {run.results.length !== 1 ? "s" : ""}
             </TableCell>
-            <TableCell className="text-zinc-500 dark:text-[#94969C]">
+            <TableCell className="text-muted-foreground">
               {new Date(run.createdAt).toLocaleString()}
             </TableCell>
             <TableCell align="center">
               <button
                 onClick={() => handleDelete(run.id)}
-                className="text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200"
+                className="text-muted-foreground hover:text-foreground"
               >
                 <Trash2 className="size-5" />
               </button>
@@ -201,7 +201,7 @@ function RunsContent() {
           autoComplete="off"
         >
           <div>
-            <label className="block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+            <label className="block text-sm font-medium text-label">
               Input Set
             </label>
             <div className="mt-1">
@@ -210,14 +210,14 @@ function RunsContent() {
                 value={selectedInputSet}
                 onChange={setSelectedInputSet}
                 ariaLabel="Select input set"
-                buttonClassName="rounded-md focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:focus:border-zinc-400 dark:focus:ring-zinc-400"
+                buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
                 menuClassName="rounded-md"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+            <label className="block text-sm font-medium text-label">
               Prompt Template
             </label>
             <div className="mt-1">
@@ -226,7 +226,7 @@ function RunsContent() {
                 value={selectedTemplate}
                 onChange={setSelectedTemplate}
                 ariaLabel="Select prompt template"
-                buttonClassName="rounded-md focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:focus:border-zinc-400 dark:focus:ring-zinc-400"
+                buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
                 menuClassName="rounded-md"
               />
             </div>
@@ -255,7 +255,7 @@ export default function RunsPage() {
     <Suspense
       fallback={
         <div className="flex h-full items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
         </div>
       }
     >
