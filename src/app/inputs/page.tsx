@@ -43,7 +43,7 @@ function InputSetsContent() {
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
       </div>
     );
   }
@@ -52,10 +52,10 @@ function InputSetsContent() {
     <div className="md:p-8 p-4 h-full overflow-auto">
       <div className="mb-6 flex lg:items-center items-start justify-between flex-col lg:flex-row gap-4">
         <div>
-          <h1 className="lg:text-3xl text-2xl font-bold text-zinc-900 dark:text-white">
+          <h1 className="lg:text-3xl text-2xl font-bold text-foreground">
             Input Sets
           </h1>
-          <p className="mt-1 lg:text-base text-sm text-zinc-600 dark:text-[#94969C]">
+          <p className="mt-1 lg:text-base text-sm text-subtle">
             Manage your image and product collections for generation
           </p>
         </div>
@@ -74,12 +74,12 @@ function InputSetsContent() {
       </div>
 
       {inputSets.length === 0 ? (
-        <div className="rounded-lg border-2 border-dashed border-zinc-300 p-12 text-center dark:border-[#333741]">
-          <FolderClosed className="size-12 text-zinc-400 mx-auto" />
-          <h3 className="mt-2 text-lg font-medium text-zinc-900 dark:text-white">
+        <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
+          <FolderClosed className="size-12 text-placeholder mx-auto" />
+          <h3 className="mt-2 text-lg font-medium text-foreground">
             No input sets
           </h3>
-          <p className="mt-1 text-zinc-500 dark:text-[#94969C]">
+          <p className="mt-1 text-muted-foreground">
             Get started by creating a new input set with images and products.
           </p>
           <Button onClick={openCreateModal} className="mt-4">
@@ -91,10 +91,10 @@ function InputSetsContent() {
           {inputSets.map((inputSet) => (
             <div
               key={inputSet.id}
-              className="overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm transition-all hover:shadow-lg hover:shadow-zinc-500/10 dark:border-zinc-600 dark:bg-[#161B26]"
+              className="overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-lg hover:shadow-zinc-500/10"
             >
               {/* Image Preview */}
-              <div className="relative h-40 bg-zinc-100 dark:bg-[#1F242F]">
+              <div className="relative h-40 bg-muted">
                 {inputSet.images.length > 0 ? (
                   <div className="flex h-full">
                     {inputSet.images.slice(0, 3).map((img, i) => (
@@ -118,22 +118,22 @@ function InputSetsContent() {
                   </div>
                 ) : (
                   <div className="flex h-full items-center justify-center">
-                    <Image className="size-10 text-zinc-400 mx-auto" />
+                    <Image className="size-10 text-placeholder mx-auto" />
                   </div>
                 )}
               </div>
 
               {/* Content */}
               <div className="p-4">
-                <h3 className="font-semibold text-zinc-900 dark:text-white">
+                <h3 className="font-semibold text-foreground">
                   {inputSet.name}
                 </h3>
-                <div className="mt-2 flex gap-4 text-sm text-zinc-500 dark:text-[#94969C]">
+                <div className="mt-2 flex gap-4 text-sm text-muted-foreground">
                   <span>{inputSet.images.length} images</span>
                   <span>{inputSet.products.length} products</span>
                   <span>{inputSet._count?.runs || 0} runs</span>
                 </div>
-                <p className="mt-2 text-xs text-zinc-400">
+                <p className="mt-2 text-xs text-placeholder">
                   Created {new Date(inputSet.createdAt).toLocaleDateString()}
                 </p>
 
@@ -144,7 +144,7 @@ function InputSetsContent() {
                     size="sm"
                     onClick={() => openEditModal(inputSet)}
                     icon={<Pencil className="h-4 w-4" />}
-                    className="flex-1 bg-zinc-100 dark:bg-[#1F242F]"
+                    className="flex-1 bg-muted"
                   >
                     Edit
                   </Button>
@@ -200,7 +200,7 @@ function InputSetsContent() {
 
           {/* Images */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+            <label className="mb-2 block text-sm font-medium text-label">
               Images
             </label>
             <ImageUploader
@@ -212,7 +212,7 @@ function InputSetsContent() {
 
           {/* Products */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+            <label className="mb-2 block text-sm font-medium text-label">
               Products
             </label>
             <ProductSearch
@@ -244,7 +244,7 @@ export default function InputSetsPage() {
     <Suspense
       fallback={
         <div className="flex h-full items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
         </div>
       }
     >

@@ -14,7 +14,7 @@ export function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="rounded-md p-1.5 text-(--sidebar-text)"
+        className="rounded-md p-1.5 text-sidebar-text"
         disabled
         aria-label="Toggle theme"
       >
@@ -29,7 +29,7 @@ export function ThemeToggle() {
   return (
     <button
       onClick={cycleTheme}
-      className="rounded-md p-1.5 text-(--sidebar-text) transition-colors hover:bg-(--sidebar-hover) hover:text-(--sidebar-text-active)"
+      className="rounded-md p-1.5 text-sidebar-text transition-colors hover:bg-sidebar-hover hover:text-sidebar-text-active"
       aria-label={`Current theme: ${label}. Click to toggle theme.`}
     >
       <Icon className="h-4 w-4 shrink-0" />

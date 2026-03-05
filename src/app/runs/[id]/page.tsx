@@ -198,7 +198,7 @@ export default function RunDetailPage({
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
       </div>
     );
   }
@@ -206,12 +206,12 @@ export default function RunDetailPage({
   if (!run) {
     return (
       <div className="flex h-full flex-col items-center justify-center">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-white">
+        <h2 className="text-xl font-semibold text-foreground">
           Run not found
         </h2>
         <Link
           href="/runs"
-          className="mt-4 text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+          className="mt-4 text-label hover:text-foreground"
         >
           Back to runs
         </Link>
@@ -227,11 +227,11 @@ export default function RunDetailPage({
           <div className="flex items-center gap-3">
             <Link
               href="/runs"
-              className="text-zinc-500 hover:text-zinc-700 dark:text-[#94969C]"
+              className="text-muted-foreground hover:text-label"
             >
               <ArrowLeft />
             </Link>
-            <h1 className="lg:text-2xl text-xl font-bold text-zinc-900 dark:text-white">
+            <h1 className="lg:text-2xl text-xl font-bold text-foreground">
               Run Details
             </h1>
             <span
@@ -240,7 +240,7 @@ export default function RunDetailPage({
               {run.status}
             </span>
           </div>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-[#94969C]">
+          <p className="mt-1 text-sm text-muted-foreground">
             ID: {run.id} | Created: {new Date(run.createdAt).toLocaleString()}
           </p>
         </div>
@@ -252,7 +252,7 @@ export default function RunDetailPage({
               disabled={executing}
               loading={executing}
               icon={!executing ? <Play className="size-4" /> : undefined}
-              className="bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100"
+              className="bg-primary text-primary-foreground hover:bg-primary-hover"
             >
               {executing ? "Executing..." : "Execute"}
             </Button>
@@ -270,7 +270,7 @@ export default function RunDetailPage({
             variant="secondary"
             onClick={handleDelete}
             icon={<Trash2 className="size-4" />}
-            className="border-zinc-400 text-zinc-700 hover:bg-zinc-100 dark:border-zinc-500 dark:text-zinc-300 dark:hover:bg-zinc-800"
+            className="border-input text-label hover:bg-accent"
           >
             Delete
           </Button>
@@ -279,8 +279,8 @@ export default function RunDetailPage({
 
       {/* Error Message */}
       {run.error && (
-        <div className="mb-6 rounded-lg border border-rose-200 bg-rose-50 p-4 dark:border-rose-500 dark:bg-rose-500/20">
-          <p className="text-sm text-rose-700 dark:text-rose-400">
+        <div className="mb-6 rounded-lg border border-error-border bg-error p-4">
+          <p className="text-sm text-error-foreground">
             {run.error}
           </p>
         </div>
@@ -291,27 +291,27 @@ export default function RunDetailPage({
         <div className="lg:col-span-2 space-y-6">
           {/* Input Set & Template Info */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
-              <h3 className="text-sm font-semibold text-zinc-500 dark:text-[#94969C]">
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="text-sm font-semibold text-muted-foreground">
                 Input Set
               </h3>
-              <p className="mt-1 font-semibold text-zinc-900 dark:text-white">
+              <p className="mt-1 font-semibold text-foreground">
                 {run.inputSet.name}
               </p>
-              <div className="mt-2 flex gap-2 text-xs text-zinc-500">
+              <div className="mt-2 flex gap-2 text-xs text-muted-foreground">
                 <span>{run.inputSet.images.length} images</span>
                 <span>|</span>
                 <span>{run.inputSet.products.length} products</span>
               </div>
             </div>
-            <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
-              <h3 className="text-sm font-semibold text-zinc-500 dark:text-[#94969C]">
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="text-sm font-semibold text-muted-foreground">
                 Template
               </h3>
-              <p className="mt-1 font-semibold text-zinc-900 dark:text-white">
+              <p className="mt-1 font-semibold text-foreground">
                 {run.template.name}
               </p>
-              <p className="mt-2 text-xs text-zinc-500">
+              <p className="mt-2 text-xs text-muted-foreground">
                 {run.template.steps.length} steps
               </p>
             </div>
@@ -319,8 +319,8 @@ export default function RunDetailPage({
 
           {/* Input Images Preview */}
           {run.inputSet.images.length > 0 && (
-            <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
-              <h3 className="mb-3 font-semibold text-zinc-900 dark:text-white">
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="mb-3 font-semibold text-foreground">
                 Input Images
               </h3>
               <div className="flex gap-2 overflow-x-auto">
@@ -337,8 +337,8 @@ export default function RunDetailPage({
           )}
 
           {/* Results */}
-          <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
-            <h3 className="mb-4 font-semibold text-zinc-900 dark:text-white">
+          <div className="rounded-lg border border-border bg-card p-4">
+            <h3 className="mb-4 font-semibold text-foreground">
               Generated Results ({run.results.length})
             </h3>
             <ResultViewer
@@ -349,8 +349,8 @@ export default function RunDetailPage({
           </div>
 
           {/* Prompt Steps */}
-          <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
-            <h3 className="mb-4 font-semibold text-zinc-900 dark:text-white">
+          <div className="rounded-lg border border-border bg-card p-4">
+            <h3 className="mb-4 font-semibold text-foreground">
               Prompt Steps
             </h3>
             <div className="space-y-3">
@@ -365,21 +365,21 @@ export default function RunDetailPage({
                   <div
                     key={step.id}
                     className={`rounded-lg border p-3 ${hasError
-                      ? "border-rose-200 bg-rose-50 dark:border-rose-500 dark:bg-rose-500/20"
-                      : "border-zinc-100 bg-zinc-50 dark:border-[#333741] dark:bg-[#1F242F]"
+                      ? "border-error-border bg-error"
+                      : "border-border bg-muted"
                       }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-zinc-900 dark:text-white">
+                      <span className="text-sm font-medium text-foreground">
                         Step {index + 1}
                       </span>
-                      <div className="flex gap-2 text-xs text-zinc-500">
+                      <div className="flex gap-2 text-xs text-muted-foreground">
                         <span>{step.aspectRatio}</span>
                         <span>|</span>
                         <span>{step.imageSize}</span>
                       </div>
                     </div>
-                    <p className="mt-2 text-sm text-zinc-600 dark:text-[#94969C]">
+                    <p className="mt-2 text-sm text-subtle">
                       {step.prompt}
                     </p>
                   </div>
@@ -397,8 +397,8 @@ export default function RunDetailPage({
               onUpdate={handleResultUpdate}
             />
           ) : (
-            <div className="rounded-lg border border-zinc-200 bg-white p-6 text-center dark:border-zinc-800 dark:bg-zinc-900">
-              <p className="text-zinc-500 dark:text-[#94969C]">
+            <div className="rounded-lg border border-border bg-card p-6 text-center">
+              <p className="text-muted-foreground">
                 Select a result to review
               </p>
             </div>

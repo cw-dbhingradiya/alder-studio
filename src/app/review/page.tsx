@@ -49,10 +49,10 @@ export default function ReviewPage() {
     <div className="h-full overflow-auto md:p-8 p-4">
       <div className="mb-4 flex lg:items-center items-start justify-between flex-col lg:flex-row gap-4">
         <div>
-          <h1 className="lg:text-3xl text-2xl font-bold text-zinc-900 dark:text-white">
+          <h1 className="lg:text-3xl text-2xl font-bold text-foreground">
             Review Results
           </h1>
-          <p className="mt-1 lg:text-base text-sm text-zinc-600 dark:text-[#94969C]">
+          <p className="mt-1 lg:text-base text-sm text-subtle">
             Browse, filter, and annotate your generated images
           </p>
         </div>
@@ -76,53 +76,53 @@ export default function ReviewPage() {
 
       {/* Stats */}
       <div className="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
+        <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
           <div>
-            <p className="text-sm font-semibold text-zinc-500 dark:text-[#94969C]">
+            <p className="text-sm font-semibold text-muted-foreground">
               Total Results
             </p>
-            <p className="text-2xl font-bold text-zinc-900 dark:text-white">
+            <p className="text-2xl font-bold text-foreground">
               {totalResults}
             </p>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-chip text-chip-foreground">
             <Images className="h-5 w-5" />
           </div>
         </div>
-        <div className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
+        <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
           <div>
-            <p className="text-sm font-semibold text-zinc-500 dark:text-[#94969C]">Rated</p>
-            <p className="text-2xl font-bold text-zinc-900 dark:text-white">
+            <p className="text-sm font-semibold text-muted-foreground">Rated</p>
+            <p className="text-2xl font-bold text-foreground">
               {ratedResults.length}
             </p>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-chip text-chip-foreground">
             <CheckCircle className="h-5 w-5" />
           </div>
         </div>
-        <div className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
+        <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
           <div>
-            <p className="text-sm font-semibold text-zinc-500 dark:text-[#94969C]">
+            <p className="text-sm font-semibold text-muted-foreground">
               Avg. Rating
             </p>
-            <p className="text-2xl font-bold text-zinc-900 dark:text-white">
+            <p className="text-2xl font-bold text-foreground">
               {avgRating}/5
             </p>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-chip text-chip-foreground">
             <Star className="h-5 w-5" />
           </div>
         </div>
-        <div className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
+        <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
           <div>
-            <p className="text-sm font-semibold text-zinc-500 dark:text-[#94969C]">
+            <p className="text-sm font-semibold text-muted-foreground">
               Top Rated (4+)
             </p>
-            <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+            <p className="text-2xl font-bold text-success-accent">
               {topRated}
             </p>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-chip text-chip-foreground">
             <Award className="h-5 w-5" />
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function ReviewPage() {
       {/* Filters */}
       <div className="mb-4 flex flex-wrap gap-4 items-end">
         <div className="w-full min-w-0 sm:w-auto sm:min-w-[280px]">
-          <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+          <label className="mb-1 block text-sm font-medium text-label">
             Search
           </label>
           <SearchInput
@@ -142,7 +142,7 @@ export default function ReviewPage() {
         </div>
 
         <div className="w-full min-w-0 sm:w-auto sm:min-w-[180px]">
-          <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+          <label className="mb-1 block text-sm font-medium text-label">
             Min Rating
           </label>
           <Dropdown
@@ -154,7 +154,7 @@ export default function ReviewPage() {
         </div>
 
         <div className="w-full min-w-0 sm:w-auto sm:min-w-[180px]">
-          <label className="mb-1 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+          <label className="mb-1 block text-sm font-medium text-label">
             Filter by Tag
           </label>
           <Dropdown
@@ -176,15 +176,15 @@ export default function ReviewPage() {
 
       {loading ? (
         <div className="flex h-64 items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
         </div>
       ) : results.length === 0 ? (
-        <div className="rounded-lg border-2 border-dashed border-zinc-300 p-12 text-center dark:border-[#333741]">
-          <ImageIcon className="size-12 text-zinc-400 mx-auto" aria-hidden="true" />
-          <h3 className="mt-2 text-lg font-medium text-zinc-900 dark:text-white">
+        <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
+          <ImageIcon className="size-12 text-placeholder mx-auto" aria-hidden="true" />
+          <h3 className="mt-2 text-lg font-medium text-foreground">
             No results found
           </h3>
-          <p className="mt-1 text-zinc-500 dark:text-[#94969C]">
+          <p className="mt-1 text-muted-foreground">
             {minRating || filterTag
               ? "Try adjusting your filters."
               : "Run some prompts to generate images."}
@@ -199,8 +199,8 @@ export default function ReviewPage() {
         <div className={`grid grid-cols-1 gap-6 lg:grid-cols-3 ${selectedResult ? "items-start" : "items-stretch"}`}>
           {/* Results Grid */}
           <div className="lg:col-span-2">
-            <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-[#333741] dark:bg-[#161B26]">
-              <h3 className="mb-4 font-semibold text-zinc-900 dark:text-white">
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="mb-4 font-semibold text-foreground">
                 Results ({results.length})
               </h3>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -211,9 +211,9 @@ export default function ReviewPage() {
                     <div
                       key={result.id}
                       onClick={() => setSelectedResult(result)}
-                      className={`cursor-pointer overflow-hidden rounded-lg border bg-white transition-all dark:bg-[#161B26] ${selectedResult?.id === result.id
-                        ? "border-zinc-800 ring-2 ring-zinc-400/30 dark:border-white dark:ring-white/30"
-                        : "border-zinc-200 hover:shadow-lg hover:shadow-zinc-500/10 dark:border-zinc-600"
+                      className={`cursor-pointer overflow-hidden rounded-lg border bg-card transition-all ${selectedResult?.id === result.id
+                        ? "border-border-selected ring-2 ring-selection"
+                        : "border-border hover:shadow-lg hover:shadow-zinc-500/10"
                         }`}
                     >
                       {/* Image */}
@@ -225,8 +225,8 @@ export default function ReviewPage() {
                             className="h-full w-full object-cover"
                           />
                         ) : (
-                          <div className="flex h-full items-center justify-center bg-zinc-100 dark:bg-[#1F242F]">
-                            <span className="text-xs text-zinc-500">
+                          <div className="flex h-full items-center justify-center bg-muted">
+                            <span className="text-xs text-muted-foreground">
                               No image
                             </span>
                           </div>
@@ -257,12 +257,12 @@ export default function ReviewPage() {
                         <TruncatedText
                           text={result.run.inputSet.name}
                           as="p"
-                          className="text-sm text-zinc-600 dark:text-[#94969C]"
+                          className="text-sm text-subtle"
                         />
                         <Link
                           href={`/runs/${result.run.id}`}
                           onClick={(e) => e.stopPropagation()}
-                          className="text-sm text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                          className="text-sm text-label hover:text-foreground"
                         >
                           View Run
                         </Link>
@@ -279,12 +279,12 @@ export default function ReviewPage() {
             {selectedResult ? (
               <ReviewPanel result={selectedResult} onUpdate={fetchResults} />
             ) : (
-              <div className="h-full flex flex-col items-center justify-center sticky top-8 rounded-lg border border-zinc-200 bg-white p-6 text-center dark:border-[#333741] dark:bg-[#161B26]">
-                <ImageIcon className="mx-auto size-12 text-zinc-300 dark:text-zinc-600" aria-hidden="true" />
-                <h3 className="mt-3 font-semibold text-zinc-900 dark:text-white">
+              <div className="h-full flex flex-col items-center justify-center sticky top-8 rounded-lg border border-border bg-card p-6 text-center">
+                <ImageIcon className="mx-auto size-12 text-placeholder" aria-hidden="true" />
+                <h3 className="mt-3 font-semibold text-foreground">
                   Choose an image from the list to preview it here
                 </h3>
-                <p className="mt-1 text-sm text-zinc-500 dark:text-[#94969C]">
+                <p className="mt-1 text-sm text-muted-foreground">
                   Click on any image to rate it, add notes, and apply tags
                 </p>
               </div>

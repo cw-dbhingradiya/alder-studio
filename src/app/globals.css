@@ -3,17 +3,189 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
+  /* Page backgrounds */
   --background: #fafafa;
   --foreground: #18181b;
+
+  /* Surface / card backgrounds */
+  --surface: #ffffff;
+  --surface-secondary: #f4f4f5;
+
+  /* Text hierarchy */
+  --text-primary: #18181b;
+  --text-secondary: #3f3f46;
+  --text-tertiary: #52525b;
+  --text-muted: #4a4d52;
+  --text-placeholder: #a1a1aa;
+
+  /* Borders */
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --table-border: #e4e4e7;
+
+  /* Hover / active states */
+  --hover: #f4f4f5;
+  --hover-subtle: #fafafa;
+  --hover-strong: #d4d4d8;
+  --active: #e4e4e7;
+
+  /* Control (input/dropdown) backgrounds */
+  --control-bg: #ffffff;
+
+  /* Modal */
+  --modal-bg: #ffffff;
+  --modal-border: #e4e4e7;
+
+  /* Chip / tag tokens */
+  --chip-bg: #e4e4e7;
+  --chip-text: #3f3f46;
+
+  /* Primary action (inverts in dark) */
+  --primary: #18181b;
+  --primary-hover: #27272a;
+  --primary-foreground: #ffffff;
+
+  /* Secondary button */
+  --btn-secondary-bg: #ffffff;
+  --btn-secondary-text: #3f3f46;
+  --btn-secondary-border: #d4d4d8;
+  --btn-secondary-hover: #fafafa;
+
+  /* Danger / destructive button */
+  --btn-danger-bg: #e4e4e7;
+  --btn-danger-text: #18181b;
+  --btn-danger-hover: #d4d4d8;
+
+  /* Ghost button */
+  --btn-ghost-text: #52525b;
+  --btn-ghost-hover: #f4f4f5;
+
+  /* Text button */
+  --btn-text-color: #52525b;
+  --btn-text-hover: #18181b;
+
+  /* Confirm dialog variants (all share primary colors, listed for clarity) */
+  --confirm-bg: #18181b;
+  --confirm-hover: #27272a;
+
+  /* Focus ring */
+  --focus-border: #71717a;
+  --focus-ring: #71717a;
+
+  /* Input fields */
+  --input-bg: transparent;
+  --input-focus-border: #71717a;
+  --input-focus-ring: #71717a;
+
+  /* Table */
+  --table-hover: #fafafa;
+  --table-header-text: #71717a;
+  --table-cell-text: #3f3f46;
+
+  /* Spinner / loading */
+  --spinner: #52525b;
+
+  /* Star rating (inactive) */
+  --star-inactive: #d4d4d8;
+
+  /* Accent (range sliders) */
+  --accent: #52525b;
+
+  /* Icon containers */
+  --icon-bg: #f4f4f5;
+  --icon-bg-hover: #e4e4e7;
+  --icon-text: #71717a;
+  --icon-text-hover: #3f3f46;
+
+  /* Avatar */
+  --avatar-bg: #e4e4e7;
+  --avatar-text: #3f3f46;
+
+  /* Close / remove button */
+  --close-bg: #27272a;
+  --close-text: #ffffff;
+
+  /* Selection ring */
+  --ring-selected: rgba(161, 161, 170, 0.3);
+  --border-selected: #18181b;
+
+  /* Sidebar search */
+  --search-bg: #f4f4f5;
+  --search-border: #e4e4e7;
+  --search-text: #a1a1aa;
+  --search-hover-border: #d4d4d8;
+  --search-kbd-bg: #ffffff;
+  --search-kbd-border: #e4e4e7;
+  --search-kbd-text: #a1a1aa;
+
+  /* Quick action cards (dashboard) */
+  --action-icon-bg: #f4f4f5;
+  --action-icon-text: #52525b;
+  --action-icon-hover-bg: #18181b;
+  --action-icon-hover-text: #ffffff;
+  --action-arrow: #d4d4d8;
+  --action-arrow-hover: #71717a;
+
+  /* Brand icon */
+  --brand-bg: #18181b;
+  --brand-text: #ffffff;
+
+  /* AI generation loader */
+  --loader-bg: #f9fafb;
+  --loader-orb-1: rgba(59, 130, 246, 0.2);
+  --loader-orb-2: rgba(147, 51, 234, 0.2);
+  --loader-orb-3: rgba(236, 72, 153, 0.15);
+  --loader-orb-4: rgba(249, 115, 22, 0.15);
+  --loader-glow-1: rgba(59, 130, 246, 0.2);
+  --loader-glow-2: rgba(147, 51, 234, 0.25);
+  --loader-icon-filter: invert(1) hue-rotate(180deg);
+
+  /* Shine animation gradient stops */
+  --shine-base: rgba(0, 0, 0, 1);
+  --shine-mid-1: rgba(82, 82, 91, 1);
+  --shine-mid-2: rgba(113, 113, 122, 1);
+  --shine-mid-3: rgba(161, 161, 170, 1);
+
+  /* Sparkle drop-shadow */
+  --sparkle-shadow-sm: rgba(0, 0, 0, 0.3);
+  --sparkle-shadow-lg: rgba(0, 0, 0, 0.5);
+
+  /* Status badges */
+  --status-completed-bg: #d1fae5;
+  --status-completed-text: #065f46;
+  --status-running-bg: #ede9fe;
+  --status-running-text: #6d28d9;
+  --status-badge-running-bg: #e4e4e7;
+  --status-badge-running-text: #3f3f46;
+  --status-failed-bg: #ffe4e6;
+  --status-failed-text: #be123c;
+  --status-pending-bg: #fef3c7;
+  --status-pending-text: #b45309;
+
+  /* Success / emerald tokens */
+  --success-bg: #ecfdf5;
+  --success-text: #065f46;
+  --success-accent: #059669;
+  --success-border: #86efac;
+
+  /* Error tokens */
+  --error-bg: #fff1f2;
+  --error-border: #fecdd3;
+  --error-text: #be123c;
+
+  /* Product selection */
+  --selected-bg: #ecfdf5;
+  --selected-border: #86efac;
+
+  /* Sidebar */
   --sidebar-bg: #ffffff;
   --sidebar-border: #e4e4e7;
   --sidebar-active: #f4f4f5;
   --sidebar-hover: #fafafa;
   --sidebar-text: #71717a;
   --sidebar-text-active: #18181b;
-  --primary: #18181b;
-  --primary-hover: #27272a;
-  --primary-foreground: #ffffff;
+
+  /* Scrollbar */
   --scrollbar-track: transparent;
   --scrollbar-thumb: #d4d4d8;
   --scrollbar-thumb-hover: #a1a1aa;
@@ -33,8 +205,164 @@ button {
 }
 
 @theme inline {
+  /* ── Base (standard) ── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* ── Card / panel backgrounds (standard: bg-card) ── */
+  --color-card: var(--surface);
+
+  /* ── Muted (standard: bg-muted + text-muted-foreground) ── */
+  --color-muted: var(--surface-secondary);
+  --color-muted-foreground: var(--text-muted);
+
+  /* ── Text hierarchy extensions: text-label, text-subtle, text-placeholder ── */
+  --color-label: var(--text-secondary);
+  --color-subtle: var(--text-tertiary);
+  --color-placeholder: var(--text-placeholder);
+
+  /* ── Borders (standard: border-border, border-input) ── */
+  --color-border: var(--border);
+  --color-input: var(--border-strong);
+  --color-divider: var(--table-border);
+
+  /* ── Accent / hover highlights (standard: bg-accent) ── */
+  --color-accent: var(--hover);
+  --color-accent-foreground: var(--text-primary);
+  --color-accent-subtle: var(--hover-subtle);
+  --color-accent-strong: var(--hover-strong);
+  --color-active: var(--active);
+
+  /* ── Form control & input backgrounds ── */
+  --color-control: var(--control-bg);
+  --color-input-field: var(--input-bg);
+
+  /* ── Popover / modal (standard: bg-popover) ── */
+  --color-popover: var(--modal-bg);
+
+  /* ── Chip / tag ── */
+  --color-chip: var(--chip-bg);
+  --color-chip-foreground: var(--chip-text);
+
+  /* ── Primary (standard: bg-primary, text-primary-foreground) ── */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* ── Secondary (standard: bg-secondary, text-secondary-foreground) ── */
+  --color-secondary: var(--btn-secondary-bg);
+  --color-secondary-foreground: var(--btn-secondary-text);
+  --color-secondary-hover: var(--btn-secondary-hover);
+
+  /* ── Destructive (standard: bg-destructive, text-destructive-foreground) ── */
+  --color-destructive: var(--btn-danger-bg);
+  --color-destructive-foreground: var(--btn-danger-text);
+  --color-destructive-hover: var(--btn-danger-hover);
+
+  /* ── Ghost button ── */
+  --color-ghost: var(--btn-ghost-text);
+
+  /* ── Text-only button ── */
+  --color-btn-text: var(--btn-text-color);
+  --color-btn-text-hover: var(--btn-text-hover);
+
+  /* ── Focus ring (standard: ring-ring) ── */
+  --color-focus: var(--focus-border);
+  --color-ring: var(--focus-ring);
+
+  /* ── Table ── */
+  --color-table-hover: var(--table-hover);
+  --color-table-header: var(--table-header-text);
+  --color-table-cell: var(--table-cell-text);
+
+  /* ── Spinner ── */
+  --color-spinner: var(--spinner);
+
+  /* ── Star rating (inactive) ── */
+  --color-star: var(--star-inactive);
+
+  /* ── Icon containers ── */
+  --color-icon: var(--icon-text);
+  --color-icon-bg: var(--icon-bg);
+  --color-icon-hover: var(--icon-text-hover);
+  --color-icon-bg-hover: var(--icon-bg-hover);
+
+  /* ── Avatar ── */
+  --color-avatar: var(--avatar-bg);
+  --color-avatar-foreground: var(--avatar-text);
+
+  /* ── Close / remove button ── */
+  --color-close: var(--close-bg);
+  --color-close-foreground: var(--close-text);
+
+  /* ── Selection ring ── */
+  --color-selection: var(--ring-selected);
+  --color-border-selected: var(--border-selected);
+
+  /* ── Sidebar search box ── */
+  --color-search: var(--search-bg);
+  --color-search-border: var(--search-border);
+  --color-search-foreground: var(--search-text);
+  --color-search-hover: var(--search-hover-border);
+  --color-kbd: var(--search-kbd-bg);
+  --color-kbd-border: var(--search-kbd-border);
+  --color-kbd-foreground: var(--search-kbd-text);
+
+  /* ── Dashboard quick-action cards ── */
+  --color-action-icon: var(--action-icon-bg);
+  --color-action-icon-foreground: var(--action-icon-text);
+  --color-action-icon-active: var(--action-icon-hover-bg);
+  --color-action-icon-active-foreground: var(--action-icon-hover-text);
+  --color-action-arrow: var(--action-arrow);
+  --color-action-arrow-hover: var(--action-arrow-hover);
+
+  /* ── Brand mark ── */
+  --color-brand: var(--brand-bg);
+  --color-brand-foreground: var(--brand-text);
+
+  /* ── AI generation loader ── */
+  --color-loader: var(--loader-bg);
+  --color-loader-orb-1: var(--loader-orb-1);
+  --color-loader-orb-2: var(--loader-orb-2);
+  --color-loader-orb-3: var(--loader-orb-3);
+  --color-loader-orb-4: var(--loader-orb-4);
+  --color-loader-glow-1: var(--loader-glow-1);
+  --color-loader-glow-2: var(--loader-glow-2);
+
+  /* ── Status badges ── */
+  --color-status-completed: var(--status-completed-bg);
+  --color-status-completed-foreground: var(--status-completed-text);
+  --color-status-running: var(--status-running-bg);
+  --color-status-running-foreground: var(--status-running-text);
+  --color-badge-running: var(--status-badge-running-bg);
+  --color-badge-running-foreground: var(--status-badge-running-text);
+  --color-status-failed: var(--status-failed-bg);
+  --color-status-failed-foreground: var(--status-failed-text);
+  --color-status-pending: var(--status-pending-bg);
+  --color-status-pending-foreground: var(--status-pending-text);
+
+  /* ── Success tokens ── */
+  --color-success: var(--success-bg);
+  --color-success-foreground: var(--success-text);
+  --color-success-accent: var(--success-accent);
+  --color-success-border: var(--success-border);
+
+  /* ── Error tokens ── */
+  --color-error: var(--error-bg);
+  --color-error-border: var(--error-border);
+  --color-error-foreground: var(--error-text);
+
+  /* ── Product selection ── */
+  --color-selected: var(--selected-bg);
+  --color-selected-border: var(--selected-border);
+
+  /* ── Sidebar nav ── */
+  --color-sidebar-text: var(--sidebar-text);
+  --color-sidebar-text-active: var(--sidebar-text-active);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-hover: var(--sidebar-hover);
+
+  /* ── Fonts ── */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -42,12 +370,151 @@ button {
 .dark {
   --background: #0a0a0a;
   --foreground: #ffffff;
+
+  --surface: #161b26;
+  --surface-secondary: #1f242f;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cecfd2;
+  --text-tertiary: #94969c;
+  --text-muted: #94969c;
+  --text-placeholder: #71717a;
+
+  --border: #333741;
+  --border-strong: #52525b;
+  --table-border: #2a2627;
+
+  --hover: #27272a;
+  --hover-subtle: #3f3f46;
+  --hover-strong: #52525b;
+  --active: #3f3f46;
+
+  --control-bg: #27272a;
+
+  --modal-bg: #161b26;
+  --modal-border: #333741;
+
+  --chip-bg: #3f3f46;
+  --chip-text: #e4e4e7;
+
+  --primary: #ffffff;
+  --primary-hover: #f4f4f5;
+  --primary-foreground: #18181b;
+
+  --btn-secondary-bg: #27272a;
+  --btn-secondary-text: #f4f4f5;
+  --btn-secondary-border: #52525b;
+  --btn-secondary-hover: #3f3f46;
+
+  --btn-danger-bg: #3f3f46;
+  --btn-danger-text: #f4f4f5;
+  --btn-danger-hover: #52525b;
+
+  --btn-ghost-text: #d4d4d8;
+  --btn-ghost-hover: #27272a;
+
+  --btn-text-color: #a1a1aa;
+  --btn-text-hover: #ffffff;
+
+  --confirm-bg: #ffffff;
+  --confirm-hover: #f4f4f5;
+
+  --focus-border: #a1a1aa;
+  --focus-ring: #a1a1aa;
+
+  --input-bg: #27272a;
+  --input-focus-border: #a1a1aa;
+  --input-focus-ring: #a1a1aa;
+
+  --table-hover: #1f242f;
+  --table-header-text: #94969c;
+  --table-cell-text: #cecfd2;
+
+  --spinner: #d4d4d8;
+
+  --star-inactive: #333741;
+
+  --accent: #a1a1aa;
+
+  --icon-bg: #27272a;
+  --icon-bg-hover: #3f3f46;
+  --icon-text: #a1a1aa;
+  --icon-text-hover: #e4e4e7;
+
+  --avatar-bg: #3f3f46;
+  --avatar-text: #e4e4e7;
+
+  --close-bg: #e4e4e7;
+  --close-text: #18181b;
+
+  --ring-selected: rgba(255, 255, 255, 0.3);
+  --border-selected: #ffffff;
+
+  --search-bg: #0f0f0f;
+  --search-border: #27272a;
+  --search-text: #71717a;
+  --search-hover-border: #52525b;
+  --search-kbd-bg: #161b26;
+  --search-kbd-border: #27272a;
+  --search-kbd-text: #71717a;
+
+  --action-icon-bg: #27272a;
+  --action-icon-text: #d4d4d8;
+  --action-icon-hover-bg: #e4e4e7;
+  --action-icon-hover-text: #18181b;
+  --action-arrow: #52525b;
+  --action-arrow-hover: #d4d4d8;
+
+  --brand-bg: #ffffff;
+  --brand-text: #18181b;
+
+  --loader-bg: #0a0a1a;
+  --loader-orb-1: rgba(59, 130, 246, 0.1);
+  --loader-orb-2: rgba(147, 51, 234, 0.1);
+  --loader-orb-3: rgba(236, 72, 153, 0.08);
+  --loader-orb-4: rgba(249, 115, 22, 0.08);
+  --loader-glow-1: rgba(59, 130, 246, 0.1);
+  --loader-glow-2: rgba(147, 51, 234, 0.15);
+  --loader-icon-filter: none;
+
+  --shine-base: rgba(255, 255, 255, 0.9);
+  --shine-mid-1: rgba(161, 161, 170, 1);
+  --shine-mid-2: rgba(212, 212, 216, 1);
+  --shine-mid-3: rgba(244, 244, 245, 1);
+
+  --sparkle-shadow-sm: rgba(0, 0, 0, 0.3);
+  --sparkle-shadow-lg: rgba(0, 0, 0, 0.5);
+
+  --status-completed-bg: rgba(16, 185, 129, 0.3);
+  --status-completed-text: #34d399;
+  --status-running-bg: rgba(139, 92, 246, 0.3);
+  --status-running-text: #a78bfa;
+  --status-badge-running-bg: #3f3f46;
+  --status-badge-running-text: #e4e4e7;
+  --status-failed-bg: rgba(244, 63, 94, 0.3);
+  --status-failed-text: #fb7185;
+  --status-pending-bg: rgba(245, 158, 11, 0.3);
+  --status-pending-text: #fbbf24;
+
+  --success-bg: rgba(16, 185, 129, 0.2);
+  --success-text: #34d399;
+  --success-accent: #34d399;
+  --success-border: #15803d;
+
+  --error-bg: rgba(244, 63, 94, 0.2);
+  --error-border: #f43f5e;
+  --error-text: #fb7185;
+
+  --selected-bg: rgba(16, 185, 129, 0.2);
+  --selected-border: #15803d;
+
   --sidebar-bg: #0b0809;
   --sidebar-border: #27272a;
   --sidebar-active: #27272a;
   --sidebar-hover: #18181b;
   --sidebar-text: #a1a1aa;
   --sidebar-text-active: #ffffff;
+
   --scrollbar-track: transparent;
   --scrollbar-thumb: #3f3f46;
   --scrollbar-thumb-hover: #52525b;
@@ -152,20 +619,11 @@ body {
 .ai-loader-cursor {
   animation: ai-loader-cursor-blink 1s step-end infinite;
   margin-left: 2px;
-  color: #000000;
+  color: var(--foreground);
 }
 
-.dark .ai-loader-cursor {
-  color: #ffffff;
-}
-
-/* AI Loader inner image animation - black lines in light mode, colorful sparkle preserved */
 .ai-loader-image-icon {
-  filter: invert(1) hue-rotate(180deg);
-}
-
-.dark .ai-loader-image-icon {
-  filter: none;
+  filter: var(--loader-icon-filter);
 }
 
 @keyframes ai-loader-shine {
@@ -181,11 +639,11 @@ body {
   0%,
   100% {
     opacity: 0.9;
-    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 0 3px var(--sparkle-shadow-sm));
   }
   50% {
     opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 8px var(--sparkle-shadow-lg));
   }
 }
 
@@ -225,40 +683,18 @@ body {
   animation: ai-loader-sparkle-rotate-reverse 2.5s ease-in-out infinite;
 }
 
-/* Light mode text shine */
 .ai-loader-shine {
   background: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 35%,
-    rgba(82, 82, 91, 1) 42%,
-    rgba(113, 113, 122, 1) 48%,
-    rgba(161, 161, 170, 1) 52%,
-    rgba(113, 113, 122, 1) 58%,
-    rgba(82, 82, 91, 1) 62%,
-    rgba(0, 0, 0, 1) 70%,
-    rgba(0, 0, 0, 1) 100%
-  );
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: ai-loader-shine 4s linear infinite;
-}
-
-/* Dark mode text shine */
-.dark .ai-loader-shine {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.9) 35%,
-    rgba(161, 161, 170, 1) 42%,
-    rgba(212, 212, 216, 1) 48%,
-    rgba(244, 244, 245, 1) 52%,
-    rgba(212, 212, 216, 1) 58%,
-    rgba(161, 161, 170, 1) 62%,
-    rgba(255, 255, 255, 0.9) 70%,
-    rgba(255, 255, 255, 0.9) 100%
+    var(--shine-base) 0%,
+    var(--shine-base) 35%,
+    var(--shine-mid-1) 42%,
+    var(--shine-mid-2) 48%,
+    var(--shine-mid-3) 52%,
+    var(--shine-mid-2) 58%,
+    var(--shine-mid-1) 62%,
+    var(--shine-base) 70%,
+    var(--shine-base) 100%
   );
   background-size: 200% auto;
   background-clip: text;

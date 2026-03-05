@@ -89,22 +89,22 @@ export function AIGenerationLoader({
       onClick={handleBackdropClick}
     >
       {/* Backdrop - theme aware */}
-      <div className="absolute inset-0 bg-gray-50 dark:bg-[#0a0a1a]" />
+      <div className="absolute inset-0 bg-loader" />
 
       {/* Colorful gradient orbs spread across the screen */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Top left - Blue */}
-        <div className="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] bg-blue-500/20 dark:bg-blue-500/10 rounded-full blur-[150px]" />
+        <div className="absolute -top-[10%] -left-[10%] w-[500px] h-[500px] bg-loader-orb-1 rounded-full blur-[150px]" />
         {/* Top right - Purple */}
-        <div className="absolute -top-[5%] right-[10%] w-[450px] h-[450px] bg-purple-600/20 dark:bg-purple-600/10 rounded-full blur-[140px]" />
+        <div className="absolute -top-[5%] right-[10%] w-[450px] h-[450px] bg-loader-orb-2 rounded-full blur-[140px]" />
         {/* Center left - Pink */}
-        <div className="absolute top-[30%] -left-[5%] w-[400px] h-[400px] bg-pink-500/15 dark:bg-pink-500/8 rounded-full blur-[130px]" />
+        <div className="absolute top-[30%] -left-[5%] w-[400px] h-[400px] bg-loader-orb-3 rounded-full blur-[130px]" />
         {/* Center right - Orange */}
-        <div className="absolute top-[40%] right-[5%] w-[350px] h-[350px] bg-orange-500/15 dark:bg-orange-500/8 rounded-full blur-[120px]" />
+        <div className="absolute top-[40%] right-[5%] w-[350px] h-[350px] bg-loader-orb-4 rounded-full blur-[120px]" />
         {/* Bottom left - Purple */}
-        <div className="absolute bottom-[5%] left-[15%] w-[450px] h-[450px] bg-purple-500/15 dark:bg-purple-500/8 rounded-full blur-[140px]" />
+        <div className="absolute bottom-[5%] left-[15%] w-[450px] h-[450px] bg-loader-orb-2 rounded-full blur-[140px]" />
         {/* Bottom right - Blue */}
-        <div className="absolute -bottom-[10%] right-[20%] w-[500px] h-[500px] bg-blue-600/15 dark:bg-blue-600/8 rounded-full blur-[150px]" />
+        <div className="absolute -bottom-[10%] right-[20%] w-[500px] h-[500px] bg-loader-orb-1 rounded-full blur-[150px]" />
       </div>
 
       {/* Main content */}
@@ -113,8 +113,8 @@ export function AIGenerationLoader({
           }`}
       >
         {/* Glow effect behind animation */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-blue-500/20 dark:bg-blue-500/10 blur-3xl ai-loader-glow" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-purple-600/25 dark:bg-purple-600/15 blur-2xl ai-loader-glow-inner" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-loader-glow-1 blur-3xl ai-loader-glow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-loader-glow-2 blur-2xl ai-loader-glow-inner" />
 
         {/* Lottie Animation */}
         <div className="relative w-64 h-64 flex items-center justify-center">
@@ -134,7 +134,7 @@ export function AIGenerationLoader({
 
         {/* Status text with typewriter and shine effect */}
         <div className="-mt-2 min-h-[60px] flex flex-col items-center">
-          <p className="text-xl font-medium text-center px-4 ai-loader-shine flex items-center gap-2 text-gray-800 dark:text-white">
+          <p className="text-xl font-medium text-center px-4 ai-loader-shine flex items-center gap-2 text-foreground">
             {displayedText}
             <span className="ai-loader-cursor">|</span>
           </p>

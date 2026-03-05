@@ -42,14 +42,14 @@ export function ProductSearch({
       {/* Existing Products */}
       {existingProducts.length > 0 && (
         <div>
-          <h4 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-[#CECFD2]">
+          <h4 className="mb-2 text-sm font-semibold text-label">
             Existing Products
           </h4>
           <div className="flex flex-wrap gap-2">
             {existingProducts.map((product) => (
               <div
                 key={product.id}
-                className="flex md:items-center items-start gap-2 md:rounded-full rounded-md bg-zinc-200 py-1 pl-1 pr-3 dark:bg-zinc-700"
+                className="flex md:items-center items-start gap-2 md:rounded-full rounded-md bg-chip py-1 pl-1 pr-3"
               >
                 {product.imageUrl && (
                   <img
@@ -58,14 +58,14 @@ export function ProductSearch({
                     className="h-6 w-6 rounded-full object-cover"
                   />
                 )}
-                <span className="text-sm text-zinc-800 dark:text-zinc-200">
+                <span className="text-sm text-chip-foreground">
                   {product.name}
                 </span>
                 {onRemoveExisting && (
                   <button
                     type="button"
                     onClick={() => onRemoveExisting(product.id)}
-                    className="ml-1 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400"
+                    className="ml-1 text-muted-foreground hover:text-foreground"
                   >
                     <X className="size-4" />
                   </button>
@@ -79,14 +79,14 @@ export function ProductSearch({
       {/* Selected Products */}
       {selectedProducts.length > 0 && (
         <div>
-          <h4 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-[#CECFD2]">
+          <h4 className="mb-2 text-sm font-semibold text-label">
             New Products ({selectedProducts.length})
           </h4>
           <div className="flex flex-wrap gap-2">
             {selectedProducts.map((product) => (
               <div
                 key={product.catalogId}
-                className="flex items-center gap-2 rounded-full bg-emerald-100 py-1 pl-1 pr-3 dark:bg-emerald-900/30"
+                className="flex items-center gap-2 rounded-full bg-success py-1 pl-1 pr-3"
               >
                 {product.imageUrl && (
                   <img
@@ -95,13 +95,13 @@ export function ProductSearch({
                     className="h-6 w-6 rounded-full object-cover"
                   />
                 )}
-                <span className="text-sm text-emerald-800 dark:text-emerald-300">
+                <span className="text-sm text-success-foreground">
                   {product.name}
                 </span>
                 <button
                   type="button"
                   onClick={() => removeProduct(product.catalogId)}
-                  className="ml-1 text-emerald-600 hover:text-emerald-800 dark:text-emerald-400"
+                  className="ml-1 text-success-accent hover:text-success-foreground"
                 >
                   <X className="size-4" />
                 </button>
@@ -116,7 +116,7 @@ export function ProductSearch({
         <button
           type="button"
           onClick={() => setShowSearch(true)}
-          className="inline-flex items-center gap-2 rounded-lg border border-dashed border-zinc-300 px-4 py-2 text-sm text-zinc-600 hover:border-zinc-500 hover:text-zinc-700 dark:border-zinc-600 dark:text-zinc-400 dark:hover:border-zinc-400 dark:hover:text-zinc-200"
+          className="inline-flex items-center gap-2 rounded-lg border border-dashed border-input px-4 py-2 text-sm text-subtle hover:border-focus hover:text-label"
         >
           <Plus className="size-5" />
           Search & Add Products
@@ -125,15 +125,15 @@ export function ProductSearch({
 
       {/* Search Panel */}
       {showSearch && (
-        <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-[#333741] dark:bg-[#161B26]">
+        <div className="rounded-lg border border-border bg-card p-4">
           <div className="mb-4 flex items-center justify-between">
-            <h4 className="font-semibold text-zinc-900 dark:text-white">
+            <h4 className="font-semibold text-foreground">
               Product Catalog
             </h4>
             <button
               type="button"
               onClick={() => setShowSearch(false)}
-              className="text-zinc-500 hover:text-zinc-700 dark:text-[#94969C]"
+              className="text-muted-foreground hover:text-label"
             >
               <X className="size-5" />
             </button>
@@ -155,7 +155,7 @@ export function ProductSearch({
               onChange={handleCategoryChange}
               ariaLabel="Filter by category"
               className="w-full sm:w-auto sm:min-w-[180px]"
-              buttonClassName="rounded-md focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:focus:border-zinc-400 dark:focus:ring-zinc-400"
+              buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
               menuClassName="rounded-md"
             />
           </div>
@@ -163,10 +163,10 @@ export function ProductSearch({
           {/* Products Grid */}
           {loading ? (
             <div className="flex h-48 items-center justify-center">
-              <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+              <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
             </div>
           ) : products.length === 0 ? (
-            <div className="flex h-48 items-center justify-center text-zinc-500">
+            <div className="flex h-48 items-center justify-center text-muted-foreground">
               No products found
             </div>
           ) : (
@@ -197,8 +197,8 @@ export function ProductSearch({
                     onClick={handleClick}
                     className={`rounded-lg border p-2 text-left transition-colors ${
                       isProductSelected(product.id)
-                        ? "border-green-300 bg-emerald-50 dark:border-green-700 dark:bg-emerald-900/20"
-                        : "border-zinc-200 hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:hover:border-zinc-400 dark:hover:bg-zinc-800"
+                        ? "border-selected-border bg-selected"
+                        : "border-border hover:border-input hover:bg-accent-subtle"
                     }`}
                   >
                     {product.featuredImage?.url ? (
@@ -208,22 +208,22 @@ export function ProductSearch({
                         className="mb-2 h-20 w-full rounded object-cover"
                       />
                     ) : (
-                      <div className="mb-2 flex h-20 items-center justify-center rounded bg-zinc-200 dark:bg-[#1F242F]">
-                        <Image className="size-8 text-zinc-400" />
+                      <div className="mb-2 flex h-20 items-center justify-center rounded bg-muted">
+                        <Image className="size-8 text-placeholder" />
                       </div>
                     )}
                     <TruncatedText
                       text={product.name}
                       as="p"
-                      className="text-xs font-medium text-zinc-900 dark:text-white"
+                      className="text-xs font-medium text-foreground"
                     />
                     <TruncatedText
                       text={product.category.name}
                       as="p"
-                      className="text-xs text-zinc-500"
+                      className="text-xs text-muted-foreground"
                     />
                     {isSelected && (
-                      <span className="mt-1 inline-flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400">
+                      <span className="mt-1 inline-flex items-center gap-1 text-xs text-success-accent">
                         <Check className="size-4" />
                         Selected
                       </span>
@@ -244,7 +244,7 @@ export function ProductSearch({
                   >
                     Previous
                   </Button>
-                  <span className="text-sm text-zinc-600 dark:text-[#94969C]">
+                  <span className="text-sm text-subtle">
                     Page {page} of {totalPages}
                   </span>
                   <Button

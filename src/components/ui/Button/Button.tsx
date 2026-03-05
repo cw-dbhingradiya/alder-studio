@@ -4,14 +4,14 @@ import type { ButtonProps } from "./types";
 
 const variantClasses: Record<string, string> = {
   primary:
-    "bg-zinc-900 text-white hover:bg-zinc-800 disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100",
+    "bg-primary text-primary-foreground hover:bg-primary-hover disabled:opacity-50",
   secondary:
-    "border border-zinc-300 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700",
+    "border border-input bg-secondary text-secondary-foreground hover:bg-secondary-hover",
   danger:
-    "bg-zinc-200 text-zinc-900 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-100 dark:hover:bg-zinc-600",
+    "bg-destructive text-destructive-foreground hover:bg-destructive-hover",
   ghost:
-    "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800",
-  text: "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white",
+    "text-ghost hover:bg-accent",
+  text: "text-btn-text hover:text-btn-text-hover",
   "link-gray":
     "text-neutral-400 hover:text-white bg-transparent hover:bg-transparent",
   "primary-dark":

@@ -40,7 +40,7 @@ function PromptsContent() {
   if (loading) {
     return (
       <div className="flex h-full items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
       </div>
     );
   }
@@ -49,10 +49,10 @@ function PromptsContent() {
     <div className="md:p-8 p-4 h-full overflow-auto">
       <div className="mb-4 flex lg:items-center items-start justify-between flex-col lg:flex-row gap-4">
         <div>
-          <h1 className="lg:text-3xl text-2xl font-bold text-zinc-900 dark:text-white">
+          <h1 className="lg:text-3xl text-2xl font-bold text-foreground">
             Prompt Templates
           </h1>
-          <p className="mt-1 lg:text-base text-sm text-zinc-600 dark:text-[#94969C]">
+          <p className="mt-1 lg:text-base text-sm text-subtle">
             Build and manage your image generation prompts
           </p>
         </div>
@@ -71,13 +71,13 @@ function PromptsContent() {
       </div>
 
       {templates.length === 0 ? (
-        <div className="rounded-lg border-2 border-dashed border-zinc-300 p-12 text-center dark:border-[#333741]">
-          <FileText className="size-12 text-zinc-400 mx-auto" />
+        <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
+          <FileText className="size-12 text-placeholder mx-auto" />
 
-          <h3 className="mt-2 text-lg font-medium text-zinc-900 dark:text-white">
+          <h3 className="mt-2 text-lg font-medium text-foreground">
             No templates
           </h3>
-          <p className="mt-1 text-zinc-500 dark:text-[#94969C]">
+          <p className="mt-1 text-muted-foreground">
             Create your first prompt template to get started.
           </p>
           <Button onClick={openCreateModal} className="mt-4">
@@ -89,21 +89,21 @@ function PromptsContent() {
           {templates.map((template) => (
             <div
               key={template.id}
-              className="flex flex-col justify-between overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-sm transition-all hover:shadow-lg hover:shadow-zinc-500/10 dark:border-zinc-600 dark:bg-[#161B26]"
+              className="flex flex-col justify-between overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-lg hover:shadow-zinc-500/10"
             >
               <div className="p-4">
                 <div className="mb-2 flex items-start justify-between">
-                  <h3 className="font-semibold text-zinc-900 dark:text-white">
+                  <h3 className="font-semibold text-foreground">
                     {template.name}
                   </h3>
-                  <span className="rounded-full bg-zinc-200 px-2 py-0.5 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+                  <span className="rounded-full bg-chip px-2 py-0.5 text-xs text-chip-foreground">
                     {template.steps.length} step
                     {template.steps.length !== 1 ? "s" : ""}
                   </span>
                 </div>
 
                 {template.description && (
-                  <p className="mb-3 text-sm text-zinc-600 dark:text-[#94969C]">
+                  <p className="mb-3 text-sm text-subtle">
                     {template.description}
                   </p>
                 )}
@@ -113,13 +113,13 @@ function PromptsContent() {
                   {template.steps.slice(0, 2).map((step, index) => (
                     <div
                       key={index}
-                      className="rounded bg-zinc-50 p-2 dark:bg-[#1F242F]"
+                      className="rounded bg-muted p-2"
                     >
-                      <p className="line-clamp-2 text-xs text-zinc-700 dark:text-[#CECFD2]">
+                      <p className="line-clamp-2 text-xs text-label">
                         <span className="font-medium">Step {index + 1}:</span>{" "}
                         {step.prompt}
                       </p>
-                      <div className="mt-1 flex gap-2 text-xs text-zinc-500">
+                      <div className="mt-1 flex gap-2 text-xs text-muted-foreground">
                         <span>{step.aspectRatio}</span>
                         <span>|</span>
                         <span>{step.imageSize}</span>
@@ -127,14 +127,14 @@ function PromptsContent() {
                     </div>
                   ))}
                   {template.steps.length > 2 && (
-                    <p className="text-center text-xs text-zinc-500">
+                    <p className="text-center text-xs text-muted-foreground">
                       +{template.steps.length - 2} more step
                       {template.steps.length - 2 !== 1 ? "s" : ""}
                     </p>
                   )}
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-zinc-500">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <span>{template._count?.runs || 0} runs</span>
                   <span>
                     Updated {new Date(template.updatedAt).toLocaleDateString()}
@@ -149,7 +149,7 @@ function PromptsContent() {
                   size="sm"
                   onClick={() => openEditModal(template)}
                   icon={<Pencil className="size-4" />}
-                  className="flex-1 bg-zinc-100 dark:bg-[#1F242F]"
+                  className="flex-1 bg-muted"
                 >
                   Edit
                 </Button>
@@ -158,7 +158,7 @@ function PromptsContent() {
                   size="sm"
                   onClick={() => duplicateTemplate(template)}
                   icon={<Copy className="size-4" />}
-                  className="flex-1 bg-zinc-100 dark:bg-[#1F242F]"
+                  className="flex-1 bg-muted"
                 >
                   Duplicate
                 </Button>
@@ -227,7 +227,7 @@ function PromptsContent() {
 
           {/* Steps */}
           <div>
-            <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+            <label className="mb-2 block text-sm font-medium text-label">
               Prompt Steps
             </label>
             <div className="pl-10">
@@ -256,7 +256,7 @@ export default function PromptsPage() {
     <Suspense
       fallback={
         <div className="flex h-full items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-zinc-600 border-t-transparent dark:border-zinc-300"></div>
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
         </div>
       }
     >

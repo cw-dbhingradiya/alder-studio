@@ -4,14 +4,14 @@
 export function getStatusColor(status: string): string {
   switch (status) {
     case 'completed':
-      return 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-400';
+      return 'bg-status-completed text-status-completed-foreground';
     case 'running':
-      return 'bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-400';
+      return 'bg-status-running text-status-running-foreground';
     case 'failed':
-      return 'bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400';
+      return 'bg-status-failed text-status-failed-foreground';
     case 'pending':
     default:
-      return 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400';
+      return 'bg-status-pending text-status-pending-foreground';
   }
 }
 

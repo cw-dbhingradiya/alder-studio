@@ -31,8 +31,8 @@ export function ImageUploader({
         onClick={() => fileInputRef.current?.click()}
         className={`relative cursor-pointer rounded-lg border-2 border-dashed p-8 text-center transition-colors ${
           isDragging
-            ? "border-zinc-500 bg-zinc-100 dark:border-zinc-400 dark:bg-zinc-800"
-            : "border-zinc-300 hover:border-zinc-500 dark:border-zinc-600 dark:hover:border-zinc-400"
+            ? "border-focus bg-accent"
+            : "border-input hover:border-focus"
         }`}
       >
         <input
@@ -43,14 +43,14 @@ export function ImageUploader({
           onChange={handleInputChange}
           className="hidden"
         />
-        <Image className="mx-auto h-12 w-12 text-zinc-400" />
-        <p className="mt-2 text-sm text-zinc-600 dark:text-[#94969C]">
-          <span className="font-medium text-zinc-700 dark:text-zinc-300">
+        <Image className="mx-auto h-12 w-12 text-placeholder" />
+        <p className="mt-2 text-sm text-subtle">
+          <span className="font-medium text-label">
             Click to upload
           </span>{" "}
           or drag and drop
         </p>
-        <p className="mt-1 text-xs text-zinc-500 dark:text-[#94969C]">
+        <p className="mt-1 text-xs text-muted-foreground">
           PNG, JPG, WEBP up to 10MB each
         </p>
       </div>
@@ -58,7 +58,7 @@ export function ImageUploader({
       {/* Existing Images */}
       {existingImages.length > 0 && (
         <div>
-          <h4 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-[#CECFD2]">
+          <h4 className="mb-2 text-sm font-semibold text-label">
             Existing Images
           </h4>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
@@ -73,7 +73,7 @@ export function ImageUploader({
                   <button
                     type="button"
                     onClick={() => onRemoveExisting(image.id)}
-                    className="absolute -right-2 -top-2 rounded-full bg-zinc-800 p-1 text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-zinc-200 dark:text-zinc-900"
+                    className="absolute -right-2 -top-2 rounded-full bg-close p-1 text-close-foreground opacity-0 transition-opacity group-hover:opacity-100"
                   >
                     <X className="size-4" />
                   </button>
@@ -94,7 +94,7 @@ export function ImageUploader({
       {/* New Image Previews */}
       {images.length > 0 && (
         <div>
-          <h4 className="mb-2 text-sm font-semibold text-zinc-700 dark:text-[#CECFD2]">
+          <h4 className="mb-2 text-sm font-semibold text-label">
             New Images ({images.length})
           </h4>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
@@ -108,7 +108,7 @@ export function ImageUploader({
                 <button
                   type="button"
                   onClick={() => removeImage(image.id)}
-                  className="absolute -right-2 -top-2 rounded-full bg-zinc-800 p-1 text-white opacity-0 transition-opacity group-hover:opacity-100 dark:bg-zinc-200 dark:text-zinc-900"
+                  className="absolute -right-2 -top-2 rounded-full bg-close p-1 text-close-foreground opacity-0 transition-opacity group-hover:opacity-100"
                 >
                   <X className="size-4" />
                 </button>

@@ -25,12 +25,12 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
   } = useReviewPanel(result, onUpdate);
 
   return (
-    <div className="sticky top-8 space-y-5 rounded-lg border border-zinc-200 bg-white md:p-6 p-4 dark:border-[#333741] dark:bg-[#161B26]">
+    <div className="sticky top-8 space-y-5 rounded-lg border border-border bg-card md:p-6 p-4">
       <div>
-        <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
+        <h3 className="text-lg font-semibold text-foreground">
           Preview Result
         </h3>
-        <p className="text-sm text-zinc-500">Step {result.stepOrder + 1}</p>
+        <p className="text-sm text-muted-foreground">Step {result.stepOrder + 1}</p>
       </div>
 
       {/* Large Image Preview */}
@@ -45,26 +45,26 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
       )}
 
       {/* Metadata */}
-      <div className="rounded bg-zinc-50 p-3 dark:bg-[#1F242F]">
-        <h4 className="mb-2 text-xs font-medium uppercase text-zinc-500">
+      <div className="rounded bg-muted p-3">
+        <h4 className="mb-2 text-xs font-medium uppercase text-muted-foreground">
           Details
         </h4>
         <div className="space-y-1 text-sm">
           <div className="flex justify-between">
-            <span className="text-zinc-500">Model:</span>
-            <span className="text-zinc-900 dark:text-white text-right">
+            <span className="text-muted-foreground">Model:</span>
+            <span className="text-foreground text-right">
               {(metadata.model as string) || "N/A"}
             </span>
           </div>
           <div className="flex justify-between">
-            <span className="text-zinc-500">Aspect Ratio:</span>
-            <span className="text-zinc-900 dark:text-white">
+            <span className="text-muted-foreground">Aspect Ratio:</span>
+            <span className="text-foreground">
               {(metadata.aspectRatio as string) || "N/A"}
             </span>
           </div>
           <div className="flex justify-between">
-            <span className="text-zinc-500">Created:</span>
-            <span className="text-zinc-900 dark:text-white">
+            <span className="text-muted-foreground">Created:</span>
+            <span className="text-foreground">
               {new Date(result.createdAt).toLocaleString()}
             </span>
           </div>
@@ -73,7 +73,7 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
 
       {/* Rating */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+        <label className="mb-2 block text-sm font-medium text-label">
           Rating
         </label>
         <div className="flex gap-1">
@@ -87,7 +87,7 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
               <Star
                 className={`h-8 w-8 ${rating && value <= rating
                     ? "text-amber-400 fill-amber-400"
-                    : "text-zinc-300 fill-zinc-300 dark:text-[#333741] dark:fill-[#333741]"
+                    : "text-star fill-star"
                   }`}
               />
             </button>
@@ -97,7 +97,7 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
 
       {/* Tags */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]">
+        <label className="mb-2 block text-sm font-medium text-label">
           Tags
         </label>
 
@@ -107,13 +107,13 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center gap-1 rounded-full bg-zinc-200 px-2 py-1 text-xs text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200"
+                className="inline-flex items-center gap-1 rounded-full bg-chip px-2 py-1 text-xs text-chip-foreground"
               >
                 {tag}
                 <button
                   type="button"
                   onClick={() => removeTag(tag)}
-                  className="hover:text-zinc-900 dark:hover:text-zinc-100"
+                  className="hover:text-foreground"
                 >
                   <X className="size-3" />
                 </button>
@@ -142,7 +142,7 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
             size="sm"
             onClick={() => addTag(newTag)}
             disabled={!newTag.trim()}
-            className="bg-zinc-200 text-zinc-700 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-600"
+            className="bg-chip text-chip-foreground hover:bg-accent-strong"
           >
             Add
           </Button>
@@ -150,7 +150,7 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
 
         {/* Common Tags */}
         <div className="mt-2">
-          <p className="mb-1 text-xs text-zinc-500">Quick add:</p>
+          <p className="mb-1 text-xs text-muted-foreground">Quick add:</p>
           <div className="flex flex-wrap gap-1">
             {COMMON_TAGS.filter((t) => !tags.includes(t))
               .slice(0, 6)
@@ -159,7 +159,7 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
                   key={tag}
                   type="button"
                   onClick={() => addTag(tag)}
-                  className="rounded bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 hover:bg-zinc-200 dark:bg-[#1F242F] dark:text-[#94969C] dark:hover:bg-[#333741]"
+                  className="rounded bg-muted px-2 py-0.5 text-xs text-subtle hover:bg-accent"
                 >
                   +{tag}
                 </button>

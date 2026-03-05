@@ -43,10 +43,10 @@ export function ResultViewer({
 
   if (results.length === 0) {
     return (
-      <div className="flex h-64 items-center justify-center rounded-lg border-2 border-dashed border-zinc-300 dark:border-[#333741]">
+      <div className="flex h-64 items-center justify-center rounded-lg border-2 border-dashed border-border">
         <div className="text-center">
-          <Image className="size-12 text-zinc-400 mx-auto" />
-          <p className="mt-2 text-zinc-500 dark:text-[#94969C]">
+          <Image className="size-12 text-placeholder mx-auto" />
+          <p className="mt-2 text-muted-foreground">
             No results yet
           </p>
         </div>
@@ -63,7 +63,7 @@ export function ResultViewer({
             variant={viewMode === "grid" ? "ghost" : "text"}
             size="sm"
             onClick={() => setViewMode("grid")}
-            className={viewMode === "grid" ? "bg-zinc-200 text-zinc-800 dark:bg-zinc-700 dark:text-zinc-100" : ""}
+            className={viewMode === "grid" ? "bg-chip text-chip-foreground" : ""}
           >
             Grid View
           </Button>
@@ -71,7 +71,7 @@ export function ResultViewer({
             variant={viewMode === "compare" ? "ghost" : "text"}
             size="sm"
             onClick={() => setViewMode("compare")}
-            className={viewMode === "compare" ? "bg-zinc-200 text-zinc-800 dark:bg-zinc-700 dark:text-zinc-100" : ""}
+            className={viewMode === "compare" ? "bg-chip text-chip-foreground" : ""}
           >
             Compare ({compareResults.length}/4)
           </Button>
@@ -81,7 +81,7 @@ export function ResultViewer({
             variant="text"
             size="sm"
             onClick={() => setCompareResults([])}
-            className="text-rose-600 hover:text-rose-700 dark:text-rose-400"
+            className="text-error-foreground"
           >
             Clear Selection
           </Button>
@@ -98,9 +98,9 @@ export function ResultViewer({
             return (
               <div
                 key={result.id}
-                className={`overflow-hidden rounded-lg border bg-white shadow-sm transition-all dark:bg-[#161B26] ${selectedResultId === result.id
-                    ? "border-zinc-800 ring-2 ring-zinc-400/30 dark:border-white dark:ring-white/30"
-                    : "border-zinc-200 hover:shadow-lg hover:shadow-zinc-500/10 dark:border-zinc-600"
+                className={`overflow-hidden rounded-lg border bg-card shadow-sm transition-all ${selectedResultId === result.id
+                    ? "border-border-selected ring-2 ring-selection"
+                    : "border-border hover:shadow-lg hover:shadow-zinc-500/10"
                   }`}
               >
                 {/* Image */}
@@ -115,8 +115,8 @@ export function ResultViewer({
                       className="aspect-square w-full object-cover"
                     />
                   ) : (
-                    <div className="flex aspect-square items-center justify-center bg-zinc-100 dark:bg-[#1F242F]">
-                      <span className="text-sm text-zinc-500">No image</span>
+                    <div className="flex aspect-square items-center justify-center bg-muted">
+                      <span className="text-sm text-muted-foreground">No image</span>
                     </div>
                   )}
 
@@ -128,7 +128,7 @@ export function ResultViewer({
                         toggleCompare(result.id);
                       }}
                       className={`rounded p-1 ${compareResults.includes(result.id)
-                          ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+                          ? "bg-primary text-primary-foreground"
                           : "bg-black/50 text-white hover:bg-black/70"
                         }`}
                     >
@@ -150,10 +150,10 @@ export function ResultViewer({
                 {/* Info */}
                 <div className="p-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-zinc-900 dark:text-white">
+                    <span className="text-sm font-medium text-foreground">
                       Step {result.stepOrder + 1}
                     </span>
-                    <span className="text-xs text-zinc-500">
+                    <span className="text-xs text-muted-foreground">
                       {metadata.aspectRatio || "1:1"}
                     </span>
                   </div>
@@ -164,13 +164,13 @@ export function ResultViewer({
                       {tags.slice(0, 3).map((tag, i) => (
                         <span
                           key={i}
-                          className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs text-zinc-600 dark:bg-[#1F242F] dark:text-[#94969C]"
+                          className="rounded-full bg-muted px-2 py-0.5 text-xs text-subtle"
                         >
                           {tag}
                         </span>
                       ))}
                       {tags.length > 3 && (
-                        <span className="text-xs text-zinc-500">
+                        <span className="text-xs text-muted-foreground">
                           +{tags.length - 3}
                         </span>
                       )}
@@ -179,7 +179,7 @@ export function ResultViewer({
 
                   {/* Error */}
                   {metadata.error && (
-                    <p className="mt-2 text-xs text-rose-600 dark:text-rose-400">
+                    <p className="mt-2 text-xs text-error-foreground">
                       {metadata.error}
                     </p>
                   )}
@@ -199,8 +199,8 @@ export function ResultViewer({
           }}
         >
           {compareResults.length === 0 ? (
-            <div className="col-span-full flex h-64 items-center justify-center rounded-lg border-2 border-dashed border-zinc-300 dark:border-[#333741]">
-              <p className="text-zinc-500 dark:text-[#94969C] text-center">
+            <div className="col-span-full flex h-64 items-center justify-center rounded-lg border-2 border-dashed border-border">
+              <p className="text-muted-foreground text-center">
                 Click the checkbox on images to add them to comparison
               </p>
             </div>
@@ -214,7 +214,7 @@ export function ResultViewer({
               return (
                 <div
                   key={result.id}
-                  className="overflow-hidden rounded-lg border border-zinc-200 dark:border-[#333741]"
+                  className="overflow-hidden rounded-lg border border-border"
                 >
                   <div className="relative">
                     <img
@@ -224,14 +224,14 @@ export function ResultViewer({
                     />
                     <button
                       onClick={() => toggleCompare(result.id)}
-                      className="absolute right-2 top-2 rounded bg-zinc-800 p-1 text-white hover:bg-zinc-700 dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-zinc-300"
+                      className="absolute right-2 top-2 rounded bg-close p-1 text-close-foreground hover:bg-active"
                     >
                       <X className="size-4" />
                     </button>
                   </div>
-                  <div className="bg-white p-3 dark:bg-[#161B26]">
+                  <div className="bg-card p-3">
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-zinc-900 dark:text-white">
+                      <span className="font-medium text-foreground">
                         Step {result.stepOrder + 1}
                       </span>
                       {result.rating && (
@@ -241,7 +241,7 @@ export function ResultViewer({
                         </div>
                       )}
                     </div>
-                    <p className="mt-1 text-xs text-zinc-500">
+                    <p className="mt-1 text-xs text-muted-foreground">
                       {metadata.model} | {metadata.aspectRatio}
                     </p>
                   </div>

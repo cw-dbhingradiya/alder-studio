@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 import type { InputProps, TextareaProps, FormGroupProps } from "./types";
 
 const baseInputClasses =
-  "block w-full rounded-md border border-zinc-300 px-3 py-2 shadow-sm text-sm focus:border-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-500 dark:border-zinc-600 dark:bg-zinc-800 dark:text-white dark:focus:border-zinc-400 dark:focus:ring-zinc-400";
+  "block w-full rounded-md border border-input bg-input-field px-3 py-2 shadow-sm text-sm text-foreground focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring";
 
 const darkThemeInputClasses =
   "block w-full rounded-lg border border-neutral-700 bg-neutral-900 px-4 py-2 text-sm text-white placeholder-neutral-500 focus:border-neutral-500 focus:outline-none focus:ring-1 focus:ring-neutral-500";
@@ -13,13 +13,13 @@ const errorInputClasses =
   "border-rose-500 focus:border-rose-500 focus:ring-rose-500";
 
 const labelClasses =
-  "block text-sm font-medium text-zinc-700 dark:text-[#CECFD2]";
+  "block text-sm font-medium text-label";
 
 const darkThemeLabelClasses = "block text-sm font-medium text-neutral-300 mb-2";
 
-const errorTextClasses = "mt-1 text-sm text-rose-600 dark:text-rose-400";
+const errorTextClasses = "mt-1 text-sm text-error-foreground";
 
-const helperTextClasses = "mt-1 text-sm text-zinc-500 dark:text-[#94969C]";
+const helperTextClasses = "mt-1 text-sm text-muted-foreground";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (

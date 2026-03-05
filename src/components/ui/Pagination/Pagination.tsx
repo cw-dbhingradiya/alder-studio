@@ -72,7 +72,7 @@ export function Pagination({
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-2 py-3">
       {/* Showing X-Y of Z */}
       {startItem && endItem && totalItems && (
-        <p className="text-sm text-zinc-500 dark:text-[#94969C]">
+        <p className="text-sm text-muted-foreground">
           Showing <span className="font-medium">{startItem}</span> to{" "}
           <span className="font-medium">{endItem}</span> of{" "}
           <span className="font-medium">{totalItems}</span> results
@@ -86,7 +86,7 @@ export function Pagination({
           onClick={() => onPageChange(currentPage - 1)}
           disabled={!canGoPrevious}
           aria-label="Previous page"
-          className="inline-flex items-center justify-center rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-50 dark:text-zinc-300 dark:hover:bg-zinc-800 disabled:dark:hover:bg-transparent"
+          className="inline-flex items-center justify-center rounded-lg px-2 py-2 text-sm font-medium text-subtle transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent"
         >
           <ChevronLeft className="h-4 w-4" />
           <span className="sr-only sm:not-sr-only sm:ml-1">Previous</span>
@@ -98,7 +98,7 @@ export function Pagination({
             page === "ellipsis" ? (
               <span
                 key={`ellipsis-${index}`}
-                className="px-2 py-2 text-sm text-zinc-400 dark:text-[#94969C]"
+                className="px-2 py-2 text-sm text-muted-foreground"
               >
                 ...
               </span>
@@ -110,8 +110,8 @@ export function Pagination({
                 aria-current={currentPage === page ? "page" : undefined}
                 className={`inline-flex h-8 min-w-[2rem] items-center justify-center rounded-lg px-3 text-sm font-medium transition-colors ${
                   currentPage === page
-                    ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
-                    : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-subtle hover:bg-accent"
                 }`}
               >
                 {page}
@@ -125,7 +125,7 @@ export function Pagination({
           onClick={() => onPageChange(currentPage + 1)}
           disabled={!canGoNext}
           aria-label="Next page"
-          className="inline-flex items-center justify-center rounded-lg px-2 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100 disabled:cursor-not-allowed disabled:opacity-50 dark:text-zinc-300 dark:hover:bg-zinc-800 disabled:dark:hover:bg-transparent"
+          className="inline-flex items-center justify-center rounded-lg px-2 py-2 text-sm font-medium text-subtle transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent"
         >
           <span className="sr-only sm:not-sr-only sm:mr-1">Next</span>
           <ChevronRight className="h-4 w-4" />
