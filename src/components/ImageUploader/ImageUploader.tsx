@@ -2,7 +2,7 @@
 
 import { useImageUploader } from "./useImageUploader";
 import type { ImageUploaderProps } from "./types";
-import { Image, X } from "lucide-react";
+import { Image as ImageIcon, X } from "lucide-react";
 import { TruncatedText } from "@/components/ui/TruncatedText";
 
 export function ImageUploader({
@@ -43,7 +43,10 @@ export function ImageUploader({
           onChange={handleInputChange}
           className="hidden"
         />
-        <Image className="mx-auto h-12 w-12 text-placeholder" />
+        <ImageIcon
+          className="mx-auto h-12 w-12 text-placeholder"
+          aria-hidden="true"
+        />
         <p className="mt-2 text-sm text-subtle">
           <span className="font-medium text-label">
             Click to upload

@@ -48,13 +48,11 @@ export function Modal({
 
       {/* Modal */}
       <div
-        className={`relative z-10 w-full ${sizeClasses[size]} mx-4 rounded-lg bg-popover shadow-xl ${scrollable ? "max-h-[90vh] flex flex-col" : ""} ${className}`}
+        className={`relative z-10 w-full ${sizeClasses[size]} mx-4 rounded-lg bg-sidebar shadow-xl ${scrollable ? "max-h-[90vh] flex flex-col" : ""} ${className}`}
       >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border px-6 py-4">
-          <h2 className="text-lg font-semibold text-foreground">
-            {title}
-          </h2>
+          <h2 className="text-lg font-semibold text-foreground">{title}</h2>
           <button
             onClick={onClose}
             className="rounded-lg p-1 text-placeholder hover:bg-accent hover:text-subtle"
@@ -64,7 +62,11 @@ export function Modal({
         </div>
 
         {/* Body */}
-        <div className={`px-6 py-4 ${scrollable ? "overflow-y-auto flex-1 min-h-0" : ""}`}>{children}</div>
+        <div
+          className={`px-6 py-4 ${scrollable ? "overflow-y-auto flex-1 min-h-0" : ""}`}
+        >
+          {children}
+        </div>
 
         {/* Footer */}
         {footer && (
