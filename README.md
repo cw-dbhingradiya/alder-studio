@@ -294,7 +294,3 @@ Use these variables in your prompts:
 - `{{previous_output}}` - In chains, references the previous step's output
 
 ## License
-
-Alder - Bond Studio Internal Tool
-# alder-studio
-# alder-studio
