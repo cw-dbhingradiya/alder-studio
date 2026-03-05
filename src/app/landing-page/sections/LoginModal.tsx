@@ -156,7 +156,7 @@ function LoginView({
             variant="link-gray"
             size="sm"
             onClick={() => onSwitch("forgot")}
-            className="text-xs text-neutral-400 hover:text-white hover:bg-transparent"
+            className="text-xs text-red-500 hover:text-white hover:bg-transparent"
           >
             Forgot password?
           </Button>
