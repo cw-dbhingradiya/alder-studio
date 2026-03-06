@@ -12,6 +12,7 @@ import Pricing from "./sections/Pricing";
 import Blog from "./sections/Blog";
 import { Footer } from "@/components/ui/Footer";
 import Faq from "./sections/Faq";
+import ScrollGallery from "./sections/ScrollGallery";
 
 /**
  * Alder® — Furniture Design Studio landing page.
@@ -31,6 +32,7 @@ export default function LandingPage() {
           <About />
           <Projects />
           <Services />
+          <ScrollGallery />
           <Profile />
           <Experience />
           <TestimonialsSection />
