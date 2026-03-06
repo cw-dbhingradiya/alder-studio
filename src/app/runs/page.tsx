@@ -9,7 +9,7 @@ import { Dropdown } from "@/components/ui/Dropdown";
 import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { AIGenerationLoader } from "@/components/ui/AIGenerationLoader";
-import { PaginatedTable, TableRow, TableCell } from "@/components/ui/Table";
+import { DataGrid, TableRow, TableCell } from "@/components/ui/Table";
 import { useRunsPage } from "./useRunsPage";
 import { Clock3, Play, Trash2 } from "lucide-react";
 
@@ -67,7 +67,7 @@ function RunsContent() {
   }
 
   return (
-    <div className="h-full overflow-auto p-5 md:p-8">
+    <div className="h-full overflow-auto p-4 md:p-5">
       <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>
@@ -104,7 +104,8 @@ function RunsContent() {
           />
         </div>
 
-        <PaginatedTable
+        <DataGrid
+          wrapperClassName="overflow-auto h-[calc(100vh-200px)]"
           data={runs}
           columns={[
             { header: "Run" },

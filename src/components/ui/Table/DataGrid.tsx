@@ -1,37 +1,33 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableHeader,
-} from "./Table";
+import { Table, TableHead, TableBody, TableRow, TableHeader } from "./Table";
 import { Pagination } from "../Pagination";
 
-export interface PaginatedTableColumn {
+export interface DataGridColumn {
   header: string;
   align?: "left" | "center" | "right";
 }
 
-export interface PaginatedTableProps<T> {
+export interface DataGridProps<T> {
   data: T[];
-  columns: PaginatedTableColumn[];
+  columns: DataGridColumn[];
   renderRow: (item: T, index: number) => ReactNode;
   pageSize?: number;
   emptyMessage?: ReactNode;
   className?: string;
+  wrapperClassName?: string;
 }
 
-export function PaginatedTable<T>({
+export function DataGrid<T>({
   data,
   columns,
   renderRow,
   pageSize = 10,
   emptyMessage,
   className = "",
-}: PaginatedTableProps<T>) {
+  wrapperClassName = "",
+}: DataGridProps<T>) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const totalPages = Math.ceil(data.length / pageSize);
@@ -50,7 +46,7 @@ export function PaginatedTable<T>({
 
   return (
     <div className={className}>
-      <Table>
+      <Table wrapperClassName={wrapperClassName}>
         <TableHead>
           <TableRow hoverable={false}>
             {columns.map((column, index) => (
@@ -61,7 +57,9 @@ export function PaginatedTable<T>({
           </TableRow>
         </TableHead>
         <TableBody>
-          {paginatedData.map((item, index) => renderRow(item, startIndex + index))}
+          {paginatedData.map((item, index) =>
+            renderRow(item, startIndex + index),
+          )}
         </TableBody>
       </Table>
 

@@ -13,7 +13,7 @@ import {
   Plus,
   Star,
 } from "lucide-react";
-import { PaginatedTable, TableRow, TableCell } from "@/components/ui/Table";
+import { DataGrid, TableRow, TableCell } from "@/components/ui/Table";
 import { useDashboard } from "../useDashboard";
 import { useAuth } from "@/lib/utils/AuthContext";
 
@@ -57,7 +57,7 @@ function DashboardContent() {
   const firstName = user?.name?.split(" ")[0] ?? "there";
 
   return (
-    <div className="p-5 md:p-8">
+    <div className="p-4 md:p-5">
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Page header */}
         <div>
@@ -142,7 +142,7 @@ function DashboardContent() {
             )}
           </div>
           <div className="overflow-hidden">
-            <PaginatedTable
+            <DataGrid
               data={recentRuns}
               columns={[
                 { header: "Run" },
@@ -157,9 +157,7 @@ function DashboardContent() {
                   <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-accent">
                     <Play className="h-4 w-4 text-placeholder" />
                   </div>
-                  <p className="text-sm font-medium text-label">
-                    No runs yet
-                  </p>
+                  <p className="text-sm font-medium text-label">No runs yet</p>
                   <p className="mt-1 text-sm text-placeholder">
                     Start by creating an input set and prompt template.
                   </p>
@@ -271,12 +269,8 @@ function QuickActionCard({
         {icon}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-semibold text-foreground">
-          {title}
-        </p>
-        <p className="text-[12px] text-muted-foreground">
-          {description}
-        </p>
+        <p className="text-sm font-semibold text-foreground">{title}</p>
+        <p className="text-[12px] text-muted-foreground">{description}</p>
       </div>
       <ArrowRight className="h-3.5 w-3.5 shrink-0 text-action-arrow transition-colors group-hover:text-action-arrow-hover" />
     </Link>
