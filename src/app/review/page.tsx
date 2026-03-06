@@ -53,7 +53,7 @@ export default function ReviewPage() {
   ];
 
   return (
-    <div className="h-full overflow-auto p-5 md:p-8">
+    <div className="h-full overflow-auto p-4 md:p-5">
       <div className="mx-auto max-w-6xl flex flex-col gap-6">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>

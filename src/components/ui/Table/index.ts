@@ -1,5 +1,12 @@
-export { Table, TableHead, TableBody, TableRow, TableHeader, TableCell } from './Table';
-export { PaginatedTable } from './PaginatedTable';
+export {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableHeader,
+  TableCell,
+} from "./Table";
+export { DataGrid } from "./DataGrid";
 export type {
   TableProps,
   TableHeadProps,
@@ -7,5 +14,5 @@ export type {
   TableRowProps,
   TableHeaderProps,
   TableCellProps,
-} from './types';
-export type { PaginatedTableProps, PaginatedTableColumn } from './PaginatedTable';
+} from "./types";
+export type { DataGridProps, DataGridColumn } from "./DataGrid";
