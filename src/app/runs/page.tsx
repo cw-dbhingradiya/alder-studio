@@ -67,43 +67,44 @@ function RunsContent() {
   }
 
   return (
-    <div className="md:p-8 p-4 h-full overflow-auto">
-      <div className="mb-4 flex lg:items-center items-start justify-between flex-col lg:flex-row gap-4">
-        <div>
-          <h1 className="lg:text-3xl text-2xl font-bold text-foreground">
-            Run History
-          </h1>
-          <p className="mt-1 lg:text-base text-sm text-subtle">
-            View and manage your image generation runs
-          </p>
+    <div className="h-full overflow-auto p-5 md:p-8">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6">
+        <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div>
+            <h1 className="text-lg font-semibold text-foreground">
+              Run History
+            </h1>
+            <p className="mt-0.5 text-sm text-subtle">
+              View and manage your image generation runs
+            </p>
+          </div>
+          <Button
+            onClick={openModal}
+            disabled={inputSets.length === 0 || templates.length === 0}
+            icon={<Play className="size-4" />}
+          >
+            New Run
+          </Button>
         </div>
-        <Button
-          onClick={openModal}
-          disabled={inputSets.length === 0 || templates.length === 0}
-          icon={<Play className="size-4" />}
-        >
-          New Run
-        </Button>
-      </div>
 
-      {/* Filters */}
-      <div className="mb-4 flex flex-wrap items-center gap-4">
-        <SearchInput
-          value={searchQuery}
-          onChange={setSearchQuery}
-          placeholder="Search runs..."
-          className="w-full sm:w-auto sm:min-w-[280px]"
-        />
-        <Dropdown
-          options={STATUS_OPTIONS}
-          value={statusFilter}
-          onChange={setStatusFilter}
-          ariaLabel="Filter by status"
-          className="w-full sm:w-auto sm:min-w-[180px]"
-        />
-      </div>
+        {/* Filters */}
+        <div className="flex flex-wrap items-center gap-4">
+          <SearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            placeholder="Search runs..."
+            className="w-full sm:w-auto sm:min-w-[280px]"
+          />
+          <Dropdown
+            options={STATUS_OPTIONS}
+            value={statusFilter}
+            onChange={setStatusFilter}
+            ariaLabel="Filter by status"
+            className="w-full sm:w-auto sm:min-w-[180px]"
+          />
+        </div>
 
-      <PaginatedTable
+        <PaginatedTable
         data={runs}
         columns={[
           { header: "Run" },
@@ -169,83 +170,84 @@ function RunsContent() {
             </TableCell>
           </TableRow>
         )}
-      />
+        />
 
-      {/* New Run Modal */}
-      <Modal
-        isOpen={showModal}
-        onClose={closeModal}
-        title="Start New Run"
-        size="md"
-        footer={
-          <>
-            <Button variant="secondary" onClick={closeModal}>
-              Cancel
-            </Button>
-            <Button
-              type="submit"
-              form="new-run-form"
-              disabled={executing || !selectedInputSet || !selectedTemplate}
-              loading={executing}
-              icon={!executing ? <Play className="size-4" /> : undefined}
-            >
-              {executing ? "Running..." : "Start Run"}
-            </Button>
-          </>
-        }
-      >
-        <form
-          id="new-run-form"
-          onSubmit={handleSubmit}
-          className="space-y-4"
-          autoComplete="off"
+        {/* New Run Modal */}
+        <Modal
+          isOpen={showModal}
+          onClose={closeModal}
+          title="Start New Run"
+          size="md"
+          footer={
+            <>
+              <Button variant="secondary" onClick={closeModal}>
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                form="new-run-form"
+                disabled={executing || !selectedInputSet || !selectedTemplate}
+                loading={executing}
+                icon={!executing ? <Play className="size-4" /> : undefined}
+              >
+                {executing ? "Running..." : "Start Run"}
+              </Button>
+            </>
+          }
         >
-          <div>
-            <label className="block text-sm font-medium text-label">
-              Input Set
-            </label>
-            <div className="mt-1">
-              <Dropdown
-                options={inputSetOptions}
-                value={selectedInputSet}
-                onChange={setSelectedInputSet}
-                ariaLabel="Select input set"
-                buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
-                menuClassName="rounded-md"
-              />
+          <form
+            id="new-run-form"
+            onSubmit={handleSubmit}
+            className="space-y-4"
+            autoComplete="off"
+          >
+            <div>
+              <label className="block text-sm font-medium text-label">
+                Input Set
+              </label>
+              <div className="mt-1">
+                <Dropdown
+                  options={inputSetOptions}
+                  value={selectedInputSet}
+                  onChange={setSelectedInputSet}
+                  ariaLabel="Select input set"
+                  buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
+                  menuClassName="rounded-md"
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label className="block text-sm font-medium text-label">
-              Prompt Template
-            </label>
-            <div className="mt-1">
-              <Dropdown
-                options={templateOptions}
-                value={selectedTemplate}
-                onChange={setSelectedTemplate}
-                ariaLabel="Select prompt template"
-                buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
-                menuClassName="rounded-md"
-              />
+            <div>
+              <label className="block text-sm font-medium text-label">
+                Prompt Template
+              </label>
+              <div className="mt-1">
+                <Dropdown
+                  options={templateOptions}
+                  value={selectedTemplate}
+                  onChange={setSelectedTemplate}
+                  ariaLabel="Select prompt template"
+                  buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
+                  menuClassName="rounded-md"
+                />
+              </div>
             </div>
-          </div>
-        </form>
-      </Modal>
+          </form>
+        </Modal>
 
-      <ConfirmDialog
-        isOpen={showDeleteDialog}
-        onClose={closeDeleteDialog}
-        onConfirm={confirmDelete}
-        title="Delete Run"
-        message="Are you sure you want to delete this run? This action cannot be undone."
-        confirmLabel="Delete"
-        variant="danger"
-        loading={deleting}
-      />
+        <ConfirmDialog
+          isOpen={showDeleteDialog}
+          onClose={closeDeleteDialog}
+          onConfirm={confirmDelete}
+          title="Delete Run"
+          message="Are you sure you want to delete this run? This action cannot be undone."
+          confirmLabel="Delete"
+          variant="danger"
+          loading={deleting}
+        />
 
-      <AIGenerationLoader isVisible={showAILoader} />
+        <AIGenerationLoader isVisible={showAILoader} />
+      </div>
     </div>
   );
 }

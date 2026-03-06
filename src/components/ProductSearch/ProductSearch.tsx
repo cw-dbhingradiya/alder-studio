@@ -127,9 +127,7 @@ export function ProductSearch({
       {showSearch && (
         <div className="rounded-lg border border-border bg-card p-4">
           <div className="mb-4 flex items-center justify-between">
-            <h4 className="font-semibold text-foreground">
-              Product Catalog
-            </h4>
+            <h4 className="font-semibold text-foreground">Product Catalog</h4>
             <button
               type="button"
               onClick={() => setShowSearch(false)}
@@ -174,14 +172,20 @@ export function ProductSearch({
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 max-h-[50vh] overflow-y-auto">
                 {products.map((product) => {
                   const isSelected = isProductSelected(product.id);
-                  const isExisting = existingProducts.some((p) => p.catalogId === product.id);
-                  const isNewlySelected = selectedProducts.some((p) => p.catalogId === product.id);
+                  const isExisting = existingProducts.some(
+                    (p) => p.catalogId === product.id,
+                  );
+                  const isNewlySelected = selectedProducts.some(
+                    (p) => p.catalogId === product.id,
+                  );
 
                   const handleClick = () => {
                     if (isNewlySelected) {
                       removeProduct(product.id);
                     } else if (isExisting && onRemoveExisting) {
-                      const existingProduct = existingProducts.find((p) => p.catalogId === product.id);
+                      const existingProduct = existingProducts.find(
+                        (p) => p.catalogId === product.id,
+                      );
                       if (existingProduct) {
                         onRemoveExisting(existingProduct.id);
                       }
@@ -191,44 +195,44 @@ export function ProductSearch({
                   };
 
                   return (
-                  <button
-                    key={product.id}
-                    type="button"
-                    onClick={handleClick}
-                    className={`rounded-lg border p-2 text-left transition-colors ${
-                      isProductSelected(product.id)
-                        ? "border-selected-border bg-selected"
-                        : "border-border hover:border-input hover:bg-accent-subtle"
-                    }`}
-                  >
-                    {product.featuredImage?.url ? (
-                      <img
-                        src={product.featuredImage.url}
-                        alt={product.name}
-                        className="mb-2 h-20 w-full rounded object-cover"
+                    <button
+                      key={product.id}
+                      type="button"
+                      onClick={handleClick}
+                      className={`rounded-lg border p-2 text-left transition-colors ${
+                        isProductSelected(product.id)
+                          ? "border-selected-border bg-selected"
+                          : "border-border hover:border-input hover:bg-accent-subtle"
+                      }`}
+                    >
+                      {product.featuredImage?.url ? (
+                        <img
+                          src={product.featuredImage.url}
+                          alt={product.name}
+                          className="mb-2 h-20 w-full rounded object-cover"
+                        />
+                      ) : (
+                        <div className="mb-2 flex h-20 items-center justify-center rounded bg-muted">
+                          <Image className="size-8 text-placeholder" />
+                        </div>
+                      )}
+                      <TruncatedText
+                        text={product.name}
+                        as="p"
+                        className="text-xs font-medium text-foreground"
                       />
-                    ) : (
-                      <div className="mb-2 flex h-20 items-center justify-center rounded bg-muted">
-                        <Image className="size-8 text-placeholder" />
-                      </div>
-                    )}
-                    <TruncatedText
-                      text={product.name}
-                      as="p"
-                      className="text-xs font-medium text-foreground"
-                    />
-                    <TruncatedText
-                      text={product.category.name}
-                      as="p"
-                      className="text-xs text-muted-foreground"
-                    />
-                    {isSelected && (
-                      <span className="mt-1 inline-flex items-center gap-1 text-xs text-success-accent">
-                        <Check className="size-4" />
-                        Selected
-                      </span>
-                    )}
-                  </button>
+                      <TruncatedText
+                        text={product.category.name}
+                        as="p"
+                        className="text-xs text-muted-foreground"
+                      />
+                      {isSelected && (
+                        <span className="mt-1 inline-flex items-center gap-1 text-xs text-success-accent">
+                          <Check className="size-4" />
+                          Selected
+                        </span>
+                      )}
+                    </button>
                   );
                 })}
               </div>

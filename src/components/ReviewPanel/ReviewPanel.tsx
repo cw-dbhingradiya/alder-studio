@@ -4,7 +4,8 @@ import { useReviewPanel } from "./useReviewPanel";
 import { COMMON_TAGS } from "@/lib/constants";
 import type { ReviewPanelProps } from "./types";
 import { Button } from "@/components/ui/Button";
-import { Input, Textarea } from "@/components/ui/Input";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
 import { Star, X } from "lucide-react";
 
 export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
@@ -30,7 +31,9 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
         <h3 className="text-lg font-semibold text-foreground">
           Preview Result
         </h3>
-        <p className="text-sm text-muted-foreground">Step {result.stepOrder + 1}</p>
+        <p className="text-sm text-muted-foreground">
+          Step {result.stepOrder + 1}
+        </p>
       </div>
 
       {/* Large Image Preview */}
@@ -85,10 +88,11 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
               className="p-1 transition-transform hover:scale-110"
             >
               <Star
-                className={`h-8 w-8 ${rating && value <= rating
+                className={`h-8 w-8 ${
+                  rating && value <= rating
                     ? "text-amber-400 fill-amber-400"
                     : "text-star fill-star"
-                  }`}
+                }`}
               />
             </button>
           ))}

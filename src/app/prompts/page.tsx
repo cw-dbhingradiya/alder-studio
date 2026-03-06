@@ -5,7 +5,8 @@ import ChainBuilder from "@/components/ChainBuilder";
 import { Modal } from "@/components/ui/Modal";
 import { ConfirmDialog } from "@/components/ui/ConfirmDialog";
 import { Button } from "@/components/ui/Button";
-import { Input, Textarea } from "@/components/ui/Input";
+import { Input } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { usePromptsPage } from "./usePromptsPage";
 import { Copy, FileText, Pencil, Plus, Trash2 } from "lucide-react";
@@ -54,7 +55,7 @@ function PromptsContent() {
             <h1 className="text-lg font-semibold text-foreground">
               Prompt Templates
             </h1>
-            <p className="mt-0.5 text-[13px] text-subtle">
+            <p className="mt-0.5 text-sm text-subtle">
               Build and manage your image generation prompts.
             </p>
           </div>
@@ -131,14 +132,9 @@ function PromptsContent() {
                   {/* Steps Preview */}
                   <div className="mb-3 space-y-2">
                     {template.steps.slice(0, 2).map((step, index) => (
-                      <div
-                        key={index}
-                        className="rounded bg-muted p-2"
-                      >
+                      <div key={index} className="rounded bg-muted p-2">
                         <p className="line-clamp-2 text-xs text-label">
-                          <span className="font-medium">
-                            Step {index + 1}:
-                          </span>{" "}
+                          <span className="font-medium">Step {index + 1}:</span>{" "}
                           {step.prompt}
                         </p>
                         <div className="mt-1 flex gap-2 text-xs text-muted-foreground">

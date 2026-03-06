@@ -17,6 +17,7 @@
     "@libsql/client": "^0.8.1",
     "@prisma/adapter-libsql": "^5.22.0",
     "@prisma/client": "^5.22.0",
+    "class-variance-authority": "^0.7.1",
     "dotenv": "^17.2.4",
     "lenis": "^1.3.18-dev.0",
     "lottie-react": "^2.4.1",
@@ -27,6 +28,7 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-hot-toast": "^2.6.0",
+    "tailwind-merge": "^3.5.0",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

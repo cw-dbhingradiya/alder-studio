@@ -64,7 +64,7 @@ function DashboardContent() {
           <h1 className="text-lg font-semibold text-foreground">
             Welcome back, {firstName}
           </h1>
-          <p className="mt-0.5 text-[13px] text-muted-foreground">
+          <p className="mt-0.5 text-sm text-muted-foreground">
             Here&apos;s an overview of your AI image generation workbench.
           </p>
         </div>
@@ -100,7 +100,7 @@ function DashboardContent() {
 
         {/* Quick Actions */}
         <div>
-          <h2 className="mb-3 text-[13px] font-semibold uppercase tracking-wider text-placeholder">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wider text-placeholder">
             Quick Actions
           </h2>
           <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -128,13 +128,13 @@ function DashboardContent() {
         {/* Recent Runs */}
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-[13px] font-semibold uppercase tracking-wider text-placeholder">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-placeholder">
               Recent Runs
             </h2>
             {recentRuns.length > 0 && (
               <Link
                 href="/runs"
-                className="flex items-center gap-1 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 View all
                 <ArrowRight className="h-3 w-3" />
@@ -160,7 +160,7 @@ function DashboardContent() {
                   <p className="text-sm font-medium text-label">
                     No runs yet
                   </p>
-                  <p className="mt-1 text-[13px] text-placeholder">
+                  <p className="mt-1 text-sm text-placeholder">
                     Start by creating an input set and prompt template.
                   </p>
                 </div>
@@ -170,7 +170,7 @@ function DashboardContent() {
                   <TableCell>
                     <Link
                       href={`/runs/${run.id}`}
-                      className="inline-block max-w-48 truncate text-[13px] font-medium text-label transition-colors hover:text-foreground"
+                      className="inline-block max-w-48 truncate text-sm font-medium text-label transition-colors hover:text-foreground"
                     >
                       {run.id}
                     </Link>
@@ -228,7 +228,7 @@ function StatCard({
       className="group flex flex-col justify-between rounded-lg border border-border p-4 transition-colors hover:border-border bg-sidebar"
     >
       <div className="mb-3 flex items-center justify-between">
-        <span className="text-[13px] font-medium text-muted-foreground">
+        <span className="text-sm font-medium text-muted-foreground">
           {title}
         </span>
         <div className="flex h-7 w-7 items-center justify-center rounded-md bg-icon-bg text-icon transition-colors group-hover:bg-icon-bg-accent group-hover:text-icon-hover">
@@ -271,7 +271,7 @@ function QuickActionCard({
         {icon}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-[13px] font-semibold text-foreground">
+        <p className="text-sm font-semibold text-foreground">
           {title}
         </p>
         <p className="text-[12px] text-muted-foreground">

@@ -57,7 +57,7 @@ function InputSetsContent() {
             <h1 className="text-lg font-semibold text-foreground">
               Input Sets
             </h1>
-            <p className="mt-0.5 text-[13px] text-subtle">
+            <p className="mt-0.5 text-sm text-subtle">
               Manage your image and product collections for generation.
             </p>
           </div>

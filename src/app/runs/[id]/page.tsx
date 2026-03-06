@@ -220,30 +220,31 @@ export default function RunDetailPage({
   }
 
   return (
-    <div className="h-full overflow-auto md:p-8 p-4">
-      {/* Header */}
-      <div className="mb-6 flex items-start justify-between flex-col lg:flex-row gap-4">
-        <div>
-          <div className="flex items-center gap-3">
-            <Link
-              href="/runs"
-              className="text-muted-foreground hover:text-label"
-            >
-              <ArrowLeft />
-            </Link>
-            <h1 className="lg:text-2xl text-xl font-bold text-foreground">
-              Run Details
-            </h1>
-            <span
-              className={`rounded-full px-3 py-1 text-sm font-medium ${getStatusColor(run.status)}`}
-            >
-              {run.status}
-            </span>
+    <div className="h-full overflow-auto p-5 md:p-8">
+      <div className="mx-auto max-w-6xl space-y-6">
+        {/* Header */}
+        <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+          <div>
+            <div className="flex items-center gap-3">
+              <Link
+                href="/runs"
+                className="text-muted-foreground hover:text-label"
+              >
+                <ArrowLeft />
+              </Link>
+              <h1 className="text-lg font-semibold text-foreground">
+                Run Details
+              </h1>
+              <span
+                className={`rounded-full px-3 py-1 text-sm font-medium ${getStatusColor(run.status)}`}
+              >
+                {run.status}
+              </span>
+            </div>
+            <p className="mt-0.5 text-sm text-subtle">
+              ID: {run.id} | Created: {new Date(run.createdAt).toLocaleString()}
+            </p>
           </div>
-          <p className="mt-1 text-sm text-muted-foreground">
-            ID: {run.id} | Created: {new Date(run.createdAt).toLocaleString()}
-          </p>
-        </div>
 
         <div className="flex flex-wrap gap-2">
           {run.status === "pending" && (
@@ -275,18 +276,18 @@ export default function RunDetailPage({
             Delete
           </Button>
         </div>
-      </div>
-
-      {/* Error Message */}
-      {run.error && (
-        <div className="mb-6 rounded-lg border border-error-border bg-error p-4">
-          <p className="text-sm text-error-foreground">
-            {run.error}
-          </p>
         </div>
-      )}
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Error Message */}
+        {run.error && (
+          <div className="rounded-lg border border-error-border bg-error p-4">
+            <p className="text-sm text-error-foreground">
+              {run.error}
+            </p>
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Left Column - Run Info & Results */}
         <div className="lg:col-span-2 space-y-6">
           {/* Input Set & Template Info */}
@@ -329,7 +330,7 @@ export default function RunDetailPage({
                     key={image.id}
                     src={image.path}
                     alt={image.filename}
-                    className="h-20 w-20 flex-shrink-0 rounded object-cover"
+                    className="h-20 w-20 shrink-0 rounded object-cover"
                   />
                 ))}
               </div>
@@ -406,16 +407,17 @@ export default function RunDetailPage({
         </div>
       </div>
 
-      <ConfirmDialog
-        isOpen={showDeleteDialog}
-        onClose={closeDeleteDialog}
-        onConfirm={confirmDelete}
-        title="Delete Run"
-        message="Are you sure you want to delete this run? This action cannot be undone."
-        confirmLabel="Delete"
-        variant="danger"
-        loading={deleting}
-      />
+        <ConfirmDialog
+          isOpen={showDeleteDialog}
+          onClose={closeDeleteDialog}
+          onConfirm={confirmDelete}
+          title="Delete Run"
+          message="Are you sure you want to delete this run? This action cannot be undone."
+          confirmLabel="Delete"
+          variant="danger"
+          loading={deleting}
+        />
+      </div>
     </div>
   );
 }

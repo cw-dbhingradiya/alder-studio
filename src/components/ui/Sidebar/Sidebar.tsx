@@ -51,7 +51,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   const filteredItems = searchQuery.trim()
     ? allNavItems.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()),
       )
     : [];
 
@@ -110,7 +110,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       setSelectedIndex(
-        (prev) => (prev - 1 + filteredItems.length) % filteredItems.length
+        (prev) => (prev - 1 + filteredItems.length) % filteredItems.length,
       );
     } else if (e.key === "Enter") {
       e.preventDefault();
@@ -139,7 +139,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         <Link
           href={item.href}
           onClick={onClose}
-          className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-[13px] font-medium transition-all ${
+          className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
             active
               ? "bg-sidebar-active text-sidebar-text-active shadow-sm"
               : "text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active"
@@ -227,7 +227,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                           closeSearch();
                         }}
                         onMouseEnter={() => setSelectedIndex(index)}
-                        className={`flex w-full items-center gap-3 px-3 py-2 text-[13px] font-medium transition-colors ${
+                        className={`flex w-full items-center gap-3 px-3 py-2 text-sm font-medium transition-colors ${
                           index === selectedIndex
                             ? "bg-sidebar-active text-sidebar-text-active"
                             : "text-sidebar-text hover:bg-sidebar-hover hover:text-sidebar-text-active"
@@ -276,7 +276,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               {initials}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-[13px] font-medium text-foreground">
+              <p className="truncate text-sm font-medium text-foreground">
                 {user?.name ?? "User"}
               </p>
               <p className="truncate text-[11px] text-placeholder">

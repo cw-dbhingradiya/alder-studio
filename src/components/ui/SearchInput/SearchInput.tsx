@@ -26,7 +26,7 @@ const inputSizeClasses: Record<string, string> = {
   default:
     "block h-[38px] w-full rounded-md border border-input bg-input-field py-2 pl-10 pr-10 text-foreground placeholder:text-placeholder focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring",
   compact:
-    "min-w-0 flex-1 bg-transparent text-[13px] text-foreground placeholder:text-search-foreground focus:outline-none",
+    "min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-search-foreground focus:outline-none",
 };
 
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
@@ -53,7 +53,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     if (isCompact) {
       return (
         <div
-          className={`flex w-full items-center gap-2.5 rounded-lg border border-search-border bg-search px-3 py-[7px] text-[13px] text-search-foreground transition-colors focus-within:border-search-hover hover:border-search-hover ${className}`}
+          className={`flex w-full items-center gap-2.5 rounded-lg border border-search-border bg-search px-3 py-[7px] text-sm text-search-foreground transition-colors focus-within:border-search-hover hover:border-search-hover ${className}`}
         >
           <Search className="h-3.5 w-3.5 shrink-0" />
           <input

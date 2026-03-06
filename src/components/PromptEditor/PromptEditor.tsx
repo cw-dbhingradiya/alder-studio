@@ -3,7 +3,7 @@
 import { AVAILABLE_MODELS, ASPECT_RATIOS, IMAGE_SIZES } from "@/types";
 import type { PromptStep, PromptEditorProps } from "./types";
 import { Dropdown } from "@/components/ui/Dropdown";
-import { Textarea } from "@/components/ui/Input";
+import { Textarea } from "@/components/ui/Textarea";
 import { Trash2 } from "lucide-react";
 
 export function PromptEditor({

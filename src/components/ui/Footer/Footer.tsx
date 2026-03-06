@@ -2,37 +2,52 @@ import { motion } from "motion/react";
 
 const FOOTER_LINKS = {
   Collections: ["Sofas", "Dining", "Bedroom", "Office", "Outdoor"],
-  Services: ["Custom Design", "Interior Styling", "Space Planning", "Consultation"],
+  Services: [
+    "Custom Design",
+    "Interior Styling",
+    "Space Planning",
+    "Consultation",
+  ],
   Company: ["About", "Showrooms", "Sustainability", "Careers", "Press"],
   Support: ["Contact", "FAQ", "Shipping", "Returns", "Care Guide"],
 };
 
 const SOCIAL = ["Instagram", "Pinterest", "LinkedIn"];
 const EASE = [0.16, 1, 0.3, 1] as const;
-const VIEWPORT = { once: true, amount: 0.15 };
+/* Trigger as soon as any part of footer enters view so it's visible when user scrolls to bottom. */
+const VIEWPORT = { once: true, amount: 0 };
 
 export default function Footer() {
   return (
-    <footer id="contact" className="border-t border-neutral-800 bg-[#0A0A0A] px-6 pt-20 pb-10">
+    <footer
+      id="contact"
+      className="relative z-10 shrink-0 border-t border-neutral-800 bg-[#0A0A0A] px-6 pt-20 pb-10"
+    >
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-12 lg:grid-cols-5">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.7, ease: EASE }}
-            className="lg:col-span-2"
+            className="sm:col-span-2 lg:col-span-2"
           >
             <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Alder<span className="align-super text-sm">®</span>
             </h2>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-neutral-500">
-              Timeless Scandinavian furniture, handcrafted with sustainably sourced
-              materials. Designed in Copenhagen, delivered worldwide.
+              Timeless Scandinavian furniture, handcrafted with sustainably
+              sourced materials. Designed in Copenhagen, delivered worldwide.
             </p>
             <div className="mt-6 flex gap-4">
               {SOCIAL.map((s) => (
-                <a key={s} href="#" className="text-xs text-neutral-500 transition-colors duration-300 hover:text-white">{s}</a>
+                <a
+                  key={s}
+                  href="#"
+                  className="text-xs text-neutral-500 transition-colors duration-300 hover:text-white"
+                >
+                  {s}
+                </a>
               ))}
             </div>
           </motion.div>
@@ -45,11 +60,18 @@ export default function Footer() {
               viewport={VIEWPORT}
               transition={{ duration: 0.6, ease: EASE, delay: 0.1 + i * 0.06 }}
             >
-              <h3 className="mb-4 text-xs font-semibold tracking-widest text-neutral-400 uppercase">{title}</h3>
+              <h3 className="mb-4 text-xs font-semibold tracking-widest text-neutral-400 uppercase">
+                {title}
+              </h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link}>
-                    <a href="#" className="text-sm text-neutral-500 transition-colors duration-300 hover:text-white">{link}</a>
+                    <a
+                      href="#"
+                      className="text-sm text-neutral-500 transition-colors duration-300 hover:text-white"
+                    >
+                      {link}
+                    </a>
                   </li>
                 ))}
               </ul>
