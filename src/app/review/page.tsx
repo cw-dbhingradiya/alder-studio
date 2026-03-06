@@ -7,7 +7,14 @@ import { Button } from "@/components/ui/Button";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { TruncatedText } from "@/components/ui/TruncatedText";
 import { useReviewPage } from "./useReviewPage";
-import { Award, CheckCircle, Download, Image as ImageIcon, Images, Star } from "lucide-react";
+import {
+  Award,
+  CheckCircle,
+  Download,
+  Image as ImageIcon,
+  Images,
+  Star,
+} from "lucide-react";
 
 const RATING_OPTIONS = [
   { value: "", label: "All ratings" },
@@ -58,26 +65,26 @@ export default function ReviewPage() {
             </p>
           </div>
           <div className="flex gap-2">
-          <Button
-            variant="secondary"
-            icon={<Download className="size-4" />}
-            onClick={() => (window.location.href = "/api/export?format=json")}
-          >
-            Export JSON
-          </Button>
-          <Button
-            variant="secondary"
-            icon={<Download className="size-4" />}
-            onClick={() => (window.location.href = "/api/export?format=csv")}
-          >
-            Export CSV
-          </Button>
+            <Button
+              variant="secondary"
+              icon={<Download className="size-4" />}
+              onClick={() => (window.location.href = "/api/export?format=json")}
+            >
+              Export JSON
+            </Button>
+            <Button
+              variant="secondary"
+              icon={<Download className="size-4" />}
+              onClick={() => (window.location.href = "/api/export?format=csv")}
+            >
+              Export CSV
+            </Button>
           </div>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
+          <div className="flex items-center justify-between rounded-lg border border-border bg-sidebar p-4">
             <div>
               <p className="text-sm font-semibold text-muted-foreground">
                 Total Results
@@ -90,9 +97,11 @@ export default function ReviewPage() {
               <Images className="h-5 w-5" />
             </div>
           </div>
-          <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
+          <div className="flex items-center justify-between rounded-lg border border-border bg-sidebar p-4">
             <div>
-              <p className="text-sm font-semibold text-muted-foreground">Rated</p>
+              <p className="text-sm font-semibold text-muted-foreground">
+                Rated
+              </p>
               <p className="text-2xl font-bold text-foreground">
                 {ratedResults.length}
               </p>
@@ -101,7 +110,7 @@ export default function ReviewPage() {
               <CheckCircle className="h-5 w-5" />
             </div>
           </div>
-          <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
+          <div className="flex items-center justify-between rounded-lg border border-border bg-sidebar p-4">
             <div>
               <p className="text-sm font-semibold text-muted-foreground">
                 Avg. Rating
@@ -114,7 +123,7 @@ export default function ReviewPage() {
               <Star className="h-5 w-5" />
             </div>
           </div>
-          <div className="flex items-center justify-between rounded-lg border border-border bg-card p-4">
+          <div className="flex items-center justify-between rounded-lg border border-border bg-sidebar p-4">
             <div>
               <p className="text-sm font-semibold text-muted-foreground">
                 Top Rated (4+)
@@ -175,13 +184,16 @@ export default function ReviewPage() {
           )}
         </div>
 
-          {loading ? (
+        {loading ? (
           <div className="flex h-64 items-center justify-center">
             <div className="h-8 w-8 animate-spin rounded-full border-4 border-spinner border-t-transparent"></div>
           </div>
         ) : results.length === 0 ? (
           <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
-            <ImageIcon className="size-12 text-placeholder mx-auto" aria-hidden="true" />
+            <ImageIcon
+              className="size-12 text-placeholder mx-auto"
+              aria-hidden="true"
+            />
             <h3 className="mt-2 text-lg font-medium text-foreground">
               No results found
             </h3>
@@ -197,25 +209,28 @@ export default function ReviewPage() {
             )}
           </div>
         ) : (
-          <div className={`grid grid-cols-1 gap-6 lg:grid-cols-3 ${selectedResult ? "items-start" : "items-stretch"}`}>
+          <div
+            className={`grid grid-cols-1 gap-6 lg:grid-cols-3 ${selectedResult ? "items-start" : "items-stretch"}`}
+          >
             {/* Results Grid */}
             <div className="lg:col-span-2">
-              <div className="rounded-lg border border-border bg-card p-4">
+              <div className="rounded-lg border border-border bg-sidebar p-4">
                 <h3 className="mb-4 font-semibold text-foreground">
                   Results ({results.length})
                 </h3>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {results.map((result) => {
-                  const tags = getTags(result);
+                    const tags = getTags(result);
 
                     return (
                       <div
                         key={result.id}
                         onClick={() => setSelectedResult(result)}
-                        className={`cursor-pointer overflow-hidden rounded-lg border bg-card transition-all ${selectedResult?.id === result.id
-                          ? "border-border-selected ring-2 ring-selection"
-                          : "border-border hover:shadow-lg hover:shadow-zinc-500/10"
-                          }`}
+                        className={`cursor-pointer overflow-hidden rounded-lg border bg-sidebar transition-all ${
+                          selectedResult?.id === result.id
+                            ? "border-border-selected ring-2 ring-selection"
+                            : "border-border hover:shadow-lg hover:shadow-zinc-500/10"
+                        }`}
                       >
                         {/* Image */}
                         <div className="relative aspect-square">
@@ -226,7 +241,7 @@ export default function ReviewPage() {
                               className="h-full w-full object-cover"
                             />
                           ) : (
-                            <div className="flex h-full items-center justify-center bg-muted">
+                            <div className="flex h-full items-center justify-center bg-sidebar">
                               <span className="text-xs text-muted-foreground">
                                 No image
                               </span>
@@ -280,8 +295,11 @@ export default function ReviewPage() {
               {selectedResult ? (
                 <ReviewPanel result={selectedResult} onUpdate={fetchResults} />
               ) : (
-                <div className="h-full flex flex-col items-center justify-center sticky top-8 rounded-lg border border-border bg-card p-6 text-center">
-                  <ImageIcon className="mx-auto size-12 text-placeholder" aria-hidden="true" />
+                <div className="h-full flex flex-col items-center justify-center sticky top-8 rounded-lg border border-border bg-sidebar p-6 text-center">
+                  <ImageIcon
+                    className="mx-auto size-12 text-placeholder"
+                    aria-hidden="true"
+                  />
                   <h3 className="mt-3 font-semibold text-foreground">
                     Choose an image from the list to preview it here
                   </h3>

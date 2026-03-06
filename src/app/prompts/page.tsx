@@ -110,7 +110,7 @@ function PromptsContent() {
             {templates.map((template) => (
               <article
                 key={template.id}
-                className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition-all hover:shadow-lg hover:shadow-zinc-500/10"
+                className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-sidebar shadow-sm transition-all hover:shadow-lg hover:shadow-zinc-500/10"
               >
                 <div className="flex flex-1 flex-col p-4">
                   <div className="mb-2 flex items-start justify-between">
@@ -132,7 +132,10 @@ function PromptsContent() {
                   {/* Steps Preview */}
                   <div className="mb-3 space-y-2">
                     {template.steps.slice(0, 2).map((step, index) => (
-                      <div key={index} className="rounded bg-muted p-2">
+                      <div
+                        key={index}
+                        className="rounded bg-sidebar p-2 border border-border"
+                      >
                         <p className="line-clamp-2 text-xs text-label">
                           <span className="font-medium">Step {index + 1}:</span>{" "}
                           {step.prompt}
@@ -201,7 +204,7 @@ function PromptsContent() {
           isOpen={showModal}
           onClose={closeModal}
           title={editingTemplate ? "Edit Template" : "Create Template"}
-          className="!max-w-5xl"
+          className="!max-w-5xl border border-border"
           scrollable
           footer={
             <>

@@ -192,7 +192,7 @@ function InputSetsContent() {
           isOpen={showModal}
           onClose={closeModal}
           title={editingSet ? "Edit Input Set" : "Create Input Set"}
-          className="!max-w-3xl"
+          className="!max-w-3xl border border-border"
           scrollable
           footer={
             <>

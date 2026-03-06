@@ -26,7 +26,7 @@ export function ReviewPanel({ result, onUpdate }: ReviewPanelProps) {
   } = useReviewPanel(result, onUpdate);
 
   return (
-    <div className="sticky top-8 space-y-5 rounded-lg border border-border bg-card md:p-6 p-4">
+    <div className="sticky top-8 space-y-5 rounded-lg border border-border bg-sidebar md:p-6 p-4">
       <div>
         <h3 className="text-lg font-semibold text-foreground">
           Preview Result

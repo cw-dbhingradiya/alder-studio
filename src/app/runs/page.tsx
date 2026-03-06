@@ -105,71 +105,71 @@ function RunsContent() {
         </div>
 
         <PaginatedTable
-        data={runs}
-        columns={[
-          { header: "Run" },
-          { header: "Input Set" },
-          { header: "Template" },
-          { header: "Status" },
-          { header: "Results" },
-          { header: "Created" },
-          { header: "Actions", align: "center" },
-        ]}
-        pageSize={10}
-        emptyMessage={
-          <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
-            <Clock3 className="size-12 text-placeholder mx-auto" />
-            <h3 className="mt-2 text-lg font-medium text-foreground">
-              No runs yet
-            </h3>
-            <p className="mt-1 text-muted-foreground">
-              {inputSets.length === 0 || templates.length === 0
-                ? "Create an input set and template first."
-                : "Start a new run to generate images."}
-            </p>
-            {inputSets.length > 0 && templates.length > 0 && (
-              <Button onClick={openModal} className="mt-4">
-                Start New Run
-              </Button>
-            )}
-          </div>
-        }
-        renderRow={(run) => (
-          <TableRow key={run.id}>
-            <TableCell>
-              <Link
-                href={`/runs/${run.id}`}
-                className="font-medium text-label hover:text-foreground"
-              >
-                {run.id}
-              </Link>
-            </TableCell>
-            <TableCell>{run.inputSet.name}</TableCell>
-            <TableCell>{run.template.name}</TableCell>
-            <TableCell>
-              <span
-                className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold transition-all duration-150 hover:scale-105 hover:shadow-sm ${getStatusColor(run.status)}`}
-              >
-                {run.status}
-              </span>
-            </TableCell>
-            <TableCell>
-              {run.results.length} image
-              {run.results.length !== 1 ? "s" : ""}
-            </TableCell>
-            <TableCell className="text-muted-foreground">
-              {new Date(run.createdAt).toLocaleString()}
-            </TableCell>
-            <TableCell align="center">
-              <button
-                onClick={() => handleDelete(run.id)}
-                className="text-muted-foreground hover:text-foreground"
-              >
-                <Trash2 className="size-5" />
-              </button>
-            </TableCell>
-          </TableRow>
-        )}
+          data={runs}
+          columns={[
+            { header: "Run" },
+            { header: "Input Set" },
+            { header: "Template" },
+            { header: "Status" },
+            { header: "Results" },
+            { header: "Created" },
+            { header: "Actions", align: "center" },
+          ]}
+          pageSize={10}
+          emptyMessage={
+            <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
+              <Clock3 className="size-12 text-placeholder mx-auto" />
+              <h3 className="mt-2 text-lg font-medium text-foreground">
+                No runs yet
+              </h3>
+              <p className="mt-1 text-muted-foreground">
+                {inputSets.length === 0 || templates.length === 0
+                  ? "Create an input set and template first."
+                  : "Start a new run to generate images."}
+              </p>
+              {inputSets.length > 0 && templates.length > 0 && (
+                <Button onClick={openModal} className="mt-4">
+                  Start New Run
+                </Button>
+              )}
+            </div>
+          }
+          renderRow={(run) => (
+            <TableRow key={run.id}>
+              <TableCell>
+                <Link
+                  href={`/runs/${run.id}`}
+                  className="font-medium text-label hover:text-foreground"
+                >
+                  {run.id}
+                </Link>
+              </TableCell>
+              <TableCell>{run.inputSet.name}</TableCell>
+              <TableCell>{run.template.name}</TableCell>
+              <TableCell>
+                <span
+                  className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold transition-all duration-150 hover:scale-105 hover:shadow-sm ${getStatusColor(run.status)}`}
+                >
+                  {run.status}
+                </span>
+              </TableCell>
+              <TableCell>
+                {run.results.length} image
+                {run.results.length !== 1 ? "s" : ""}
+              </TableCell>
+              <TableCell className="text-muted-foreground">
+                {new Date(run.createdAt).toLocaleString()}
+              </TableCell>
+              <TableCell align="center">
+                <button
+                  onClick={() => handleDelete(run.id)}
+                  className="text-placeholder hover:text-status-failed-foreground"
+                >
+                  <Trash2 className="size-5" />
+                </button>
+              </TableCell>
+            </TableRow>
+          )}
         />
 
         {/* New Run Modal */}
@@ -178,6 +178,7 @@ function RunsContent() {
           onClose={closeModal}
           title="Start New Run"
           size="md"
+          className="border border-border"
           footer={
             <>
               <Button variant="secondary" onClick={closeModal}>

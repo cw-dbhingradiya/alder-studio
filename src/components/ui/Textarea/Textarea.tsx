@@ -59,7 +59,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <label
             htmlFor={textareaId}
             className={cn(
-              "mb-1 text-sm font-medium text-gray-900",
+              "mb-1 text-sm font-medium text-label",
               classNames?.label,
             )}
           >

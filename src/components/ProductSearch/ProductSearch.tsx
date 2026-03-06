@@ -125,7 +125,7 @@ export function ProductSearch({
 
       {/* Search Panel */}
       {showSearch && (
-        <div className="rounded-lg border border-border bg-card p-4">
+        <div className="rounded-lg border border-border bg-sidebar p-4">
           <div className="mb-4 flex items-center justify-between">
             <h4 className="font-semibold text-foreground">Product Catalog</h4>
             <button
@@ -169,7 +169,7 @@ export function ProductSearch({
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 max-h-[50vh] overflow-y-auto">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 max-h-[50vh] overflow-y-auto -mr-5 pr-5">
                 {products.map((product) => {
                   const isSelected = isProductSelected(product.id);
                   const isExisting = existingProducts.some(

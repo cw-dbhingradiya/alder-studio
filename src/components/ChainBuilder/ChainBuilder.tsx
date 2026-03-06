@@ -24,9 +24,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
       {steps.length === 0 ? (
         <div className="rounded-lg border-2 border-dashed border-border p-8 text-center">
           <Image className="size-12 text-placeholder mx-auto" />
-          <h3 className="mt-2 text-lg font-medium text-foreground">
-            No steps
-          </h3>
+          <h3 className="mt-2 text-lg font-medium text-foreground">No steps</h3>
           <p className="mt-1 text-muted-foreground">
             Add a step to start building your prompt chain.
           </p>
@@ -95,10 +93,8 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
 
       {/* Chain Preview */}
       {steps.length > 1 && (
-        <div className="rounded-lg bg-muted p-4">
-          <h4 className="mb-2 text-sm font-semibold text-label">
-            Chain Flow
-          </h4>
+        <div className="rounded-lg bg-sidebar p-4 border border-border">
+          <h4 className="mb-2 text-sm font-semibold text-label">Chain Flow</h4>
           <div className="flex flex-wrap items-center gap-2">
             <span className="rounded bg-chip px-2 py-1 text-xs text-chip-foreground">
               Input Images

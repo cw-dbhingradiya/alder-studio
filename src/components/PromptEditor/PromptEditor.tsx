@@ -40,7 +40,7 @@ export function PromptEditor({
   }));
 
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
+    <div className="rounded-lg border border-border bg-sidebar p-4">
       <div className="mb-4 flex items-center justify-between">
         <h4 className="flex items-center gap-2 font-semibold text-foreground">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-chip text-sm text-chip-foreground">

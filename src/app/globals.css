@@ -134,7 +134,6 @@
   --loader-bg: #f9fafb;
   --loader-orb-1: rgba(59, 130, 246, 0.2);
   --loader-orb-2: rgba(147, 51, 234, 0.2);
-  --loader-orb-3: rgba(236, 72, 153, 0.15);
   --loader-orb-4: rgba(249, 115, 22, 0.15);
   --loader-glow-1: rgba(59, 130, 246, 0.2);
   --loader-glow-2: rgba(147, 51, 234, 0.25);
@@ -471,7 +470,6 @@ button {
   --loader-bg: #0a0a1a;
   --loader-orb-1: rgba(59, 130, 246, 0.1);
   --loader-orb-2: rgba(147, 51, 234, 0.1);
-  --loader-orb-3: rgba(236, 72, 153, 0.08);
   --loader-orb-4: rgba(249, 115, 22, 0.08);
   --loader-glow-1: rgba(59, 130, 246, 0.1);
   --loader-glow-2: rgba(147, 51, 234, 0.15);
