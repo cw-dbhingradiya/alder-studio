@@ -124,9 +124,9 @@ function LoginView({
           }}
           placeholder="you@example.com"
           autoComplete="off"
-          icon={<Mail className="size-5" />}
-          isInvalid={!!errors.email}
-          hint={errors.email}
+          startAdornment={<Mail className="size-5" />}
+          error={!!errors.email}
+          helperText={errors.email}
         />
         <Input
           label="Password"
@@ -139,10 +139,10 @@ function LoginView({
           }}
           placeholder="••••••••"
           autoComplete="off"
-          icon={<Lock className="size-5" />}
-          isInvalid={!!errors.password}
-          hint={errors.password}
-          trailingAction={
+          startAdornment={<Lock className="size-5" />}
+          error={!!errors.password}
+          helperText={errors.password}
+          endAdornment={
             <PasswordToggle
               visible={showPassword}
               onToggle={() => setShowPassword((p) => !p)}
@@ -238,7 +238,6 @@ function SignUpView({
         className="space-y-5"
       >
         <Input
-          theme="dark"
           label="Full Name"
           value={name}
           onChange={(e) => {
@@ -247,12 +246,11 @@ function SignUpView({
           }}
           placeholder="John Doe"
           autoComplete="off"
-          icon={<User className="size-5" />}
-          isInvalid={!!errors.name}
-          hint={errors.name}
+          startAdornment={<User className="size-5" />}
+          error={!!errors.name}
+          helperText={errors.name}
         />
         <Input
-          theme="dark"
           label="Email"
           type="email"
           value={email}
@@ -262,12 +260,11 @@ function SignUpView({
           }}
           placeholder="you@example.com"
           autoComplete="off"
-          icon={<Mail className="size-5" />}
-          isInvalid={!!errors.email}
-          hint={errors.email}
+          startAdornment={<Mail className="size-5" />}
+          error={!!errors.email}
+          helperText={errors.email}
         />
         <Input
-          theme="dark"
           label="Password"
           type={showPassword ? "text" : "password"}
           value={password}
@@ -277,10 +274,10 @@ function SignUpView({
           }}
           placeholder="Min. 6 characters"
           autoComplete="off"
-          icon={<Lock className="size-5" />}
-          isInvalid={!!errors.password}
-          hint={errors.password}
-          trailingAction={
+          startAdornment={<Lock className="size-5" />}
+          error={!!errors.password}
+          helperText={errors.password}
+          endAdornment={
             <PasswordToggle
               visible={showPassword}
               onToggle={() => setShowPassword((p) => !p)}
@@ -288,7 +285,6 @@ function SignUpView({
           }
         />
         <Input
-          theme="dark"
           label="Confirm Password"
           type={showConfirm ? "text" : "password"}
           value={confirmPassword}
@@ -298,10 +294,10 @@ function SignUpView({
           }}
           placeholder="Re-enter password"
           autoComplete="off"
-          icon={<Lock className="size-5" />}
-          isInvalid={!!errors.confirmPassword}
-          hint={errors.confirmPassword}
-          trailingAction={
+          startAdornment={<Lock className="size-5" />}
+          error={!!errors.confirmPassword}
+          helperText={errors.confirmPassword}
+          endAdornment={
             <PasswordToggle
               visible={showConfirm}
               onToggle={() => setShowConfirm((p) => !p)}
@@ -390,7 +386,6 @@ function ForgotPasswordView({
         className="space-y-5"
       >
         <Input
-          theme="dark"
           label="Email"
           type="email"
           value={email}
@@ -400,9 +395,9 @@ function ForgotPasswordView({
           }}
           placeholder="you@example.com"
           autoComplete="off"
-          icon={<Mail className="size-5" />}
-          isInvalid={!!error}
-          hint={error}
+          startAdornment={<Mail className="size-5" />}
+          error={!!error}
+          helperText={error}
         />
 
         <Button
