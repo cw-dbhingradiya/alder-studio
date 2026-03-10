@@ -6,7 +6,7 @@ const variantClasses: Record<string, string> = {
   primary:
     "bg-primary text-primary-foreground hover:bg-primary-hover disabled:opacity-50",
   secondary:
-    "border border-input bg-secondary text-secondary-foreground hover:bg-secondary-hover",
+    "border border-border bg-secondary text-secondary-foreground hover:bg-secondary-hover",
   danger: "bg-[#b51313] text-white hover:bg-[#991010]",
   ghost: "text-ghost hover:bg-accent",
   text: "text-btn-text hover:text-btn-text-hover",

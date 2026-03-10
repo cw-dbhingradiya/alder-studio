@@ -27,7 +27,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, ease: EASE, delay: 0.5 + i * 0.1 }}
-              className="rounded-full border border-neutral-700 px-4 py-1.5 text-xs tracking-wide text-neutral-400"
+              className="rounded-full border border-border/10 px-4 py-1.5 text-xs tracking-wide text-neutral-400"
             >
               {tag}
             </motion.span>
@@ -56,7 +56,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: EASE, delay: 1.2 }}
-          className="mt-16 flex items-end justify-between border-t border-neutral-800 pt-6"
+          className="mt-16 flex items-end justify-between border-t border-border/10 pt-6"
         >
           <p className="text-xs tracking-widest text-neutral-600 uppercase">
             Based in Copenhagen

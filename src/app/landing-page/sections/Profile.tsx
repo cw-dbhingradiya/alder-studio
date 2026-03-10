@@ -115,7 +115,7 @@ export default function ProfileSection() {
             >
               <a
                 href="#collection"
-                className="rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
+                className="rounded-full border border-border px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-border hover:bg-white hover:text-black"
               >
                 VIEW COLLECTIONS
               </a>

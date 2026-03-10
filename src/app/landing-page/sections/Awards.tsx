@@ -97,7 +97,7 @@ export default function AwardsSection() {
                 scale: 1.03,
                 transition: { type: "spring", stiffness: 300, damping: 20 },
               }}
-              className="flex flex-col items-center rounded-2xl border border-neutral-800/50 bg-neutral-900/50 p-8 text-center"
+              className="flex flex-col items-center rounded-2xl border border-border/10 bg-neutral-900/50 p-8 text-center"
             >
               <p className="text-5xl font-bold text-white sm:text-6xl">
                 <CountUp to={award.count} />

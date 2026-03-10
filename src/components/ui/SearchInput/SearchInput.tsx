@@ -24,7 +24,7 @@ export interface SearchInputProps {
  */
 const inputSizeClasses: Record<string, string> = {
   default:
-    "block h-[38px] w-full text-sm rounded-md border border-input bg-sidebar py-2 pl-10 pr-10 text-foreground placeholder:text-placeholder focus:border-focus focus:outline-none focus:ring-0",
+    "block h-[38px] w-full text-sm rounded-md border border-border bg-sidebar py-2 pl-10 pr-10 text-foreground placeholder:text-placeholder focus:border-focus focus:outline-none focus:ring-0",
   compact:
     "min-w-0 flex-1 bg-transparent text-sm text-foreground placeholder:text-search-foreground focus:outline-none",
 };
@@ -53,7 +53,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
     if (isCompact) {
       return (
         <div
-          className={`flex w-full items-center gap-2.5 rounded-lg border border-search-border bg-search px-3 py-[7px] text-sm text-search-foreground transition-colors focus-within:border-search-hover hover:border-search-hover ${className}`}
+          className={`flex w-full items-center gap-2.5 rounded-lg border border-border bg-search px-3 py-[7px] text-sm text-search-foreground transition-colors focus-within:border-border hover:border-border ${className}`}
         >
           <Search className="h-3.5 w-3.5 shrink-0" />
           <input
@@ -77,7 +77,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
               <X className="h-3 w-3" />
             </button>
           ) : shortcutHint ? (
-            <kbd className="ml-auto shrink-0 rounded border border-kbd-border bg-kbd px-1.5 py-0.5 text-[10px] font-medium text-kbd-foreground">
+            <kbd className="ml-auto shrink-0 rounded border border-border bg-kbd px-1.5 py-0.5 text-[10px] font-medium text-kbd-foreground">
               {shortcutHint}
             </kbd>
           ) : null}
@@ -109,7 +109,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
             <X className="size-4" />
           </button>
         ) : shortcutHint ? (
-          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-kbd-border bg-kbd px-1.5 py-0.5 text-[10px] font-medium text-kbd-foreground">
+          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-border bg-kbd px-1.5 py-0.5 text-[10px] font-medium text-kbd-foreground">
             {shortcutHint}
           </kbd>
         ) : null}

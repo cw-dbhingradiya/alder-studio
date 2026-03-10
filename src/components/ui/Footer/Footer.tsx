@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative z-10 shrink-0 border-t border-neutral-800 bg-[#0A0A0A] px-6 pt-20 pb-10"
+      className="relative z-10 shrink-0 border-t border-border/10 bg-[#0A0A0A] px-6 pt-20 pb-10"
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-6">
@@ -84,7 +84,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           viewport={VIEWPORT}
           transition={{ duration: 0.6, ease: EASE, delay: 0.3 }}
-          className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-neutral-800 pt-8 sm:flex-row"
+          className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-border/10 pt-8 sm:flex-row"
         >
           <p className="text-xs text-neutral-600">
             &copy; {new Date().getFullYear()} Alder&Co. All rights reserved.

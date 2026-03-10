@@ -114,7 +114,7 @@ function InputSetsContent() {
               return (
                 <article
                   key={inputSet.id}
-                  className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-sidebar/95 shadow-sm transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
+                  className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-sidebar/95 shadow-sm transition-colors hover:border-border"
                 >
                   {/* Image preview */}
                   <div className="relative h-40 bg-muted">

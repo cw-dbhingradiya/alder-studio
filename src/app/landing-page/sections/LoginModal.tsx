@@ -114,6 +114,7 @@ function LoginView({
             What for: Ensures a click on the submit button always triggers validation
                       and shows inline messages without relying on native browser UI. */}
         <Input
+          variant="outline"
           label="Email"
           type="email"
           value={email}
@@ -124,11 +125,12 @@ function LoginView({
           }}
           placeholder="you@example.com"
           autoComplete="off"
-          startAdornment={<Mail className="size-5" />}
+          startAdornment={<Mail className="size-4" />}
           error={!!errors.email}
           helperText={errors.email}
         />
         <Input
+          variant="outline"
           label="Password"
           type={showPassword ? "text" : "password"}
           value={password}
@@ -139,7 +141,7 @@ function LoginView({
           }}
           placeholder="••••••••"
           autoComplete="off"
-          startAdornment={<Lock className="size-5" />}
+          startAdornment={<Lock className="size-4" />}
           error={!!errors.password}
           helperText={errors.password}
           endAdornment={
@@ -238,6 +240,7 @@ function SignUpView({
         className="space-y-5"
       >
         <Input
+          variant="outline"
           label="Full Name"
           value={name}
           onChange={(e) => {
@@ -246,11 +249,12 @@ function SignUpView({
           }}
           placeholder="John Doe"
           autoComplete="off"
-          startAdornment={<User className="size-5" />}
+          startAdornment={<User className="size-4" />}
           error={!!errors.name}
           helperText={errors.name}
         />
         <Input
+          variant="outline"
           label="Email"
           type="email"
           value={email}
@@ -260,11 +264,12 @@ function SignUpView({
           }}
           placeholder="you@example.com"
           autoComplete="off"
-          startAdornment={<Mail className="size-5" />}
+          startAdornment={<Mail className="size-4" />}
           error={!!errors.email}
           helperText={errors.email}
         />
         <Input
+          variant="outline"
           label="Password"
           type={showPassword ? "text" : "password"}
           value={password}
@@ -274,7 +279,7 @@ function SignUpView({
           }}
           placeholder="Min. 6 characters"
           autoComplete="off"
-          startAdornment={<Lock className="size-5" />}
+          startAdornment={<Lock className="size-4" />}
           error={!!errors.password}
           helperText={errors.password}
           endAdornment={
@@ -285,6 +290,7 @@ function SignUpView({
           }
         />
         <Input
+          variant="outline"
           label="Confirm Password"
           type={showConfirm ? "text" : "password"}
           value={confirmPassword}
@@ -294,7 +300,7 @@ function SignUpView({
           }}
           placeholder="Re-enter password"
           autoComplete="off"
-          startAdornment={<Lock className="size-5" />}
+          startAdornment={<Lock className="size-4" />}
           error={!!errors.confirmPassword}
           helperText={errors.confirmPassword}
           endAdornment={
@@ -486,7 +492,7 @@ export default function LoginModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.97 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="relative z-10 w-full max-w-md rounded-2xl border border-neutral-800 bg-[#111111] p-8 shadow-2xl"
+            className="relative z-10 w-full max-w-md rounded-2xl border border-border/10 bg-[#111111] p-8 shadow-2xl"
           >
             <button
               type="button"

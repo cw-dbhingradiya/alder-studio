@@ -88,7 +88,7 @@ export default function ProjectsSection() {
           >
             <a
               href="#collection"
-              className="rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
+              className="rounded-full border border-border px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-border hover:bg-white hover:text-black"
             >
               VIEW ALL
             </a>
@@ -105,8 +105,8 @@ export default function ProjectsSection() {
               transition={{ duration: 0.8, ease: EASE, delay: i * 0.08 }}
             >
               <motion.div
-                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-neutral-800/50"
-                whileHover={{ borderColor: "rgba(163,163,163,0.5)" }}
+                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/10"
+                whileHover={{ borderColor: "rgba(163,163,163,0.1)" }}
                 transition={{ duration: 0.4 }}
               >
                 <div className="aspect-[21/9] w-full overflow-hidden bg-neutral-900">
@@ -130,7 +130,7 @@ export default function ProjectsSection() {
                         {item.name}
                       </h3>
                     </div>
-                    <span className="translate-y-2 rounded-full border border-neutral-500 px-4 py-1.5 text-xs text-neutral-300 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span className="translate-y-2 rounded-full border border-border px-4 py-1.5 text-xs text-neutral-300 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                       {item.category}
                     </span>
                   </div>

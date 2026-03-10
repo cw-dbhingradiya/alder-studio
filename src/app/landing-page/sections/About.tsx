@@ -52,7 +52,7 @@ export default function AboutSection() {
           /> */}
         </motion.div>
 
-        <Marquee className="mb-16 border-y border-neutral-800/50 py-6">
+        <Marquee className="mb-16 border-y border-border/10 py-6">
           {Array.from({ length: 4 }).map((_, i) => (
             <span
               key={i}
@@ -85,7 +85,7 @@ export default function AboutSection() {
                 <motion.span
                   key={tag}
                   variants={staggerItem}
-                  className="rounded-full border border-neutral-700 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-neutral-500 hover:text-neutral-300"
+                  className="rounded-full border border-border/10 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-border hover:text-neutral-300"
                 >
                   {tag}
                 </motion.span>
@@ -111,7 +111,7 @@ export default function AboutSection() {
             <motion.div className="mt-10" whileHover={{ scale: 1.02 }}>
               <a
                 href="#collection"
-                className="inline-block rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
+                className="inline-block rounded-full border border-border px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-border hover:bg-white hover:text-black"
               >
                 Explore Collection
               </a>

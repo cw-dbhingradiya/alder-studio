@@ -170,7 +170,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       {/* Sidebar panel */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 flex h-full w-[260px] flex-col border-r border-sidebar bg-sidebar transition-transform duration-300 ease-in-out md:static md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex h-full w-[260px] flex-col border-r border-border bg-sidebar transition-transform duration-300 ease-in-out md:static md:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -215,7 +215,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
           {/* Search results dropdown */}
           {isSearchOpen && searchQuery.trim() && (
-            <div className="absolute left-3 right-3 top-full z-50 mt-1 overflow-hidden rounded-lg border border-search-border bg-sidebar shadow-lg">
+            <div className="absolute left-3 right-3 top-full z-50 mt-1 overflow-hidden rounded-lg border border-border bg-sidebar shadow-lg">
               {filteredItems.length > 0 ? (
                 <ul className="py-1">
                   {filteredItems.map((item, index) => (
@@ -270,7 +270,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
         </nav>
 
         {/* User profile footer */}
-        <div className="border-t border-sidebar p-3">
+        <div className="border-t border-border p-3">
           <div className="flex items-center gap-3 rounded-lg px-2 py-2">
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-avatar text-xs font-semibold text-avatar-foreground">
               {initials}

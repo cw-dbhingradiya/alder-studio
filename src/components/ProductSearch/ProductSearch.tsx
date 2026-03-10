@@ -116,7 +116,7 @@ export function ProductSearch({
         <button
           type="button"
           onClick={() => setShowSearch(true)}
-          className="inline-flex items-center gap-2 rounded-lg border border-dashed border-input px-4 py-2 text-sm text-subtle hover:border-focus hover:text-label"
+          className="inline-flex items-center gap-2 rounded-lg border border-dashed border-border px-4 py-2 text-sm text-subtle hover:border-focus hover:text-label"
         >
           <Plus className="size-5" />
           Search & Add Products
@@ -202,7 +202,7 @@ export function ProductSearch({
                       className={`rounded-lg border p-2 text-left transition-colors ${
                         isProductSelected(product.id)
                           ? "border-selected-border bg-selected"
-                          : "border-border hover:border-input hover:bg-accent-subtle"
+                          : "border-border hover:border-border hover:bg-accent-subtle"
                       }`}
                     >
                       {product.featuredImage?.url ? (

@@ -266,7 +266,7 @@ export default function RunDetailPage({
               variant="secondary"
               onClick={handleDelete}
               icon={<Trash2 className="size-4" />}
-              className="border-input text-label hover:bg-accent"
+              className="border-border text-label hover:bg-accent"
             >
               Delete
             </Button>

@@ -79,7 +79,7 @@ export default function ExperienceSection() {
                 (tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-neutral-700 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-neutral-500 hover:text-neutral-300"
+                    className="rounded-full border border-border/10 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-border hover:text-neutral-300"
                   >
                     {tag}
                   </span>
@@ -89,7 +89,7 @@ export default function ExperienceSection() {
           </motion.div>
         </div>
 
-        <Marquee slow className="mb-12 border-y border-neutral-800/50 py-4">
+        <Marquee slow className="mb-12 border-y border-border/10 py-4">
           {Array.from({ length: 3 }).map((_, i) => (
             <span
               key={i}

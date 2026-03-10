@@ -102,8 +102,8 @@ export default function PricingSection() {
               }}
               className={`flex flex-col justify-between rounded-2xl border p-8 transition-colors duration-500 ${
                 plan.highlighted
-                  ? "border-neutral-500 bg-white text-black"
-                  : "border-neutral-800/50 bg-neutral-900/50 text-white hover:border-neutral-700"
+                  ? "border-border bg-white text-black"
+                  : "border-border/10 bg-neutral-900/50 text-white hover:border-border"
               }`}
             >
               <div>
@@ -142,7 +142,7 @@ export default function PricingSection() {
                 className={`mt-10 w-full rounded-full py-3 text-sm font-semibold transition-all duration-300 ${
                   plan.highlighted
                     ? "bg-black text-white hover:bg-neutral-800"
-                    : "border border-neutral-600 bg-transparent text-white hover:bg-white hover:text-black"
+                    : "border border-border bg-transparent text-white hover:bg-white hover:text-black"
                 }`}
               >
                 Get Started

@@ -18,10 +18,8 @@
   --text-muted: #4a4d52;
   --text-placeholder: #a1a1aa;
 
-  /* Borders */
+  /* Borders (single token for all borders) */
   --border: #e4e4e7;
-  --border-strong: #e4e4e7;
-  --table-border: #e4e4e7;
 
   /* Hover / active states */
   --hover: #f4f4f5;
@@ -34,7 +32,6 @@
 
   /* Modal */
   --modal-bg: #ffffff;
-  --modal-border: #e4e4e7;
 
   /* Chip / tag tokens */
   --chip-bg: #e4e4e7;
@@ -48,7 +45,6 @@
   /* Secondary button */
   --btn-secondary-bg: #ffffff;
   --btn-secondary-text: #3f3f46;
-  --btn-secondary-border: #d4d4d8;
   --btn-secondary-hover: #fafafa;
 
   /* Danger / destructive button */
@@ -111,11 +107,8 @@
 
   /* Sidebar search */
   --search-bg: #f4f4f5;
-  --search-border: #e4e4e7;
   --search-text: #a1a1aa;
-  --search-hover-border: #d4d4d8;
   --search-kbd-bg: #ffffff;
-  --search-kbd-border: #e4e4e7;
   --search-kbd-text: #a1a1aa;
 
   /* Quick action cards (dashboard) */
@@ -178,7 +171,6 @@
 
   /* Sidebar */
   --sidebar-bg: #ffffff;
-  --sidebar-border: #e4e4e7;
   --sidebar-active: #f4f4f5;
   --sidebar-hover: #fafafa;
   --sidebar-text: #71717a;
@@ -193,10 +185,6 @@
 /* Sidebar token utilities (use classes so var() resolves in this stylesheet) */
 .bg-sidebar {
   background-color: var(--sidebar-bg);
-}
-
-.border-sidebar {
-  border-color: var(--sidebar-border);
 }
 
 button {
@@ -220,10 +208,8 @@ button {
   --color-subtle: var(--text-tertiary);
   --color-placeholder: var(--text-placeholder);
 
-  /* ── Borders (standard: border-border, border-input) ── */
+  /* ── Borders (single: border-border) ── */
   --color-border: var(--border);
-  --color-input: var(--border-strong);
-  --color-divider: var(--table-border);
 
   /* ── Accent / hover highlights (standard: bg-accent) ── */
   --color-accent: var(--hover);
@@ -300,11 +286,8 @@ button {
 
   /* ── Sidebar search box ── */
   --color-search: var(--search-bg);
-  --color-search-border: var(--search-border);
   --color-search-foreground: var(--search-text);
-  --color-search-hover: var(--search-hover-border);
   --color-kbd: var(--search-kbd-bg);
-  --color-kbd-border: var(--search-kbd-border);
   --color-kbd-foreground: var(--search-kbd-text);
 
   /* ── Dashboard quick-action cards ── */
@@ -380,8 +363,6 @@ button {
   --text-placeholder: #71717a;
 
   --border: #1f1f1f;
-  --border-strong: #1f1f1f;
-  --table-border: #1f1f1f;
 
   --hover: #151515;
   --hover-subtle: #3f3f46;
@@ -391,7 +372,6 @@ button {
   --control-bg: #27272a;
 
   --modal-bg: #161b26;
-  --modal-border: #333741;
 
   --chip-bg: #3f3f46;
   --chip-text: #e4e4e7;
@@ -402,7 +382,6 @@ button {
 
   --btn-secondary-bg: #27272a;
   --btn-secondary-text: #f4f4f5;
-  --btn-secondary-border: #52525b;
   --btn-secondary-hover: #3f3f46;
 
   --btn-danger-bg: #3f3f46;
@@ -450,11 +429,8 @@ button {
   --border-selected: #ffffff;
 
   --search-bg: #0f0f0f;
-  --search-border: #27272a;
   --search-text: #71717a;
-  --search-hover-border: #52525b;
   --search-kbd-bg: #161b26;
-  --search-kbd-border: #27272a;
   --search-kbd-text: #71717a;
 
   --action-icon-bg: #27272a;
@@ -507,7 +483,6 @@ button {
   --selected-border: #15803d;
 
   --sidebar-bg: #0b0809;
-  --sidebar-border: #27272a;
   --sidebar-active: #27272a;
   --sidebar-hover: #18181b;
   --sidebar-text: #a1a1aa;
@@ -777,4 +752,3 @@ body {
     animation-iteration-count: 1;
   }
 }
-
