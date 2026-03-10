@@ -105,7 +105,7 @@ function RunsContent() {
         </div>
 
         <DataGrid
-          wrapperClassName="overflow-auto h-[calc(100vh-200px)]"
+          wrapperClassName="overflow-auto"
           data={runs}
           columns={[
             { header: "Run" },
@@ -179,7 +179,6 @@ function RunsContent() {
           onClose={closeModal}
           title="Start New Run"
           size="md"
-          className="border border-border"
           footer={
             <>
               <Button variant="secondary" onClick={closeModal}>
@@ -213,7 +212,6 @@ function RunsContent() {
                   value={selectedInputSet}
                   onChange={setSelectedInputSet}
                   ariaLabel="Select input set"
-                  buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
                   menuClassName="rounded-md"
                 />
               </div>
@@ -229,7 +227,6 @@ function RunsContent() {
                   value={selectedTemplate}
                   onChange={setSelectedTemplate}
                   ariaLabel="Select prompt template"
-                  buttonClassName="rounded-md focus:border-focus focus:outline-none focus:ring-1 focus:ring-ring"
                   menuClassName="rounded-md"
                 />
               </div>
