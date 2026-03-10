@@ -47,8 +47,8 @@ const ScrollGallery = () => {
 
   return (
     <section ref={sectionRef} className="bg-black relative">
-      <div className="sticky top-0 z-1 flex h-screen w-full flex-col items-center justify-center gap-[36px]">
-        <div className="relative flex h-px w-full flex-1 flex-col items-center justify-center gap-[10px] overflow-hidden pb-[350px]">
+      <div className="sticky top-0 z-1 flex h-[1100px] w-full flex-col items-center justify-center gap-[36px]">
+        <div className="relative flex h-px w-full flex-1 flex-col items-center gap-[10px] overflow-hidden">
           <motion.div
             className="relative flex h-min w-min flex-col items-center justify-center transform-3d opacity-100 will-change-transform"
             style={{
