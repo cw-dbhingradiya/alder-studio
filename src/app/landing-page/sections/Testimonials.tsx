@@ -153,40 +153,6 @@ function TestimonialCard({
 export default function TestimonialsSection() {
   return (
     <section className="relative bg-[#0A0A0A]">
-      {/* Sticky header: marquee title + CTA. Stays at top while section is in view. */}
-      <div className="sticky top-0 z-10 flex w-full items-center justify-between gap-4 border-b border-neutral-800/20 bg-[#0A0A0A] px-6 py-4">
-        <div className="min-w-0 flex-1 overflow-hidden">
-          <div className="flex w-max animate-marquee items-center gap-0">
-            <div className="flex shrink-0 items-center gap-8 pr-8">
-              {[1, 2, 3].map((i) => (
-                <h2
-                  key={i}
-                  className="shrink-0 text-left text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
-                >
-                  Testimonial© – Reviews
-                </h2>
-              ))}
-            </div>
-            <div className="flex shrink-0 items-center gap-8 pr-8" aria-hidden>
-              {[1, 2, 3].map((i) => (
-                <h2
-                  key={`dup-${i}`}
-                  className="shrink-0 text-left text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
-                >
-                  Testimonial© – Reviews
-                </h2>
-              ))}
-            </div>
-          </div>
-        </div>
-        <Link
-          href="#contact"
-          className="shrink-0 rounded-full border-2 border-primary-foreground bg-transparent px-5 py-3 text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-primary-foreground hover:text-primary"
-        >
-          Get in touch
-        </Link>
-      </div>
-
       {/* 1) Logo slider first — sticky so it stays visible while cards scroll in below. */}
       <div className="sticky top-16 z-0 flex min-h-[70vh] w-full flex-col justify-center overflow-hidden border-b border-neutral-800/10 bg-[#0A0A0A]">
         <div
@@ -197,17 +163,7 @@ export default function TestimonialsSection() {
             {[...LOGO_SLIDER_ITEMS, ...LOGO_SLIDER_ITEMS].map((label, i) => (
               <span
                 key={`row1-${i}`}
-                className="shrink-0 text-3xl font-bold tracking-tight text-white md:text-5xl"
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-          <div className="flex w-max animate-logo-slider items-center gap-16 [animation-direction:reverse] [animation-duration:35s] md:gap-24">
-            {[...LOGO_SLIDER_ITEMS, ...LOGO_SLIDER_ITEMS].map((label, i) => (
-              <span
-                key={`row2-${i}`}
-                className="shrink-0 text-3xl font-bold tracking-tight text-white md:text-5xl"
+                className="shrink-0 text-3xl font-bold tracking-tight text-white md:text-[72px]"
               >
                 {label}
               </span>
