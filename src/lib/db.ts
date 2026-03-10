@@ -34,10 +34,19 @@ if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.prisma = standardPrisma;
 }
 
-// Helper to get the appropriate client
+/**
+ * What: Returns the correct Prisma client (Turso in production, SQLite locally).
+ * Why: Production (e.g. Vercel) has no .env file; Turso env vars must be set in the host's dashboard.
+ * What for: Ensures API routes get a valid DB client or a clear error instead of a cryptic Prisma env failure.
+ */
 export async function getDbClient(): Promise<PrismaClient> {
   if (process.env.TURSO_DATABASE_URL) {
     return createTursoClient();
+  }
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error(
+      'TURSO_DATABASE_URL and TURSO_AUTH_TOKEN must be set in production (e.g. Vercel → Settings → Environment Variables).'
+    );
   }
   return standardPrisma;
 }
