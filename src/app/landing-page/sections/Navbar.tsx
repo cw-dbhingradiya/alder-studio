@@ -144,12 +144,12 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-[#0a0a0a]/80 backdrop-blur-md"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <motion.a
             href="#"
-            className="text-xl font-bold tracking-tight text-white"
+            className="text-xl font-bold tracking-tight text-foreground"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
@@ -223,9 +223,9 @@ export default function Navbar() {
               className="flex flex-col gap-1.5"
               aria-label="Open menu"
             >
-              <span className="block h-0.5 w-6 bg-white" />
-              <span className="block h-0.5 w-6 bg-white" />
-              <span className="block h-0.5 w-6 bg-white" />
+              <span className="block h-0.5 w-6 bg-foreground" />
+              <span className="block h-0.5 w-6 bg-foreground" />
+              <span className="block h-0.5 w-6 bg-foreground" />
             </button>
           </div>
         </div>
@@ -257,7 +257,7 @@ export default function Navbar() {
               <div className="flex items-center justify-between">
                 <a
                   href="#"
-                  className="text-xl font-bold tracking-tight text-white"
+                  className="text-xl font-bold tracking-tight text-foreground"
                 >
                   Alder<span className="align-super text-[10px]">®</span>
                 </a>
