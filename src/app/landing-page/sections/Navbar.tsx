@@ -127,7 +127,7 @@ export default function Navbar() {
       login(loggedInUser);
       setLoginOpen(false);
     },
-    [login]
+    [login],
   );
 
   const handleLogout = useCallback(() => {
@@ -144,7 +144,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-[#0a0a0a]/80 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <motion.a
