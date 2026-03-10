@@ -34,7 +34,7 @@ function CountUp({ to }: { to: number }) {
 
 export default function AwardsSection() {
   return (
-    <section className="bg-[#0C0C0C] px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -59,9 +59,9 @@ export default function AwardsSection() {
           >
             <h2 className="text-4xl font-bold text-white sm:text-5xl">
               Award-Winning Design
-              <span className="text-2xl text-neutral-600">.™</span>
+              <span className="text-2xl text-muted-foreground">.™</span>
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-neutral-500">
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
               Our commitment to quality and innovation has been recognized by
               the world&apos;s most prestigious design institutions.
             </p>
@@ -74,7 +74,7 @@ export default function AwardsSection() {
             transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
             className="flex items-center justify-end"
           >
-            <div className="aspect-[4/3] w-full max-w-sm overflow-hidden rounded-2xl bg-neutral-900">
+            <div className="aspect-[4/3] w-full max-w-sm overflow-hidden rounded-2xl bg-card">
               <img
                 src="/furniture/furniture_05.jpg"
                 alt="Award-winning furniture design piece"
@@ -97,12 +97,12 @@ export default function AwardsSection() {
                 scale: 1.03,
                 transition: { type: "spring", stiffness: 300, damping: 20 },
               }}
-              className="flex flex-col items-center rounded-2xl border border-neutral-800/50 bg-neutral-900/50 p-8 text-center"
+              className="flex flex-col items-center rounded-2xl border border-border/50 bg-card/50 p-8 text-center"
             >
               <p className="text-5xl font-bold text-white sm:text-6xl">
                 <CountUp to={award.count} />
               </p>
-              <p className="mt-2 text-sm tracking-widest text-neutral-500 uppercase">
+              <p className="mt-2 text-sm tracking-widest text-muted-foreground uppercase">
                 {award.label}
               </p>
             </motion.div>

@@ -49,7 +49,7 @@ const VIEWPORT = { once: true, amount: 0.15 };
 
 export default function ProjectsSection() {
   return (
-    <section id="collection" className="bg-[#0A0A0A] px-6 py-24">
+    <section id="collection" className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -88,7 +88,7 @@ export default function ProjectsSection() {
           >
             <a
               href="#collection"
-              className="rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
+              className="rounded-full border border-border px-8 py-3 text-sm font-medium text-foreground transition-all duration-500 hover:border-primary-foreground hover:bg-primary-foreground hover:text-primary"
             >
               VIEW ALL
             </a>
@@ -105,11 +105,11 @@ export default function ProjectsSection() {
               transition={{ duration: 0.8, ease: EASE, delay: i * 0.08 }}
             >
               <motion.div
-                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-neutral-800/50"
+                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/50"
                 whileHover={{ borderColor: "rgba(163,163,163,0.5)" }}
                 transition={{ duration: 0.4 }}
               >
-                <div className="aspect-[21/9] w-full overflow-hidden bg-neutral-900">
+                <div className="aspect-[21/9] w-full overflow-hidden bg-card">
                   <motion.img
                     src={item.image}
                     alt={item.alt}
@@ -123,14 +123,14 @@ export default function ProjectsSection() {
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 via-transparent to-transparent p-8">
                   <div className="flex w-full items-end justify-between">
                     <div>
-                      <p className="text-xs text-neutral-400">
+                      <p className="text-xs text-subtle">
                         ({item.number})
                       </p>
                       <h3 className="mt-1 text-2xl font-semibold text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
                         {item.name}
                       </h3>
                     </div>
-                    <span className="translate-y-2 rounded-full border border-neutral-500 px-4 py-1.5 text-xs text-neutral-300 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                    <span className="translate-y-2 rounded-full border border-input px-4 py-1.5 text-xs text-label opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                       {item.category}
                     </span>
                   </div>

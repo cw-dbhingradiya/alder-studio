@@ -40,7 +40,7 @@ const VIEWPORT = { once: true, amount: 0.15 };
 
 export default function ExperienceSection() {
   return (
-    <section className="bg-[#0C0C0C] px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -79,7 +79,7 @@ export default function ExperienceSection() {
                 (tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-neutral-700 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-neutral-500 hover:text-neutral-300"
+                    className="rounded-full border border-border px-4 py-1.5 text-xs tracking-wide text-subtle transition-colors duration-300 hover:border-input hover:text-label"
                   >
                     {tag}
                   </span>
@@ -89,18 +89,18 @@ export default function ExperienceSection() {
           </motion.div>
         </div>
 
-        <Marquee slow className="mb-12 border-y border-neutral-800/50 py-4">
+        <Marquee slow className="mb-12 border-y border-border/50 py-4">
           {Array.from({ length: 3 }).map((_, i) => (
             <span
               key={i}
-              className="text-3xl font-bold tracking-tight text-neutral-800 sm:text-5xl"
+              className="text-3xl font-bold tracking-tight text-border sm:text-5xl"
             >
               Since 2014.
             </span>
           ))}
         </Marquee>
 
-        <div className="divide-y divide-neutral-800">
+        <div className="divide-y divide-divider">
           {MILESTONES.map((item, i) => (
             <motion.div
               key={item.name}
@@ -116,15 +116,15 @@ export default function ExperienceSection() {
                 </h3>
               </div>
               <div className="sm:col-span-3">
-                <p className="text-sm text-neutral-500">{item.period}</p>
+                <p className="text-sm text-muted-foreground">{item.period}</p>
               </div>
               <div className="sm:col-span-3">
-                <p className="text-sm text-neutral-400 transition-colors duration-300 group-hover:text-neutral-300">
+                <p className="text-sm text-subtle transition-colors duration-300 group-hover:text-label">
                   {item.role}
                 </p>
               </div>
               <div className="sm:col-span-2 sm:text-right">
-                <p className="text-sm text-neutral-600">{item.location}</p>
+                <p className="text-sm text-muted-foreground">{item.location}</p>
               </div>
             </motion.div>
           ))}

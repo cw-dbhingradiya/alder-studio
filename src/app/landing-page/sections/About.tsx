@@ -36,7 +36,7 @@ const staggerItem = {
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#0A0A0A] px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -52,11 +52,11 @@ export default function AboutSection() {
           /> */}
         </motion.div>
 
-        <Marquee className="mb-16 border-y border-neutral-800/50 py-6">
+        <Marquee className="mb-16 border-y border-border/50 py-6">
           {Array.from({ length: 4 }).map((_, i) => (
             <span
               key={i}
-              className="text-5xl font-bold tracking-tight text-neutral-800 sm:text-7xl"
+              className="text-5xl font-bold tracking-tight text-border sm:text-7xl"
             >
               Alder&Co™
             </span>
@@ -70,7 +70,7 @@ export default function AboutSection() {
             viewport={VIEWPORT}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <h2 className="text-6xl font-bold tracking-tight text-white sm:text-7xl md:text-8xl">
+            <h2 className="text-6xl font-bold tracking-tight text-foreground sm:text-7xl md:text-8xl">
               Alder<span className="align-super text-lg">®</span>
             </h2>
 
@@ -85,7 +85,7 @@ export default function AboutSection() {
                 <motion.span
                   key={tag}
                   variants={staggerItem}
-                  className="rounded-full border border-neutral-700 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-neutral-500 hover:text-neutral-300"
+                  className="rounded-full border border-border px-4 py-1.5 text-xs tracking-wide text-subtle transition-colors duration-300 hover:border-input hover:text-label"
                 >
                   {tag}
                 </motion.span>
@@ -99,9 +99,9 @@ export default function AboutSection() {
             viewport={VIEWPORT}
             transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
           >
-            <p className="text-2xl font-medium leading-relaxed text-white sm:text-3xl">
-              <span className="text-neutral-500">15+</span> years
-              <span className="align-super text-xs text-neutral-600">™</span> of
+            <p className="text-2xl font-medium leading-relaxed text-foreground sm:text-3xl">
+              <span className="text-muted-foreground">15+</span> years
+              <span className="align-super text-xs text-muted-foreground">™</span> of
               crafting furniture that turns houses into homes, with an obsession
               for natural materials and timeless form.
             </p>
@@ -109,7 +109,7 @@ export default function AboutSection() {
             <motion.div className="mt-10" whileHover={{ scale: 1.02 }}>
               <a
                 href="#collection"
-                className="inline-block rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
+                className="inline-block rounded-full border border-border px-8 py-3 text-sm font-medium text-foreground transition-all duration-500 hover:border-primary-foreground hover:bg-primary-foreground hover:text-primary"
               >
                 Explore Collection
               </a>
@@ -136,7 +136,7 @@ export default function AboutSection() {
                 },
               }}
               whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-              className="aspect-[3/4] overflow-hidden rounded-xl bg-neutral-900"
+              className="aspect-[3/4] overflow-hidden rounded-xl bg-card"
             >
               <img
                 src={img.src}

@@ -34,7 +34,7 @@ const VIEWPORT = { once: true, amount: 0.15 };
 
 export default function ServicesSection() {
   return (
-    <section className="bg-[#0C0C0C] px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -60,7 +60,7 @@ export default function ServicesSection() {
             <h2 className="text-6xl font-bold tracking-tight text-white sm:text-7xl">
               Services
             </h2>
-            <p className="mt-2 text-2xl text-neutral-500">(4)</p>
+            <p className="mt-2 text-2xl text-muted-foreground">(4)</p>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -72,7 +72,7 @@ export default function ServicesSection() {
             {TAGS.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-neutral-700 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-neutral-500 hover:text-neutral-300"
+                className="rounded-full border border-border px-4 py-1.5 text-xs tracking-wide text-subtle transition-colors duration-300 hover:border-input hover:text-label"
               >
                 {tag}
               </span>
@@ -80,7 +80,7 @@ export default function ServicesSection() {
           </motion.div>
         </div>
 
-        <div className="grid gap-0 divide-y divide-neutral-800 w-[64%] ml-auto relative">
+        <div className="grid gap-0 divide-y divide-divider w-[64%] ml-auto relative">
           {SERVICES.map((service, i) => (
             <motion.div
               key={service.number}
@@ -91,17 +91,17 @@ export default function ServicesSection() {
               className="group grid gap-6 py-8 transition-colors md:grid-cols-12"
             >
               <div className="md:col-span-1">
-                <span className="text-sm font-medium text-neutral-600 transition-colors duration-300 group-hover:text-neutral-400">
+                <span className="text-sm font-medium text-muted-foreground transition-colors duration-300 group-hover:text-subtle">
                   {service.number}
                 </span>
               </div>
               <div className="md:col-span-4">
-                <h3 className="text-xl font-semibold text-white transition-all duration-500 group-hover:translate-x-2 group-hover:text-neutral-200">
+                <h3 className="text-xl font-semibold text-foreground transition-all duration-500 group-hover:translate-x-2 group-hover:text-label">
                   {service.title}
                 </h3>
               </div>
               <div className="md:col-span-7">
-                <p className="text-base leading-relaxed text-neutral-500 transition-colors duration-300 group-hover:text-neutral-400">
+                <p className="text-base leading-relaxed text-muted-foreground transition-colors duration-300 group-hover:text-subtle">
                   {service.description}
                 </p>
               </div>
