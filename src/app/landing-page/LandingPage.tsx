@@ -33,9 +33,9 @@ export default function LandingPage() {
           <Projects />
           <Services />
           <ScrollGallery />
+          <TestimonialsSection />
           <Profile />
           <Experience />
-          <TestimonialsSection />
           <Awards />
           <Pricing />
           <Blog />

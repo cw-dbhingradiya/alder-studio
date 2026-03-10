@@ -727,3 +727,54 @@ body {
   left: 80%;
   animation-delay: 4s;
 }
+
+/* ──────────────────────────────────────────────────────────────
+   Landing page marquee + logo slider animations
+
+   These power:
+   - `animate-marquee` / `animate-marquee-slow` (text marquees)
+   - `animate-logo-slider` (background brand logo rows)
+
+   The content is duplicated in JSX, so we move the container
+   by 50% of its width to create a seamless infinite loop.
+   ────────────────────────────────────────────────────────────── */
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-slider-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@utility animate-marquee-slow {
+  animation: marquee-scroll 45s linear infinite;
+}
+
+@utility animate-logo-slider {
+  animation: logo-slider-scroll 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-slow,
+  .animate-logo-slider {
+    animation-duration: 1ms;
+    animation-iteration-count: 1;
+  }
+}
+

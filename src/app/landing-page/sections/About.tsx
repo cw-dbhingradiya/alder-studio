@@ -56,7 +56,7 @@ export default function AboutSection() {
           {Array.from({ length: 4 }).map((_, i) => (
             <span
               key={i}
-              className="text-5xl font-bold tracking-tight text-neutral-800 sm:text-7xl"
+              className="text-5xl font-bold tracking-tight text-[#262626] sm:text-7xl"
             >
               Alder&Co™
             </span>
@@ -99,11 +99,13 @@ export default function AboutSection() {
             viewport={VIEWPORT}
             transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
           >
-            <p className="text-2xl font-medium leading-relaxed text-white sm:text-3xl">
-              <span className="text-neutral-500">15+</span> years
-              <span className="align-super text-xs text-neutral-600">™</span> of
-              crafting furniture that turns houses into homes, with an obsession
-              for natural materials and timeless form.
+            <p className="text-2xl font-medium leading-relaxed text-foreground sm:text-3xl">
+              <span className="text-muted-foreground">15+</span> years
+              <span className="align-super text-xs text-muted-foreground">
+                ™
+              </span>{" "}
+              of crafting furniture that turns houses into homes, with an
+              obsession for natural materials and timeless form.
             </p>
 
             <motion.div className="mt-10" whileHover={{ scale: 1.02 }}>

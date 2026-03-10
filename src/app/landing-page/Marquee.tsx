@@ -18,7 +18,7 @@ export default function Marquee({
 }: MarqueeProps) {
   return (
     <div className={`overflow-hidden ${className}`}>
-      <div className={`flex w-max ${slow ? "anim-marquee-slow" : "anim-marquee"}`}>
+      <div className={`flex w-max ${slow ? "animate-marquee-slow" : "animate-marquee"}`}>
         <div className="flex shrink-0 items-center gap-8">{children}</div>
         <div className="flex shrink-0 items-center gap-8" aria-hidden="true">
           {children}

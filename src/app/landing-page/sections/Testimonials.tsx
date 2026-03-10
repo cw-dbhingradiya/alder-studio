@@ -1,139 +1,239 @@
-import { motion } from "motion/react";
-import SectionHeader from "@/components/ui/Header/Header";
+"use client";
 
+import Link from "next/link";
+import { motion } from "motion/react";
+
+/**
+ * Testimonial cards data: quote, author, role, avatar and optional logo.
+ * Matches the Framer-style layout with card body, divider, and user block.
+ */
 const TESTIMONIALS = [
   {
     quote:
-      "The dining table Alder crafted for us is the heart of our home now. Every meal feels special. The walnut grain is stunning and the joinery is flawless — you can feel the craftsmanship in every detail.",
-    name: "Emma Lindström",
-    title: "Homeowner, Stockholm",
+      "Akihiko elevated every layer of our brand's online presence. From motion details to structural layout, every piece felt crafted and intentional. The site not only looked beautiful but performed well too — and the entire collaboration process was smooth.",
+    name: "Lisa Kuroda",
+    role: "Founder, Studio Analog",
     image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80",
+      "https://framerusercontent.com/images/nfHihiND3hFVe8PsrYPUstbAcQ.jpg?width=512&height=512",
+    logo: "https://framerusercontent.com/images/liDp6RqOmZpoiyriU2da9i9ZRNM.png",
   },
   {
     quote:
-      "We furnished our entire office with Alder pieces. The team understood our vision instantly — clean lines, warm materials, functional beauty. Six months in and everything still looks brand new.",
-    name: "Marcus Holt",
-    title: "Founder, Haus Studio",
+      "Akihiko approaches every project with a deep sense of purpose. His work is never just about the surface — it's about how each element functions, connects, and flows. He brings logic, sharpness, and confidence to every decision, and his build quality.",
+    name: "Daniel Reyes",
+    role: "Director, Framehaus",
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80",
+      "https://framerusercontent.com/images/1NojF9yywMvqzHNbp79Nt0uTs.png?width=512&height=512",
+    logo: "https://framerusercontent.com/images/liDp6RqOmZpoiyriU2da9i9ZRNM.png",
   },
   {
     quote:
-      "What sets Alder apart is their obsession with material quality. They flew me to their workshop to pick the exact slab of oak for my bookshelf. That level of care is incredibly rare.",
-    name: "Sofia Nakamura",
-    title: "Interior Designer",
+      "His ability to merge storytelling with clean interaction design is unmatched. Akihiko understands not just how things should look, but why they should look that way — and that insight came through in every part of the work.",
+    name: "Mei Tanaka",
+    role: "UX Designer, Nuro",
     image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80",
+      "https://framerusercontent.com/images/3I9yi7BmKFs7ilmb0ijcCQZSZfo.png?width=512&height=512",
+    logo: "https://framerusercontent.com/images/liDp6RqOmZpoiyriU2da9i9ZRNM.png",
   },
   {
     quote:
-      "From initial sketch to final delivery, working with Alder felt like a true partnership. They transformed our living room from empty space into the warmest room in our apartment.",
-    name: "Thomas Eriksen",
-    title: "Architect, Oslo",
+      "Working with Akihiko was more than just hiring a designer — it felt like bringing on a creative partner who truly understood our goals. He took our raw ideas, added clarity, and transformed them into something that not only looked stunning.",
+    name: "Julian Pierce",
+    role: "Director, Vektor Inc.",
     image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80",
+      "https://framerusercontent.com/images/CqJ0xMtE2jw5wg8qA63IwRzImN0.png?width=512&height=512",
+    logo: "https://framerusercontent.com/images/liDp6RqOmZpoiyriU2da9i9ZRNM.png",
   },
   {
     quote:
-      "Sustainable, beautiful, and built to last — Alder delivered on every promise. Our bedroom set is a masterpiece of Scandinavian design. We couldn't be happier with the result.",
-    name: "Ingrid Voss",
-    title: "Homeowner, Copenhagen",
+      "Akihiko brings a rare balance of creativity and discipline. He's incredibly fast without ever sacrificing attention to detail. From early ideation to the final product, his process is intentional, his communication is clear.",
+    name: "Hana Samoto",
+    role: "CEO, Willow Studio",
     image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80",
+      "https://framerusercontent.com/images/vYFurv3Bhpru2Pn28GNGdN5WOk.png?width=512&height=512",
+    logo: "https://framerusercontent.com/images/liDp6RqOmZpoiyriU2da9i9ZRNM.png",
   },
 ];
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-const VIEWPORT = { once: true, amount: 0.1 };
+/** Placeholder logos for background slider (can be replaced with real brand logos). */
+const LOGO_SLIDER_ITEMS = [
+  "Studio Analog",
+  "Framehaus",
+  "Nuro",
+  "Vektor Inc.",
+  "Willow Studio",
+  "Alder",
+  "Studio Analog",
+  "Framehaus",
+  "Nuro",
+  "Vektor Inc.",
+  "Willow Studio",
+  "Alder",
+];
 
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-const cardVariant = {
-  hidden: { opacity: 0, scale: 0.92, y: 20 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: EASE },
-  },
-};
+const EASE = [0.16, 1, 0.3, 1] as const;
+/** Each card animates when it enters view; amount 0.2 gives one-by-one feel as user scrolls. */
+const CARD_VIEWPORT = { once: true, amount: 0.2 };
+
+/** Checkmark icon for verified user (inline SVG to avoid extra assets). */
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 256"
+      className={className}
+      aria-hidden
+    >
+      <path
+        fill="currentColor"
+        d="M225.86 102.82c-3.77-3.94-7.67-8-9.14-11.57-1.36-3.27-1.44-8.69-1.52-13.94-.15-9.76-.31-20.82-8-28.51s-18.75-7.85-28.51-8c-5.25-.08-10.67-.16-13.94-1.52-3.56-1.47-7.63-5.37-11.57-9.14C146.28 23.51 138.44 16 128 16s-18.27 7.51-25.18 14.14c-3.94 3.77-8 7.67-11.57 9.14C88 40.64 82.56 40.72 77.31 40.8c-9.76.15-20.82.31-28.51 8S41 67.55 40.8 77.31c-.08 5.25-.16 10.67-1.52 13.94-1.47 3.56-5.37 7.63-9.14 11.57C23.51 109.72 16 117.56 16 128s7.51 18.27 14.14 25.18c3.77 3.94 7.67 8 9.14 11.57 1.36 3.27 1.44 8.69 1.52 13.94.15 9.76.31 20.82 8 28.51s18.75 7.85 28.51 8c5.25.08 10.67.16 13.94 1.52 3.56 1.47 7.63 5.37 11.57 9.14C109.72 232.49 117.56 240 128 240s18.27-7.51 25.18-14.14c3.94-3.77 8-7.67 11.57-9.14 3.27-1.36 8.69-1.44 13.94-1.52 9.76-.15 20.82-.31 28.51-8s7.85-18.75 8-28.51c.08-5.25.16-10.67 1.52-13.94 1.47-3.56 5.37-7.63 9.14-11.57C232.49 146.28 240 138.44 240 128s-7.51-18.27-14.14-25.18zm-52.2 6.84l-56 56a8 8 0 01-11.32 0l-24-24a8 8 0 0111.32-11.32L112 148.69l50.34-50.35a8 8 0 0111.32 11.32z"
+      />
+    </svg>
+  );
+}
+
+type Testimonial = (typeof TESTIMONIALS)[number];
+
+function TestimonialCard({
+  testimonial: t,
+  index,
+}: {
+  testimonial: Testimonial;
+  index: number;
+}) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={CARD_VIEWPORT}
+      transition={{ duration: 0.6, ease: EASE, delay: index * 0.1 }}
+      className="flex flex-col rounded-[10px] border border-border/20 bg-card"
+    >
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-sm leading-relaxed text-subtle">
+          &ldquo;{t.quote}&rdquo;
+        </p>
+      </div>
+      <div className="border-t border-border/20" />
+      <div className="flex items-center gap-4 p-6">
+        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[5px] bg-muted">
+          <img
+            src={t.image}
+            alt=""
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            <p className="truncate text-sm font-medium text-foreground">
+              {t.name}
+            </p>
+            <span className="text-primary" aria-hidden>
+              <CheckIcon className="h-4 w-4" />
+            </span>
+          </div>
+          <p className="truncate text-xs text-muted-foreground">{t.role}</p>
+        </div>
+        {t.logo && (
+          <div className="relative h-8 w-14 shrink-0 overflow-hidden rounded object-contain">
+            <img
+              src={t.logo}
+              alt=""
+              className="h-full w-full object-contain"
+              loading="lazy"
+            />
+          </div>
+        )}
+      </div>
+    </motion.article>
+  );
+}
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-[#0A0A0A] px-6 py-24">
-      <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={VIEWPORT}
-          transition={{ duration: 0.6, ease: EASE }}
+    <section className="relative bg-[#0A0A0A]">
+      {/* Sticky header: marquee title + CTA. Stays at top while section is in view. */}
+      <div className="sticky top-0 z-10 flex w-full items-center justify-between gap-4 border-b border-neutral-800/20 bg-[#0A0A0A] px-6 py-4">
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <div className="flex w-max animate-marquee items-center gap-0">
+            <div className="flex shrink-0 items-center gap-8 pr-8">
+              {[1, 2, 3].map((i) => (
+                <h2
+                  key={i}
+                  className="shrink-0 text-left text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+                >
+                  Testimonial© – Reviews
+                </h2>
+              ))}
+            </div>
+            <div className="flex shrink-0 items-center gap-8 pr-8" aria-hidden>
+              {[1, 2, 3].map((i) => (
+                <h2
+                  key={`dup-${i}`}
+                  className="shrink-0 text-left text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
+                >
+                  Testimonial© – Reviews
+                </h2>
+              ))}
+            </div>
+          </div>
+        </div>
+        <Link
+          href="#contact"
+          className="shrink-0 rounded-full border-2 border-primary-foreground bg-transparent px-5 py-3 text-sm font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-primary-foreground hover:text-primary"
         >
-          <SectionHeader
-            label="Testimonials"
-            labelJp="Voices"
-            number="07"
-            category="Happy Homes"
-          />
-        </motion.div>
+          Get in touch
+        </Link>
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={VIEWPORT}
-          transition={{ duration: 0.8, ease: EASE }}
-          className="mb-12 flex items-center justify-between"
+      {/* 1) Logo slider first — sticky so it stays visible while cards scroll in below. */}
+      <div className="sticky top-16 z-0 flex min-h-[70vh] w-full flex-col justify-center overflow-hidden border-b border-neutral-800/10 bg-[#0A0A0A]">
+        <div
+          className="flex flex-col justify-center gap-12 py-16 opacity-[0.08] md:gap-16 md:opacity-[0.1]"
+          aria-hidden
         >
-          <h2 className="text-4xl font-bold text-white sm:text-5xl">
-            What Our Clients Say<span className="align-super text-sm">©</span>
-          </h2>
-          <a
-            href="#contact"
-            className="hidden rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black sm:inline-block"
-          >
-            Get in touch
-          </a>
-        </motion.div>
+          <div className="flex w-max animate-logo-slider items-center gap-16 md:gap-24">
+            {[...LOGO_SLIDER_ITEMS, ...LOGO_SLIDER_ITEMS].map((label, i) => (
+              <span
+                key={`row1-${i}`}
+                className="shrink-0 text-3xl font-bold tracking-tight text-white md:text-5xl"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+          <div className="flex w-max animate-logo-slider items-center gap-16 [animation-direction:reverse] [animation-duration:35s] md:gap-24">
+            {[...LOGO_SLIDER_ITEMS, ...LOGO_SLIDER_ITEMS].map((label, i) => (
+              <span
+                key={`row2-${i}`}
+                className="shrink-0 text-3xl font-bold tracking-tight text-white md:text-5xl"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
 
-        <motion.div
-          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT}
-        >
-          {TESTIMONIALS.map((t) => (
-            <motion.div
-              key={t.name}
-              variants={cardVariant}
-              whileHover={{
-                y: -6,
-                transition: { type: "spring", stiffness: 300, damping: 20 },
-              }}
-              className="group flex flex-col justify-between rounded-2xl border border-neutral-800/50 bg-neutral-900/50 p-8 transition-colors duration-500 hover:border-neutral-700 hover:bg-neutral-900/80"
-            >
-              <blockquote className="text-base leading-relaxed text-neutral-400 transition-colors duration-300 group-hover:text-neutral-300">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
-              <div className="mt-8 flex items-center gap-4">
-                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-neutral-800">
-                  <img
-                    src={t.image}
-                    alt={t.name}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-white">{t.name}</p>
-                  <p className="text-xs text-neutral-500">{t.title}</p>
-                </div>
-              </div>
-            </motion.div>
+      {/* 2) Cards scroll in one by one with scroll-triggered animation. */}
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 lg:gap-48">
+          {/* Row 1: first two cards */}
+          {TESTIMONIALS.slice(0, 2).map((t, i) => (
+            <TestimonialCard key={t.name} testimonial={t} index={i} />
           ))}
-        </motion.div>
+          {/* Row 2: single centered card */}
+          <div className="md:col-span-2 md:flex md:justify-center">
+            <div className="w-full md:max-w-[480px]">
+              <TestimonialCard testimonial={TESTIMONIALS[2]} index={2} />
+            </div>
+          </div>
+          {/* Row 3: last two cards */}
+          {TESTIMONIALS.slice(3, 5).map((t, i) => (
+            <TestimonialCard key={t.name} testimonial={t} index={i + 3} />
+          ))}
+        </div>
       </div>
     </section>
   );
