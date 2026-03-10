@@ -71,12 +71,12 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           ref={ref}
           className={cn(
-            "flex w-full min-h-[60px] rounded-md border border-border bg-transparent px-3.5 py-3 text-sm font-normal text-foreground outline-none box-border",
-            "placeholder:text-sm placeholder:font-normal placeholder:text-placeholder",
+            "flex w-full min-h-[60px] rounded-md border border-[#dcdcdc] bg-transparent px-3.5 py-3 text-sm font-normal text-[#1d1f25] outline-none box-border",
+            "placeholder:text-sm placeholder:font-normal placeholder:text-[#a1a7b3]",
             "focus-visible:ring-0 focus-visible:outline-none",
-            "disabled:cursor-not-allowed disabled:border-0 disabled:bg-muted disabled:text-placeholder",
+            "disabled:cursor-not-allowed disabled:border-0 disabled:bg-[#ededed] disabled:text-[#a0a0a0]",
             error &&
-              "border-error-border focus-visible:border-error-border focus-visible:ring-4 focus-visible:ring-error",
+              "border-[#f04438] focus-visible:border-[#f04438] focus-visible:ring-4 focus-visible:ring-[#fee4e2]",
             classNames?.textarea,
             className,
           )}
@@ -92,8 +92,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           <p
             id={helperId}
             className={cn(
-              "mt-1 text-xs text-muted-foreground",
-              error && "text-error-foreground",
+              "mt-1 text-xs text-[#4a4d52]",
+              error && "text-[#f04438]",
               classNames?.helperText,
             )}
             role={error ? "alert" : "status"}

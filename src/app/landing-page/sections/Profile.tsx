@@ -29,7 +29,7 @@ const IMAGES = [
 
 export default function ProfileSection() {
   return (
-    <section id="about" className="bg-background px-6 py-24">
+    <section id="about" className="bg-[#0A0A0A] px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -67,7 +67,7 @@ export default function ProfileSection() {
                 }}
                 whileHover={{ scale: 1.02, transition: { duration: 0.4 } }}
               >
-                <div className="h-full overflow-hidden rounded-xl bg-card">
+                <div className="h-full overflow-hidden rounded-xl bg-neutral-900">
                   <img
                     src={img.src}
                     alt={img.alt}
@@ -85,7 +85,7 @@ export default function ProfileSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={VIEWPORT}
               transition={{ duration: 0.7, ease: EASE }}
-              className="text-lg leading-relaxed text-muted-foreground"
+              className="text-lg leading-relaxed text-neutral-500"
             >
               Every joint, curve, and surface tells a story of patience and
               precision. We believe furniture should age gracefully — growing
@@ -115,7 +115,7 @@ export default function ProfileSection() {
             >
               <a
                 href="#collection"
-                className="rounded-full border border-border px-8 py-3 text-sm font-medium text-foreground transition-all duration-500 hover:border-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                className="rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
               >
                 VIEW COLLECTIONS
               </a>

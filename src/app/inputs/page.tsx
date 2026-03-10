@@ -114,7 +114,7 @@ function InputSetsContent() {
               return (
                 <article
                   key={inputSet.id}
-                  className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-sidebar/95 shadow-sm transition-colors hover:border-input"
+                  className="flex h-full flex-col overflow-hidden rounded-lg border border-border bg-sidebar/95 shadow-sm transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
                 >
                   {/* Image preview */}
                   <div className="relative h-40 bg-muted">
@@ -133,7 +133,7 @@ function InputSetsContent() {
                           </div>
                         ))}
                         {inputSet.images.length > 3 && (
-                          <div className="absolute bottom-2 right-2 rounded-full bg-primary/60 px-2 py-0.5 text-[11px] text-primary-foreground">
+                          <div className="absolute bottom-2 right-2 rounded-full bg-black/60 px-2 py-0.5 text-[11px] text-white">
                             +{inputSet.images.length - 3} more
                           </div>
                         )}

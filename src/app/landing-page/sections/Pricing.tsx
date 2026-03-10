@@ -50,7 +50,7 @@ const VIEWPORT = { once: true, amount: 0.15 };
 
 export default function PricingSection() {
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="bg-[#0A0A0A] px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -81,7 +81,7 @@ export default function PricingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
-            className="mt-4 max-w-2xl text-lg text-muted-foreground"
+            className="mt-4 max-w-2xl text-lg text-neutral-500"
           >
             Transparent pricing for every scope — from a single statement piece
             to a completely furnished home.
@@ -102,20 +102,20 @@ export default function PricingSection() {
               }}
               className={`flex flex-col justify-between rounded-2xl border p-8 transition-colors duration-500 ${
                 plan.highlighted
-                  ? "border-input bg-primary-foreground text-primary"
-                  : "border-border/50 bg-card/50 text-foreground hover:border-border"
+                  ? "border-neutral-500 bg-white text-black"
+                  : "border-neutral-800/50 bg-neutral-900/50 text-white hover:border-neutral-700"
               }`}
             >
               <div>
                 <p
-                  className={`text-sm font-medium tracking-widest uppercase ${plan.highlighted ? "text-muted-foreground" : "text-muted-foreground"}`}
+                  className={`text-sm font-medium tracking-widest uppercase ${plan.highlighted ? "text-neutral-600" : "text-neutral-500"}`}
                 >
                   {plan.name}
                 </p>
                 <div className="mt-6 flex items-baseline gap-2">
                   <span className="text-5xl font-bold">{plan.price}</span>
                   <span
-                    className={`text-sm ${plan.highlighted ? "text-muted-foreground" : "text-muted-foreground"}`}
+                    className={`text-sm ${plan.highlighted ? "text-neutral-500" : "text-neutral-600"}`}
                   >
                     {plan.period}
                   </span>
@@ -124,7 +124,7 @@ export default function PricingSection() {
                   {plan.features.map((f) => (
                     <li
                       key={f}
-                      className={`flex items-center gap-3 text-sm ${plan.highlighted ? "text-label" : "text-subtle"}`}
+                      className={`flex items-center gap-3 text-sm ${plan.highlighted ? "text-neutral-700" : "text-neutral-400"}`}
                     >
                       <span
                         className={`text-xs ${plan.highlighted ? "text-black" : "text-white"}`}
@@ -141,8 +141,8 @@ export default function PricingSection() {
                 whileTap={{ scale: 0.98 }}
                 className={`mt-10 w-full rounded-full py-3 text-sm font-semibold transition-all duration-300 ${
                   plan.highlighted
-                    ? "bg-primary text-primary-foreground hover:bg-primary-hover"
-                    : "border border-border bg-transparent text-foreground hover:bg-primary-foreground hover:text-primary"
+                    ? "bg-black text-white hover:bg-neutral-800"
+                    : "border border-neutral-600 bg-transparent text-white hover:bg-white hover:text-black"
                 }`}
               >
                 Get Started

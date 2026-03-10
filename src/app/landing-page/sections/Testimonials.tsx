@@ -63,7 +63,7 @@ const cardVariant = {
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="bg-[#0A0A0A] px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -86,12 +86,12 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.8, ease: EASE }}
           className="mb-12 flex items-center justify-between"
         >
-          <h2 className="text-4xl font-bold text-foreground sm:text-5xl">
+          <h2 className="text-4xl font-bold text-white sm:text-5xl">
             What Our Clients Say<span className="align-super text-sm">©</span>
           </h2>
           <a
             href="#contact"
-            className="hidden rounded-full border border-border px-8 py-3 text-sm font-medium text-foreground transition-all duration-500 hover:border-primary-foreground hover:bg-primary-foreground hover:text-primary sm:inline-block"
+            className="hidden rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black sm:inline-block"
           >
             Get in touch
           </a>
@@ -112,13 +112,13 @@ export default function TestimonialsSection() {
                 y: -6,
                 transition: { type: "spring", stiffness: 300, damping: 20 },
               }}
-              className="group flex flex-col justify-between rounded-2xl border border-border/50 bg-card/50 p-8 transition-colors duration-500 hover:border-border hover:bg-card/80"
+              className="group flex flex-col justify-between rounded-2xl border border-neutral-800/50 bg-neutral-900/50 p-8 transition-colors duration-500 hover:border-neutral-700 hover:bg-neutral-900/80"
             >
-              <blockquote className="text-base leading-relaxed text-subtle transition-colors duration-300 group-hover:text-label">
+              <blockquote className="text-base leading-relaxed text-neutral-400 transition-colors duration-300 group-hover:text-neutral-300">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
               <div className="mt-8 flex items-center gap-4">
-                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-card">
+                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-neutral-800">
                   <img
                     src={t.image}
                     alt={t.name}
@@ -127,8 +127,8 @@ export default function TestimonialsSection() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.title}</p>
+                  <p className="text-sm font-semibold text-white">{t.name}</p>
+                  <p className="text-xs text-neutral-500">{t.title}</p>
                 </div>
               </div>
             </motion.div>
