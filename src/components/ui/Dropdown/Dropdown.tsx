@@ -49,7 +49,7 @@ export function Dropdown({
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         aria-label={ariaLabel}
-        className={`flex w-full items-center justify-between gap-2 rounded-lg border border-input bg-sidebar px-3 py-2 text-left text-sm text-foreground ${buttonClassName}`}
+        className={`flex w-full items-center justify-between gap-2 rounded-lg border border-input bg-control px-3 py-2 text-left text-sm text-foreground ${buttonClassName}`}
       >
         <span>{displayValue}</span>
         <ChevronDown
@@ -81,9 +81,7 @@ export function Dropdown({
                     : "text-foreground"
                 }`}
               >
-                {value === option.value && (
-                  <Check className="size-4 shrink-0" />
-                )}
+                {value === option.value && <Check className="size-4 shrink-0" />}
                 <span className={value === option.value ? "" : "pl-6"}>
                   {option.label}
                 </span>

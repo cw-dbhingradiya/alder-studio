@@ -46,7 +46,7 @@ function PasswordToggle({
     <button
       type="button"
       onClick={onToggle}
-      className="shrink-0 text-muted-foreground transition-colors hover:text-label"
+      className="shrink-0 text-neutral-500 transition-colors hover:text-neutral-300"
       aria-label={visible ? "Hide password" : "Show password"}
     >
       {visible ? <EyeOff className="size-5" /> : <Eye className="size-5" />}
@@ -88,7 +88,7 @@ function LoginView({
         <h2 className="text-2xl font-semibold tracking-tight text-white">
           Welcome Back
         </h2>
-        <p className="mt-2 text-sm text-subtle">
+        <p className="mt-2 text-sm text-neutral-400">
           Sign in to your Alder<span className="align-super text-[8px]">®</span>{" "}
           account
         </p>
@@ -156,7 +156,7 @@ function LoginView({
             variant="link-gray"
             size="sm"
             onClick={() => onSwitch("forgot")}
-            className="text-xs text-subtle hover:text-foreground hover:bg-transparent"
+            className="text-xs text-neutral-400 hover:text-white hover:bg-transparent"
           >
             Forgot password?
           </Button>
@@ -174,12 +174,12 @@ function LoginView({
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="mt-6 text-center text-sm text-neutral-500">
         Don&apos;t have an account?{" "}
         <button
           type="button"
           onClick={() => onSwitch("signup")}
-          className="cursor-pointer font-medium text-foreground transition-colors hover:text-label"
+          className="cursor-pointer font-medium text-white transition-colors hover:text-neutral-300"
         >
           Create Account
         </button>
@@ -226,7 +226,7 @@ function SignUpView({
         <h2 className="text-2xl font-semibold tracking-tight text-white">
           Create Account
         </h2>
-        <p className="mt-2 text-sm text-subtle">
+        <p className="mt-2 text-sm text-neutral-400">
           Join Alder<span className="align-super text-[8px]">®</span> today
         </p>
       </div>
@@ -317,12 +317,12 @@ function SignUpView({
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="mt-6 text-center text-sm text-neutral-500">
         Already have an account?{" "}
         <button
           type="button"
           onClick={() => onSwitch("login")}
-          className="cursor-pointer font-medium text-foreground transition-colors hover:text-label"
+          className="cursor-pointer font-medium text-white transition-colors hover:text-neutral-300"
         >
           Sign In
         </button>
@@ -352,7 +352,7 @@ function ForgotPasswordView({
         <h2 className="text-xl font-semibold tracking-tight text-white">
           Check Your Email
         </h2>
-        <p className="mt-2 max-w-xs text-sm text-subtle">
+        <p className="mt-2 max-w-xs text-sm text-neutral-400">
           We&apos;ve sent a password reset link to{" "}
           <span className="font-medium text-white">{email}</span>. Please check
           your inbox.
@@ -360,7 +360,7 @@ function ForgotPasswordView({
         <button
           type="button"
           onClick={() => onSwitch("login")}
-          className="cursor-pointer mt-8 text-sm font-medium text-foreground transition-colors hover:text-label"
+          className="cursor-pointer mt-8 text-sm font-medium text-white transition-colors hover:text-neutral-300"
         >
           &larr; Back to Sign In
         </button>
@@ -374,7 +374,7 @@ function ForgotPasswordView({
         <h2 className="text-2xl font-semibold tracking-tight text-white">
           Forgot Password
         </h2>
-        <p className="mt-2 text-sm text-subtle">
+        <p className="mt-2 text-sm text-neutral-400">
           Enter your email and we&apos;ll send you a reset link
         </p>
       </div>
@@ -412,12 +412,12 @@ function ForgotPasswordView({
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="mt-6 text-center text-sm text-neutral-500">
         Remember your password?{" "}
         <button
           type="button"
           onClick={() => onSwitch("login")}
-          className="cursor-pointer font-medium text-foreground transition-colors hover:text-label"
+          className="cursor-pointer font-medium text-white transition-colors hover:text-neutral-300"
         >
           Sign In
         </button>
@@ -486,12 +486,12 @@ export default function LoginModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.97 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="relative z-10 w-full max-w-md rounded-2xl border border-border bg-card p-8 shadow-2xl"
+            className="relative z-10 w-full max-w-md rounded-2xl border border-neutral-800 bg-[#111111] p-8 shadow-2xl"
           >
             <button
               type="button"
               onClick={handleClose}
-              className="cursor-pointer absolute right-4 top-4 rounded-lg p-1 text-muted-foreground transition-colors hover:text-foreground"
+              className="cursor-pointer absolute right-4 top-4 rounded-lg p-1 text-neutral-500 transition-colors hover:text-white"
               aria-label="Close"
             >
               <X className="size-5" />

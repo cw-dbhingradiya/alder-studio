@@ -7,14 +7,13 @@ const variantClasses: Record<string, string> = {
     "bg-primary text-primary-foreground hover:bg-primary-hover disabled:opacity-50",
   secondary:
     "border border-input bg-secondary text-secondary-foreground hover:bg-secondary-hover",
-  danger:
-    "bg-destructive text-destructive-foreground hover:bg-destructive-hover disabled:opacity-50",
+  danger: "bg-[#b51313] text-white hover:bg-[#991010]",
   ghost: "text-ghost hover:bg-accent",
   text: "text-btn-text hover:text-btn-text-hover",
   "link-gray":
-    "text-subtle hover:text-primary-foreground bg-transparent hover:bg-transparent",
+    "text-neutral-400 hover:text-white bg-transparent hover:bg-transparent",
   "primary-dark":
-    "bg-primary-foreground text-primary hover:bg-accent disabled:opacity-50",
+    "bg-white text-[#0A0A0A] hover:bg-neutral-200 disabled:opacity-50",
 };
 
 const sizeClasses: Record<string, string> = {

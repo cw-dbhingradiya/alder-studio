@@ -12,7 +12,7 @@ export default function SectionHeader({
   category,
 }: SectionHeaderProps) {
   return (
-    <div className="mb-16 flex flex-col gap-1 text-[11px] tracking-widest text-muted-foreground uppercase">
+    <div className="mb-16 flex flex-col gap-1 text-[11px] tracking-widest text-neutral-600 uppercase">
       <span>
         © {label}
         {labelJp && <span className="ml-1 normal-case">{labelJp}</span>}
