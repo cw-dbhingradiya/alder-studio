@@ -50,7 +50,7 @@ const cardVariant = {
 
 export default function BlogSection() {
   return (
-    <section className="bg-[#0C0C0C] px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -82,7 +82,7 @@ export default function BlogSection() {
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
             href="#"
-            className="hidden rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black sm:inline-block"
+            className="hidden rounded-full border border-border px-8 py-3 text-sm font-medium text-foreground transition-all duration-500 hover:border-primary-foreground hover:bg-primary-foreground hover:text-primary sm:inline-block"
           >
             VIEW ALL
           </motion.a>
@@ -103,9 +103,9 @@ export default function BlogSection() {
                 y: -6,
                 transition: { type: "spring", stiffness: 300, damping: 20 },
               }}
-              className="group cursor-pointer overflow-hidden rounded-2xl border border-neutral-800/50 transition-colors duration-500 hover:border-neutral-700"
+              className="group cursor-pointer overflow-hidden rounded-2xl border border-border/50 transition-colors duration-500 hover:border-border"
             >
-              <div className="aspect-[4/3] overflow-hidden bg-neutral-900">
+              <div className="aspect-[4/3] overflow-hidden bg-card">
                 <motion.img
                   src={article.image}
                   alt={article.alt}
@@ -117,14 +117,14 @@ export default function BlogSection() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full border border-neutral-700 px-3 py-1 text-[10px] tracking-wide text-neutral-400 uppercase">
+                  <span className="rounded-full border border-border px-3 py-1 text-[10px] tracking-wide text-subtle uppercase">
                     {article.tag}
                   </span>
-                  <span className="text-xs text-neutral-600">
+                  <span className="text-xs text-muted-foreground">
                     {article.date}
                   </span>
                 </div>
-                <h3 className="mt-4 text-base font-semibold leading-snug text-white transition-all duration-500 group-hover:translate-x-1 group-hover:text-neutral-200">
+                <h3 className="mt-4 text-base font-semibold leading-snug text-foreground transition-all duration-500 group-hover:translate-x-1 group-hover:text-label">
                   {article.title}
                 </h3>
               </div>

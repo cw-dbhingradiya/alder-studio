@@ -24,7 +24,7 @@ export default function LandingPage() {
       root
       options={{ lerp: 0.075, duration: 1.4, smoothWheel: true }}
     >
-      <div className="flex min-h-screen flex-col bg-[#0A0A0A] text-white">
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
         <Navbar />
         <div className="flex-1">
           <HeroSection />

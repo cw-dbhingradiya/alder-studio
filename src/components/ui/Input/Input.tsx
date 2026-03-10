@@ -30,23 +30,29 @@ export interface InputProps extends Omit<
 }
 
 const baseInputClasses =
-  "flex h-8 w-full box-border rounded-[6px] bg-white px-3 py-1.5 text-xs font-normal text-[#1d1f25] outline-none border border-transparent placeholder:font-normal placeholder:text-[#a1a7b3] focus:outline-none focus:ring-1 focus:ring-[#515d70] disabled:cursor-not-allowed";
+  "flex h-8 w-full box-border rounded-[6px] bg-sidebar px-3 py-1.5 text-xs font-normal text-foreground outline-none border border-transparent placeholder:font-normal placeholder:text-placeholder focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed";
 
-const inputVariantClasses: Record<NonNullable<InputProps["variant"]>, string> = {
+const inputVariantClasses: Record<
+  NonNullable<InputProps["variant"]>,
+  string
+> = {
   default:
-    "border border-[#dcdcdc] bg-white text-[#1d1f25] focus:ring-1 focus:ring-[#515d70] disabled:border-0 disabled:text-[#a0a0a0] disabled:bg-[#ededed]",
+    "border border-border bg-sidebar text-foreground focus:ring-1 focus:ring-ring disabled:border-0 disabled:text-placeholder disabled:bg-muted",
   outline:
-    "border-0 border-b border-b-[#dcdcdc] rounded-none bg-transparent text-[#1d1f25] focus:ring-0 focus:border-b-[#515d70]",
+    "border-0 border-b border-border rounded-none bg-transparent text-foreground focus:ring-0 focus:border-b-ring",
   danger:
-    "border border-[#f04438] text-[#475467] focus:ring-1 focus:ring-[#f04438] focus-visible:border-[#f04438] focus-visible:ring-4 focus-visible:ring-[#fee4e2] disabled:bg-[#fef6f5]",
+    "border border-error-border text-label focus:ring-1 focus:ring-error-foreground focus-visible:border-error-border focus-visible:ring-4 focus-visible:ring-error disabled:bg-error",
 };
 
 const helperBaseClasses = "mt-1.5 flex items-center text-xs";
 
-const helperVariantClasses: Record<NonNullable<InputProps["variant"]>, string> = {
-  default: "text-[#4a4d52]",
-  outline: "text-[#4a4d52]",
-  danger: "text-[#f04438]",
+const helperVariantClasses: Record<
+  NonNullable<InputProps["variant"]>,
+  string
+> = {
+  default: "text-muted-foreground",
+  outline: "text-muted-foreground",
+  danger: "text-error-foreground",
 };
 
 interface UseInputOptions {

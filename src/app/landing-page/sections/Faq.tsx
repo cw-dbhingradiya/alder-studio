@@ -36,7 +36,7 @@ export default function FaqSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   return (
-    <section className="bg-[#0A0A0A] px-6 py-24">
+    <section className="bg-background px-6 py-24">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -61,21 +61,21 @@ export default function FaqSection() {
           >
             <h2 className="text-4xl font-bold text-white sm:text-5xl">
               Frequently Asked <br /> Questions
-              <span className="text-neutral-600">.™</span>
+              <span className="text-muted-foreground">.™</span>
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-neutral-500">
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Everything you need to know about our process, materials, and
               services. Don&apos;t see your question?{" "}
               <a
                 href="#contact"
-                className="text-white underline underline-offset-4 transition-colors duration-300 hover:text-neutral-300"
+                className="text-foreground underline underline-offset-4 transition-colors duration-300 hover:text-label"
               >
                 Get in touch.
               </a>
             </p>
           </motion.div>
 
-          <div className="divide-y divide-neutral-800">
+          <div className="divide-y divide-divider">
             {FAQS.map((faq, i) => (
               <motion.div
                 key={i}
@@ -89,11 +89,11 @@ export default function FaqSection() {
                   onClick={() => setOpenIdx(openIdx === i ? null : i)}
                   className="flex w-full items-center justify-between py-6 text-left"
                 >
-                  <span className="pr-4 text-base font-medium text-white transition-colors duration-300 hover:text-neutral-300">
+                  <span className="pr-4 text-base font-medium text-foreground transition-colors duration-300 hover:text-label">
                     {faq.q}
                   </span>
                   <motion.span
-                    className="shrink-0 text-xl text-neutral-500"
+                    className="shrink-0 text-xl text-muted-foreground"
                     animate={{ rotate: openIdx === i ? 45 : 0 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -110,7 +110,7 @@ export default function FaqSection() {
                       transition={{ duration: 0.4, ease: EASE }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 text-sm leading-relaxed text-neutral-500">
+                      <p className="pb-6 text-sm leading-relaxed text-muted-foreground">
                         {faq.a}
                       </p>
                     </motion.div>
