@@ -128,7 +128,11 @@ export default function ServicesSection() {
           </motion.div>
         </div>
 
-        <div className="grid gap-0 divide-y divide-neutral-800 w-[64%] ml-auto relative">
+        <div
+          className="grid gap-0 divide-y divide-neutral-800 w-[64%] ml-auto relative"
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
           {SERVICES.map((service, i) => (
             <motion.div
               key={service.number}
