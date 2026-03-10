@@ -20,7 +20,7 @@
 
   /* Borders */
   --border: #e4e4e7;
-  --border-strong: #d4d4d8;
+  --border-strong: #e4e4e7;
   --table-border: #e4e4e7;
 
   /* Hover / active states */
@@ -367,7 +367,7 @@ button {
 }
 
 .dark {
-  --background: #0a0a0a;
+  --background: #111111;
   --foreground: #ffffff;
 
   --surface: #161b26;
@@ -379,11 +379,11 @@ button {
   --text-muted: #94969c;
   --text-placeholder: #71717a;
 
-  --border: #333741;
-  --border-strong: #52525b;
-  --table-border: #2a2627;
+  --border: #1f1f1f;
+  --border-strong: #1f1f1f;
+  --table-border: #1f1f1f;
 
-  --hover: #27272a;
+  --hover: #151515;
   --hover-subtle: #3f3f46;
   --hover-strong: #52525b;
   --active: #3f3f46;
@@ -418,7 +418,7 @@ button {
   --confirm-bg: #ffffff;
   --confirm-hover: #f4f4f5;
 
-  --focus-border: #a1a1aa;
+  --focus-border: #505050;
   --focus-ring: #a1a1aa;
 
   --input-bg: #27272a;

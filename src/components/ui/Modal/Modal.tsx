@@ -44,11 +44,11 @@ export function Modal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-xs" onClick={onClose} />
 
       {/* Modal */}
       <div
-        className={`relative z-10 w-full ${sizeClasses[size]} mx-4 rounded-lg bg-sidebar shadow-xl ${scrollable ? "max-h-[90vh] flex flex-col" : ""} ${className}`}
+        className={`relative z-10 w-full ${sizeClasses[size]} mx-4 rounded-lg bg-sidebar dark:bg-background! shadow-xl ${scrollable ? "max-h-[90vh] flex flex-col" : ""} ${className}`}
       >
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border px-6 py-4">
@@ -63,7 +63,7 @@ export function Modal({
 
         {/* Body */}
         <div
-          className={`px-6 py-4 ${scrollable ? "overflow-y-auto flex-1 min-h-0" : ""}`}
+          className={`p-6 ${scrollable ? "overflow-y-auto flex-1 min-h-0" : ""}`}
         >
           {children}
         </div>

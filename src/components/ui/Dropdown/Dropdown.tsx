@@ -49,7 +49,7 @@ export function Dropdown({
         aria-expanded={isOpen}
         aria-haspopup="listbox"
         aria-label={ariaLabel}
-        className={`flex w-full items-center justify-between gap-2 rounded-lg border border-input bg-control px-3 py-2 text-left text-sm text-foreground ${buttonClassName}`}
+        className={`flex w-full items-center justify-between gap-2 rounded-lg border border-input bg-sidebar px-3 py-2 text-left text-sm text-foreground ${buttonClassName}`}
       >
         <span>{displayValue}</span>
         <ChevronDown
@@ -61,7 +61,7 @@ export function Dropdown({
       {isOpen && (
         <ul
           role="listbox"
-          className={`absolute left-0 top-full z-50 mt-1 max-h-60 min-w-full overflow-auto rounded-lg border border-input bg-control py-1 shadow-lg ${menuClassName}`}
+          className={`absolute left-0 top-full z-50 mt-1 max-h-60 min-w-full overflow-auto rounded-lg border border-input bg-sidebar py-1 shadow-lg ${menuClassName}`}
         >
           {options.map((option) => (
             <li
