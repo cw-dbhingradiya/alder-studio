@@ -9,18 +9,11 @@ import type {
   TableCellProps,
 } from "./types";
 
-export function Table({
-  children,
-  className = "",
-  wrapperClassName = "",
-  ...props
-}: TableProps) {
+export function Table({ children, className = "", ...props }: TableProps) {
   return (
-    <div
-      className={`overflow-x-auto rounded-lg border border-divider ${wrapperClassName}`.trim()}
-    >
+    <div className="overflow-x-auto rounded-lg border border-divider">
       <table
-        className={`min-w-full divide-y divide-divider ${className}`.trim()}
+        className={`min-w-full divide-y divide-divider ${className}`}
         {...props}
       >
         {children}
@@ -35,7 +28,7 @@ export function TableHead({
   ...props
 }: TableHeadProps) {
   return (
-    <thead className={`bg-sidebar sticky top-0 z-10 ${className}`} {...props}>
+    <thead className={`bg-sidebar ${className}`} {...props}>
       {children}
     </thead>
   );
@@ -62,7 +55,9 @@ export function TableRow({
   className = "",
   ...props
 }: TableRowProps) {
-  const hoverClasses = hoverable ? "hover:bg-table-hover" : "";
+  const hoverClasses = hoverable
+    ? "hover:bg-table-hover"
+    : "";
   return (
     <tr className={`${hoverClasses} ${className}`} {...props}>
       {children}

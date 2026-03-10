@@ -7,8 +7,6 @@ import type {
 
 export interface TableProps extends HTMLAttributes<HTMLTableElement> {
   children: ReactNode;
-  /** ClassName for the wrapper div (e.g. background, padding). */
-  wrapperClassName?: string;
 }
 
 export interface TableHeadProps extends HTMLAttributes<HTMLTableSectionElement> {

@@ -206,8 +206,13 @@ export default function RunDetailPage({
   if (!run) {
     return (
       <div className="flex h-full flex-col items-center justify-center">
-        <h2 className="text-xl font-semibold text-foreground">Run not found</h2>
-        <Link href="/runs" className="mt-4 text-label hover:text-foreground">
+        <h2 className="text-xl font-semibold text-foreground">
+          Run not found
+        </h2>
+        <Link
+          href="/runs"
+          className="mt-4 text-label hover:text-foreground"
+        >
           Back to runs
         </Link>
       </div>
@@ -215,7 +220,7 @@ export default function RunDetailPage({
   }
 
   return (
-    <div className="h-full overflow-auto p-4 md:p-5">
+    <div className="h-full overflow-auto p-5 md:p-8">
       <div className="mx-auto max-w-6xl space-y-6">
         {/* Header */}
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
@@ -241,163 +246,166 @@ export default function RunDetailPage({
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
-            {run.status === "pending" && (
-              <Button
-                onClick={handleExecute}
-                disabled={executing}
-                loading={executing}
-                icon={!executing ? <Play className="size-4" /> : undefined}
-                className="bg-primary text-primary-foreground hover:bg-primary-hover"
-              >
-                {executing ? "Executing..." : "Execute"}
-              </Button>
-            )}
+        <div className="flex flex-wrap gap-2">
+          {run.status === "pending" && (
             <Button
-              variant="secondary"
-              onClick={handleRerun}
-              disabled={rerunning}
-              loading={rerunning}
-              icon={!rerunning ? <RefreshCcw className="size-4" /> : undefined}
+              onClick={handleExecute}
+              disabled={executing}
+              loading={executing}
+              icon={!executing ? <Play className="size-4" /> : undefined}
+              className="bg-primary text-primary-foreground hover:bg-primary-hover"
             >
-              {rerunning ? "Re-running..." : "Re-run"}
+              {executing ? "Executing..." : "Execute"}
             </Button>
-            <Button
-              variant="secondary"
-              onClick={handleDelete}
-              icon={<Trash2 className="size-4" />}
-              className="border-input text-label hover:bg-accent"
-            >
-              Delete
-            </Button>
-          </div>
+          )}
+          <Button
+            variant="secondary"
+            onClick={handleRerun}
+            disabled={rerunning}
+            loading={rerunning}
+            icon={!rerunning ? <RefreshCcw className="size-4" /> : undefined}
+          >
+            {rerunning ? "Re-running..." : "Re-run"}
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={handleDelete}
+            icon={<Trash2 className="size-4" />}
+            className="border-input text-label hover:bg-accent"
+          >
+            Delete
+          </Button>
+        </div>
         </div>
 
         {/* Error Message */}
         {run.error && (
           <div className="rounded-lg border border-error-border bg-error p-4">
-            <p className="text-sm text-error-foreground">{run.error}</p>
+            <p className="text-sm text-error-foreground">
+              {run.error}
+            </p>
           </div>
         )}
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Left Column - Run Info & Results */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Input Set & Template Info */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border border-border bg-card p-4">
-                <h3 className="text-sm font-semibold text-muted-foreground">
-                  Input Set
-                </h3>
-                <p className="mt-1 font-semibold text-foreground">
-                  {run.inputSet.name}
-                </p>
-                <div className="mt-2 flex gap-2 text-xs text-muted-foreground">
-                  <span>{run.inputSet.images.length} images</span>
-                  <span>|</span>
-                  <span>{run.inputSet.products.length} products</span>
-                </div>
-              </div>
-              <div className="rounded-lg border border-border bg-card p-4">
-                <h3 className="text-sm font-semibold text-muted-foreground">
-                  Template
-                </h3>
-                <p className="mt-1 font-semibold text-foreground">
-                  {run.template.name}
-                </p>
-                <p className="mt-2 text-xs text-muted-foreground">
-                  {run.template.steps.length} steps
-                </p>
+        {/* Left Column - Run Info & Results */}
+        <div className="lg:col-span-2 space-y-6">
+          {/* Input Set & Template Info */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="text-sm font-semibold text-muted-foreground">
+                Input Set
+              </h3>
+              <p className="mt-1 font-semibold text-foreground">
+                {run.inputSet.name}
+              </p>
+              <div className="mt-2 flex gap-2 text-xs text-muted-foreground">
+                <span>{run.inputSet.images.length} images</span>
+                <span>|</span>
+                <span>{run.inputSet.products.length} products</span>
               </div>
             </div>
-
-            {/* Input Images Preview */}
-            {run.inputSet.images.length > 0 && (
-              <div className="rounded-lg border border-border bg-card p-4">
-                <h3 className="mb-3 font-semibold text-foreground">
-                  Input Images
-                </h3>
-                <div className="flex gap-2 overflow-x-auto">
-                  {run.inputSet.images.map((image) => (
-                    <img
-                      key={image.id}
-                      src={image.path}
-                      alt={image.filename}
-                      className="h-20 w-20 shrink-0 rounded object-cover"
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Results */}
             <div className="rounded-lg border border-border bg-card p-4">
-              <h3 className="mb-4 font-semibold text-foreground">
-                Generated Results ({run.results.length})
+              <h3 className="text-sm font-semibold text-muted-foreground">
+                Template
               </h3>
-              <ResultViewer
-                results={run.results}
-                onResultClick={setSelectedResult}
-                selectedResultId={selectedResult?.id}
-              />
-            </div>
-
-            {/* Prompt Steps */}
-            <div className="rounded-lg border border-border bg-card p-4">
-              <h3 className="mb-4 font-semibold text-foreground">
-                Prompt Steps
-              </h3>
-              <div className="space-y-3">
-                {run.template.steps.map((step, index) => {
-                  const result = run.results.find(
-                    (r) => r.stepOrder === step.order,
-                  );
-                  const hasError =
-                    result && JSON.parse(result.metadata || "{}").error;
-
-                  return (
-                    <div
-                      key={step.id}
-                      className={`rounded-lg border p-3 ${
-                        hasError
-                          ? "border-error-border bg-error"
-                          : "border-border bg-muted"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-foreground">
-                          Step {index + 1}
-                        </span>
-                        <div className="flex gap-2 text-xs text-muted-foreground">
-                          <span>{step.aspectRatio}</span>
-                          <span>|</span>
-                          <span>{step.imageSize}</span>
-                        </div>
-                      </div>
-                      <p className="mt-2 text-sm text-subtle">{step.prompt}</p>
-                    </div>
-                  );
-                })}
-              </div>
+              <p className="mt-1 font-semibold text-foreground">
+                {run.template.name}
+              </p>
+              <p className="mt-2 text-xs text-muted-foreground">
+                {run.template.steps.length} steps
+              </p>
             </div>
           </div>
 
-          {/* Right Column - Review Panel */}
-          <div className="lg:col-span-1">
-            {selectedResult ? (
-              <ReviewPanel
-                result={selectedResult}
-                onUpdate={handleResultUpdate}
-              />
-            ) : (
-              <div className="rounded-lg border border-border bg-card p-6 text-center">
-                <p className="text-muted-foreground">
-                  Select a result to review
-                </p>
+          {/* Input Images Preview */}
+          {run.inputSet.images.length > 0 && (
+            <div className="rounded-lg border border-border bg-card p-4">
+              <h3 className="mb-3 font-semibold text-foreground">
+                Input Images
+              </h3>
+              <div className="flex gap-2 overflow-x-auto">
+                {run.inputSet.images.map((image) => (
+                  <img
+                    key={image.id}
+                    src={image.path}
+                    alt={image.filename}
+                    className="h-20 w-20 shrink-0 rounded object-cover"
+                  />
+                ))}
               </div>
-            )}
+            </div>
+          )}
+
+          {/* Results */}
+          <div className="rounded-lg border border-border bg-card p-4">
+            <h3 className="mb-4 font-semibold text-foreground">
+              Generated Results ({run.results.length})
+            </h3>
+            <ResultViewer
+              results={run.results}
+              onResultClick={setSelectedResult}
+              selectedResultId={selectedResult?.id}
+            />
+          </div>
+
+          {/* Prompt Steps */}
+          <div className="rounded-lg border border-border bg-card p-4">
+            <h3 className="mb-4 font-semibold text-foreground">
+              Prompt Steps
+            </h3>
+            <div className="space-y-3">
+              {run.template.steps.map((step, index) => {
+                const result = run.results.find(
+                  (r) => r.stepOrder === step.order,
+                );
+                const hasError =
+                  result && JSON.parse(result.metadata || "{}").error;
+
+                return (
+                  <div
+                    key={step.id}
+                    className={`rounded-lg border p-3 ${hasError
+                      ? "border-error-border bg-error"
+                      : "border-border bg-muted"
+                      }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium text-foreground">
+                        Step {index + 1}
+                      </span>
+                      <div className="flex gap-2 text-xs text-muted-foreground">
+                        <span>{step.aspectRatio}</span>
+                        <span>|</span>
+                        <span>{step.imageSize}</span>
+                      </div>
+                    </div>
+                    <p className="mt-2 text-sm text-subtle">
+                      {step.prompt}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
+
+        {/* Right Column - Review Panel */}
+        <div className="lg:col-span-1">
+          {selectedResult ? (
+            <ReviewPanel
+              result={selectedResult}
+              onUpdate={handleResultUpdate}
+            />
+          ) : (
+            <div className="rounded-lg border border-border bg-card p-6 text-center">
+              <p className="text-muted-foreground">
+                Select a result to review
+              </p>
+            </div>
+          )}
+        </div>
+      </div>
 
         <ConfirmDialog
           isOpen={showDeleteDialog}
