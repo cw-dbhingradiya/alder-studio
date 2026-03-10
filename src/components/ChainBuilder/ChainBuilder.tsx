@@ -84,7 +84,7 @@ export function ChainBuilder({ steps, onChange }: ChainBuilderProps) {
           <button
             type="button"
             onClick={addStep}
-            className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-input py-4 text-muted-foreground transition-colors hover:border-focus hover:text-label"
+            className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border py-4 text-muted-foreground transition-colors hover:border-focus hover:text-label"
           >
             <Plus className="size-5" /> Add Step
           </button>

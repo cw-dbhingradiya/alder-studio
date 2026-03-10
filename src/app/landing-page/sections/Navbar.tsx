@@ -66,10 +66,10 @@ function ProfileDropdown({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.2, ease: EASE }}
-            className="absolute right-0 mt-2 w-60 overflow-hidden rounded-xl border border-neutral-800 bg-[#111111] shadow-2xl"
+            className="absolute right-0 mt-2 w-60 overflow-hidden rounded-xl border border-border/10 bg-[#111111] shadow-2xl"
           >
             {/* User info: name, email, id available after login */}
-            <div className="border-b border-neutral-800 px-4 py-3">
+            <div className="border-b border-border/10 px-4 py-3">
               <p className="truncate text-sm font-medium text-white">
                 {user.name}
               </p>
@@ -99,7 +99,7 @@ function ProfileDropdown({
                 setOpen(false);
                 onLogout();
               }}
-              className="cursor-pointer flex w-full items-center gap-2.5 border-t border-neutral-800 px-4 py-3 text-sm text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white"
+              className="cursor-pointer flex w-full items-center gap-2.5 border-t border-border/10 px-4 py-3 text-sm text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-white"
             >
               <LogOut className="size-4" />
               Logout
@@ -144,7 +144,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.2 }}
-        className="fixed top-0 left-0 right-0 z-50 border-b border-neutral-800/50 bg-[#0A0A0A]/80 backdrop-blur-md"
+        className="fixed top-0 left-0 right-0 z-50 border-b border-border/10 bg-[#0A0A0A]/80 backdrop-blur-md"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <motion.a
@@ -192,7 +192,7 @@ export default function Navbar() {
                 transition={{ duration: 0.5, ease: EASE, delay: 0.8 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                className="cursor-pointer rounded-lg border border-neutral-700 bg-white px-5 py-1.5 text-sm font-medium text-[#0A0A0A] transition-colors duration-300 hover:bg-neutral-200"
+                className="cursor-pointer rounded-lg border border-border bg-white px-5 py-1.5 text-sm font-medium text-[#0A0A0A] transition-colors duration-300 hover:bg-neutral-200"
               >
                 Login
               </motion.button>
@@ -211,7 +211,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={openLogin}
-                className="rounded-lg border border-neutral-700 bg-white px-4 py-1.5 text-sm font-medium text-[#0A0A0A] transition-colors duration-300 hover:bg-neutral-200"
+                className="rounded-lg border border-border bg-white px-4 py-1.5 text-sm font-medium text-[#0A0A0A] transition-colors duration-300 hover:bg-neutral-200"
               >
                 Login
               </button>
@@ -251,7 +251,7 @@ export default function Navbar() {
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
               transition={{ duration: 0.5, ease: EASE }}
-              className="fixed inset-x-0 top-0 z-70 flex flex-col rounded-b-2xl border-b border-neutral-800 bg-[#0A0A0A] px-6 pb-8 pt-6 shadow-2xl md:hidden"
+              className="fixed inset-x-0 top-0 z-70 flex flex-col rounded-b-2xl border-b border-border bg-[#0A0A0A] px-6 pb-8 pt-6 shadow-2xl md:hidden"
             >
               {/* Header row with logo and close button */}
               <div className="flex items-center justify-between">
@@ -292,7 +292,7 @@ export default function Navbar() {
               </nav>
 
               {/* Bottom action — Login or Dashboard/Logout */}
-              <div className="mt-6 border-t border-neutral-800 pt-6">
+              <div className="mt-6 border-t border-border pt-6">
                 {user ? (
                   <div className="flex flex-col gap-2">
                     <motion.button

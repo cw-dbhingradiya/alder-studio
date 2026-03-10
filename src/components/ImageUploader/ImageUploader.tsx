@@ -32,7 +32,7 @@ export function ImageUploader({
         className={`relative cursor-pointer rounded-lg border-2 border-dashed p-8 text-center transition-colors ${
           isDragging
             ? "border-focus bg-accent"
-            : "border-input hover:border-focus"
+            : "border-border hover:border-focus"
         }`}
       >
         <input
@@ -48,10 +48,8 @@ export function ImageUploader({
           aria-hidden="true"
         />
         <p className="mt-2 text-sm text-subtle">
-          <span className="font-medium text-label">
-            Click to upload
-          </span>{" "}
-          or drag and drop
+          <span className="font-medium text-label">Click to upload</span> or
+          drag and drop
         </p>
         <p className="mt-1 text-xs text-muted-foreground">
           PNG, JPG, WEBP up to 10MB each

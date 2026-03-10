@@ -82,7 +82,7 @@ export default function BlogSection() {
             viewport={VIEWPORT}
             transition={{ duration: 0.6, ease: EASE, delay: 0.2 }}
             href="#"
-            className="hidden rounded-full border border-neutral-600 px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-white hover:bg-white hover:text-black sm:inline-block"
+            className="hidden rounded-full border border-border px-8 py-3 text-sm font-medium text-white transition-all duration-500 hover:border-border hover:bg-white hover:text-black sm:inline-block"
           >
             VIEW ALL
           </motion.a>
@@ -103,7 +103,7 @@ export default function BlogSection() {
                 y: -6,
                 transition: { type: "spring", stiffness: 300, damping: 20 },
               }}
-              className="group cursor-pointer overflow-hidden rounded-2xl border border-neutral-800/50 transition-colors duration-500 hover:border-neutral-700"
+              className="group cursor-pointer overflow-hidden rounded-2xl border border-border/10 transition-colors duration-500 hover:border-border"
             >
               <div className="aspect-[4/3] overflow-hidden bg-neutral-900">
                 <motion.img
@@ -117,7 +117,7 @@ export default function BlogSection() {
               </div>
               <div className="p-6">
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full border border-neutral-700 px-3 py-1 text-[10px] tracking-wide text-neutral-400 uppercase">
+                  <span className="rounded-full border border-border px-3 py-1 text-[10px] tracking-wide text-neutral-400 uppercase">
                     {article.tag}
                   </span>
                   <span className="text-xs text-neutral-600">

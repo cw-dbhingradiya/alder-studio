@@ -154,7 +154,7 @@ export default function TestimonialsSection() {
   return (
     <section className="relative bg-[#0A0A0A]">
       {/* 1) Logo slider first — sticky so it stays visible while cards scroll in below. */}
-      <div className="sticky top-16 z-0 flex min-h-[70vh] w-full flex-col justify-center overflow-hidden border-b border-neutral-800/10 bg-[#0A0A0A]">
+      <div className="sticky top-16 z-0 flex min-h-[70vh] w-full flex-col justify-center overflow-hidden border-b border-border/10 bg-[#0A0A0A]">
         <div
           className="flex flex-col justify-center gap-12 py-16 opacity-[0.08] md:gap-16 md:opacity-[0.1]"
           aria-hidden

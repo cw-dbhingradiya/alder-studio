@@ -17,10 +17,10 @@ export function Table({
 }: TableProps) {
   return (
     <div
-      className={`overflow-x-auto rounded-lg border border-divider ${wrapperClassName}`.trim()}
+      className={`overflow-x-auto rounded-lg border border-border ${wrapperClassName}`.trim()}
     >
       <table
-        className={`min-w-full divide-y divide-divider ${className}`.trim()}
+        className={`min-w-full divide-y divide-border ${className}`.trim()}
         {...props}
       >
         {children}
@@ -48,7 +48,7 @@ export function TableBody({
 }: TableBodyProps) {
   return (
     <tbody
-      className={`divide-y divide-divider bg-sidebar ${className}`}
+      className={`divide-y divide-border bg-sidebar ${className}`}
       {...props}
     >
       {children}

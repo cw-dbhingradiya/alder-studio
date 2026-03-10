@@ -120,7 +120,7 @@ export default function ServicesSection() {
             {TAGS.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-neutral-700 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-neutral-500 hover:text-neutral-300"
+                className="rounded-full border border-border/10 px-4 py-1.5 text-xs tracking-wide text-neutral-400 transition-colors duration-300 hover:border-border hover:text-neutral-300"
               >
                 {tag}
               </span>
