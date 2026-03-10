@@ -85,7 +85,7 @@ function LoginView({
   return (
     <>
       <div className="mb-8 text-center">
-        <h2 className="text-2xl font-semibold tracking-tight text-red-500">
+        <h2 className="text-2xl font-semibold tracking-tight text-white">
           Welcome Back
         </h2>
         <p className="mt-2 text-sm text-neutral-400">
