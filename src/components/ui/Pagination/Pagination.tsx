@@ -3,6 +3,7 @@
 import * as React from "react";
 
 import {
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   ChevronsLeft,
@@ -13,8 +14,45 @@ import {
 import { cn } from "@/lib/utils/cn";
 
 /**
- * Table pagination: rows-per-page dropdown, "X-Y of Z" range, and prev/next arrows.
- * Optional full nav (First, page numbers, Last) when showFullNav is true.
+ * Builds an array of page numbers and "ellipsis" for the pagination bar.
+ * Shows first page, last page, and a window around current (e.g. 1, 2, 3, 4, ..., 6).
+ */
+function getPageNumbersToShow(
+  currentPage: number,
+  totalPages: number,
+): (number | "ellipsis")[] {
+  if (totalPages <= 0) return [];
+  if (totalPages <= 5) {
+    return Array.from({ length: totalPages }, (_, i) => i + 1);
+  }
+  const pages: (number | "ellipsis")[] = [];
+  let low: number;
+  let high: number;
+  if (currentPage <= 3) {
+    low = 2;
+    high = Math.min(4, totalPages - 1);
+  } else if (currentPage >= totalPages - 2) {
+    low = Math.max(2, totalPages - 3);
+    high = totalPages - 1;
+  } else {
+    low = currentPage - 1;
+    high = currentPage + 1;
+  }
+  const showLeft = low > 2;
+  const showRight = high < totalPages - 1;
+
+  pages.push(1);
+  if (showLeft) pages.push("ellipsis");
+  for (let p = low; p <= high; p++) pages.push(p);
+  if (showRight) pages.push("ellipsis");
+  if (totalPages > 1) pages.push(totalPages);
+
+  return pages;
+}
+
+/**
+ * Table pagination: "Total Records" on the left, page numbers + Prev/Next in the center,
+ * "Result per page" dropdown on the right. Matches reference UI with total count and row-per-page control.
  */
 export interface PaginationProps {
   currentPage?: number;
@@ -44,21 +82,17 @@ export function Pagination({
   "aria-label": ariaLabel = "pagination",
   ...props
 }: PaginationProps & Omit<React.ComponentProps<"nav">, "children">) {
-  const hasSummary = Boolean(pageSize != null && totalItems != null);
   const totalPages = totalPagesProp;
   const hasMultiplePages = totalPages > 1;
-
-  const startItem =
-    hasSummary && pageSize && totalItems
-      ? (currentPage - 1) * pageSize + 1
-      : null;
-  const endItem =
-    hasSummary && pageSize && totalItems
-      ? Math.min(currentPage * pageSize, totalItems)
-      : null;
+  const hasTotalItems = totalItems != null;
+  const hasPageSizeControl =
+    pageSizeOptions != null &&
+    pageSizeOptions.length > 0 &&
+    pageSize != null &&
+    onPageSizeChange;
 
   const showPagination =
-    hasSummary ||
+    hasTotalItems ||
     hasMultiplePages ||
     (pageSizeOptions != null && pageSizeOptions.length > 0);
   if (!showPagination) {
@@ -67,68 +101,112 @@ export function Pagination({
 
   const canGoPrevious = currentPage > 1;
   const canGoNext = currentPage < totalPages;
+  const pageNumbers = getPageNumbersToShow(currentPage, totalPages);
+
+  const handlePrev = () => onPageChange?.(currentPage - 1);
+  const handleNext = () => onPageChange?.(currentPage + 1);
+  const handlePage = (page: number) => onPageChange?.(page);
 
   return (
     <nav
       role="navigation"
       aria-label={ariaLabel}
       className={cn(
-        "flex w-full flex-wrap items-center justify-between gap-4 px-4 py-3",
+        "flex w-full flex-nowrap items-center justify-between gap-4 px-4 py-3 bg-sidebar/30",
         className,
       )}
       {...props}
     >
-      {pageSizeOptions != null &&
-        pageSizeOptions.length > 0 &&
-        pageSize != null &&
-        onPageSizeChange && (
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-gray-600">
-              Rows per page:
-            </span>
+      {/* Left: Total Records */}
+      <div className="flex shrink-0 items-center gap-2">
+        <span className="text-sm font-medium text-muted-foreground">
+          Total Records: {totalItems ?? 0}
+        </span>
+      </div>
+
+      {/* Center: Previous, page numbers, Next — always visible */}
+      <div className="flex min-w-0 flex-1 items-center justify-center gap-1 overflow-visible">
+        <div className="flex shrink-0 items-center gap-1">
+          <button
+            type="button"
+            aria-label="Previous page"
+            disabled={!canGoPrevious}
+            onClick={handlePrev}
+            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg border border-transparent px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <ChevronLeft className="h-4 w-4 shrink-0" aria-hidden />
+            <span>Previous</span>
+          </button>
+          {totalPages > 0 && (
+            <div className="flex items-center gap-0.5">
+              {pageNumbers.map((item, idx) =>
+                item === "ellipsis" ? (
+                  <span
+                    key={`ellipsis-${idx}`}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center text-muted-foreground"
+                    aria-hidden
+                  >
+                    <MoreHorizontal className="h-4 w-4" />
+                  </span>
+                ) : (
+                  <button
+                    key={item}
+                    type="button"
+                    aria-label={`Page ${item}`}
+                    aria-current={item === currentPage ? "page" : undefined}
+                    onClick={() => handlePage(item)}
+                    className={cn(
+                      "inline-flex h-9 min-w-9 shrink-0 items-center justify-center rounded-lg border px-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                      item === currentPage
+                        ? "border-border bg-muted text-foreground font-semibold"
+                        : "border-transparent text-foreground hover:bg-muted",
+                    )}
+                  >
+                    {item}
+                  </button>
+                ),
+              )}
+            </div>
+          )}
+          <button
+            type="button"
+            aria-label="Next page"
+            disabled={!canGoNext}
+            onClick={handleNext}
+            className="inline-flex h-9 items-center justify-center gap-1.5 rounded-lg border border-transparent px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <span>Next</span>
+            <ChevronRight className="h-4 w-4 shrink-0" aria-hidden />
+          </button>
+        </div>
+      </div>
+
+      {/* Right: Result per page */}
+      {hasPageSizeControl && (
+        <div className="flex shrink-0 items-center gap-2">
+          <span className="text-sm font-medium text-muted-foreground">
+            Result per page
+          </span>
+          <div className="relative">
             <select
-              aria-label="Rows per page"
+              aria-label="Result per page"
               value={pageSize}
               onChange={(e) => onPageSizeChange(Number(e.target.value))}
-              className="h-9 min-w-16 rounded-lg border border-border bg-sidebar px-3 py-1.5 text-sm text-foreground outline-none focus:outline-none focus-visible:outline-none"
+              className="h-9 min-w-18 appearance-none rounded-lg border border-border bg-sidebar pl-3 pr-8 text-sm text-foreground outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              {pageSizeOptions.map((size) => (
+              {pageSizeOptions!.map((size) => (
                 <option key={size} value={size}>
                   {size}
                 </option>
               ))}
             </select>
+            <ChevronDown
+              className="pointer-events-none absolute right-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              aria-hidden
+            />
           </div>
-        )}
-      <div className="flex flex-1 items-center justify-end gap-4">
-        {startItem != null && endItem != null && totalItems != null && (
-          <p className="text-sm font-medium text-gray-600">
-            {startItem}-{endItem} of {totalItems}
-          </p>
-        )}
-        {hasMultiplePages && onPageChange && (
-          <div className="flex items-center gap-0.5">
-            <button
-              type="button"
-              aria-label="Previous page"
-              disabled={!canGoPrevious}
-              onClick={() => onPageChange(currentPage - 1)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-transparent text-gray-600 transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <ChevronLeft className="h-4 w-4" aria-hidden />
-            </button>
-            <button
-              type="button"
-              aria-label="Next page"
-              disabled={!canGoNext}
-              onClick={() => onPageChange(currentPage + 1)}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-transparent text-gray-600 transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <ChevronRight className="h-4 w-4" aria-hidden />
-            </button>
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }

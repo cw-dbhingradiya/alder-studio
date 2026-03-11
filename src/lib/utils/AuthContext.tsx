@@ -13,6 +13,8 @@ import {
   getSessionUser,
   setSessionUser,
   logout as authLogout,
+  updateSessionUser,
+  updateRegisteredUserById,
 } from "./auth";
 
 /**
@@ -24,6 +26,7 @@ interface AuthContextValue {
   isLoading: boolean;
   login: (user: AuthUser) => void;
   logout: () => void;
+  updateUser: (updates: Partial<Pick<AuthUser, "name" | "email" | "phone" | "timezone">>) => void;
 }
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -53,8 +56,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(null);
   }, []);
 
+  const updateUser = useCallback(
+    (updates: Partial<Pick<AuthUser, "name" | "email" | "phone" | "timezone">>) => {
+      const updated = updateSessionUser(updates);
+      if (updated) {
+        setUser(updated);
+        if (updates.name !== undefined || updates.email !== undefined) {
+          updateRegisteredUserById(updated.id, {
+            ...(updates.name !== undefined && { name: updates.name }),
+            ...(updates.email !== undefined && { email: updates.email }),
+          });
+        }
+      }
+    },
+    []
+  );
+
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, logout }}>
+    <AuthContext.Provider value={{ user, isLoading, login, logout, updateUser }}>
       {children}
     </AuthContext.Provider>
   );

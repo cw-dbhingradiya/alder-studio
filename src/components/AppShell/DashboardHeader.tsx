@@ -12,6 +12,7 @@ import {
   LayoutDashboard,
   LogOut,
   Star,
+  User,
 } from "lucide-react";
 import { SearchInput } from "@/components/ui/SearchInput";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -97,6 +98,14 @@ function ProfileDropdown({
           >
             <LayoutDashboard className="h-4 w-4" />
             Dashboard
+          </Link>
+          <Link
+            href="/account"
+            onClick={() => setOpen(false)}
+            className="flex w-full items-center gap-2.5 px-4 py-3 text-sm text-foreground transition-colors hover:bg-accent"
+          >
+            <User className="h-4 w-4" />
+            Account
           </Link>
           <button
             type="button"
