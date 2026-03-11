@@ -58,7 +58,7 @@ function DashboardContent() {
 
   return (
     <div className="p-4 md:p-5">
-      <div className="mx-auto max-w-6xl space-y-6">
+      <div className="space-y-6">
         {/* Page header */}
         <div>
           <h1 className="text-lg font-semibold text-foreground">

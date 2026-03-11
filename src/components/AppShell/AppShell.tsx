@@ -5,10 +5,11 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import Sidebar from "@/components/ui/Sidebar";
 import { useAuth } from "@/lib/utils/AuthContext";
+import { DashboardHeader } from "./DashboardHeader";
 
 /**
- * What: App shell component that conditionally renders sidebar based on auth and route.
- * Why: Landing page (/) must show without sidebar after login; dashboard and app routes need sidebar.
+ * What: App shell component that conditionally renders sidebar and dashboard header based on auth and route.
+ * Why: Landing page (/) must show without sidebar after login; dashboard and app routes need sidebar and header.
  * What for: Used in layout.tsx to wrap all page content.
  */
 export default function AppShell({ children }: { children: React.ReactNode }) {
@@ -32,18 +33,23 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-full">
-      <button
-        onClick={() => setSidebarOpen(true)}
-        className="fixed left-4 top-4 z-40 rounded-lg p-2 md:hidden bg-primary text-primary-foreground shadow-md"
-        aria-label="Open menu"
-      >
-        <Menu className="size-6" />
-      </button>
-
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <main className="flex-1 overflow-auto bg-background pt-16 md:pt-0">
-        {children}
-      </main>
+      <div className="flex min-h-0 flex-1 flex-col">
+        <DashboardHeader
+          leftSlot={
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="rounded-lg p-2 md:hidden text-foreground transition-colors hover:bg-accent"
+              aria-label="Open menu"
+            >
+              <Menu className="size-6" />
+            </button>
+          }
+        />
+        <main className="flex-1 overflow-auto bg-background">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
