@@ -68,7 +68,7 @@ function RunsContent() {
 
   return (
     <div className="h-full overflow-auto p-4 md:p-5">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
           <div>
             <h1 className="text-lg font-semibold text-foreground">
