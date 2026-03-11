@@ -46,9 +46,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             </button>
           }
         />
-        <main className="flex-1 overflow-auto bg-background">
-          {children}
-        </main>
+        <main className="flex-1 overflow-auto bg-background">{children}</main>
       </div>
     </div>
   );

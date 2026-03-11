@@ -9,6 +9,8 @@ export interface AuthUser {
   id: string;
   name: string;
   email: string;
+  phone?: string;
+  timezone?: string;
 }
 
 export interface StoredUser extends AuthUser {
@@ -138,4 +140,33 @@ export function isAuthenticated(): boolean {
  */
 export function logout(): void {
   setSessionUser(null);
+}
+
+/**
+ * What: Updates the current session user with partial fields and persists to localStorage.
+ * Why: Allows profile/account page to change name, email, phone, timezone and keep session in sync.
+ */
+export function updateSessionUser(updates: Partial<Pick<AuthUser, "name" | "email" | "phone" | "timezone">>): AuthUser | null {
+  if (typeof window === "undefined") return null;
+  const current = getSessionUser();
+  if (!current) return null;
+  const updated: AuthUser = { ...current, ...updates };
+  setSessionUser(updated);
+  return updated;
+}
+
+/**
+ * What: Updates the matching registered user's name and email in localStorage.
+ * Why: When user changes name/email in account, registered users list stays in sync for future logins.
+ */
+export function updateRegisteredUserById(
+  userId: string,
+  updates: Partial<Pick<AuthUser, "name" | "email">>
+): void {
+  if (typeof window === "undefined") return;
+  const users = getRegisteredUsers();
+  const index = users.findIndex((u) => u.id === userId);
+  if (index === -1) return;
+  users[index] = { ...users[index], ...updates };
+  localStorage.setItem(USERS_KEY, JSON.stringify(users));
 }

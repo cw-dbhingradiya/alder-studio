@@ -75,7 +75,7 @@ const TableHeader = React.forwardRef<HTMLTableSectionElement, TableHeaderProps>(
     <thead
       ref={ref}
       className={cn(
-        "sticky top-0 z-10 border-b border-border bg-sidebar outline-none focus:outline-none focus-visible:outline-none [&_tr]:border-b [&_tr]:border-border",
+        "sticky top-0 z-10 border-b border-border bg-accent outline-none focus:outline-none focus-visible:outline-none [&_tr]:border-b [&_tr]:border-border",
         className,
       )}
       aria-label={ariaLabel}
