@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { getStatusColor } from "@/lib/utils";
 import { Modal } from "@/components/ui/Modal";
@@ -48,6 +48,8 @@ function RunsContent() {
     closeDeleteDialog,
   } = useRunsPage();
 
+  const [selectedRowIds, setSelectedRowIds] = useState<string[]>([]);
+
   const inputSetOptions = [
     { value: "", label: "Select an input set..." },
     ...inputSets.map((s) => ({ value: s.id, label: s.name })),
@@ -88,7 +90,7 @@ function RunsContent() {
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4 justify-between">
           <SearchInput
             value={searchQuery}
             onChange={setSearchQuery}
@@ -117,6 +119,10 @@ function RunsContent() {
             { header: "Actions", align: "center" },
           ]}
           pageSize={10}
+          selectable
+          getRowId={(run) => run.id}
+          selectedRowIds={selectedRowIds}
+          onSelectionChange={setSelectedRowIds}
           emptyMessage={
             <div className="rounded-lg border-2 border-dashed border-border p-12 text-center">
               <Clock3 className="size-12 text-placeholder mx-auto" />
@@ -135,8 +141,9 @@ function RunsContent() {
               )}
             </div>
           }
-          renderRow={(run) => (
-            <TableRow key={run.id}>
+          renderRow={(run, index, extra) => (
+            <TableRow key={run.id} selected={selectedRowIds.includes(run.id)}>
+              {extra?.selectionCell}
               <TableCell>
                 <Link
                   href={`/runs/${run.id}`}

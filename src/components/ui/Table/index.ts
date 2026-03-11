@@ -1,18 +1,26 @@
 export {
   Table,
-  TableHead,
-  TableBody,
-  TableRow,
   TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
   TableCell,
+  TableCaption,
 } from "./Table";
-export { DataGrid } from "./DataGrid";
+export { DataGrid } from "../DataTable/DataTable";
 export type {
   TableProps,
-  TableHeadProps,
-  TableBodyProps,
-  TableRowProps,
   TableHeaderProps,
+  TableBodyProps,
+  TableFooterProps,
+  TableRowProps,
+  TableHeadProps,
   TableCellProps,
+  TableCaptionProps,
 } from "./types";
-export type { DataGridProps, DataGridColumn } from "./DataGrid";
+export type {
+  DataGridProps,
+  DataGridColumn,
+  DataGridSelectionCell,
+} from "../DataTable/DataTable";
